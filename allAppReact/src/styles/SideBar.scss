@@ -1,3 +1,10 @@
+$mainColor: #DBD9D9;
+$secondColor: #22181C;
+$thirdColor: #312F2F;
+$accentColor: #EF626C;
+$secondAccentColor: #227C9D;
+
+
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 300px; /* Set the width of the sidebar */
@@ -5,23 +12,25 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black */
+    background-color: $secondColor; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
   }
   
   /* The navigation menu links */
-  .sidenav a {
+  .sidenav-item {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: $mainColor;
     display: block;
+    transition: all 0.3s ease-in-out;
   }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: #f1f1f1;
+
+
+  .sidenav-item:hover {
+    color: $accentColor;
+    background-color: $mainColor;
   }
   
   /* Style page content */

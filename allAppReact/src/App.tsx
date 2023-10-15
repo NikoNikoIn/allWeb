@@ -1,38 +1,25 @@
 import React from 'react'
 import SideBar from './components/SideBar'
-import { createRoot } from 'react-dom/client'
 import {
-    createBrowserRouter,
-    RouterProvider,
-    Route,
-    Link,
+    BrowserRouter, 
+    Routes, 
+    Route 
 } from 'react-router-dom'
 import Home from './routes/Home'
 import ToDo from './routes/ToDo'
 import Error from './routes/Error'
 
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Home />
-    },
-    {
-        path: '/todo',
-        element: <ToDo />
-    },
-    {
-        path: '*',
-        element: <Error />
-    }
-])
-
 function App() {
     return ( 
-        <div>
+        <BrowserRouter>
             <SideBar />
-            <RouterProvider router={router} />
-        </div>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="todo" element={<ToDo />} />
+                <Route path="*" element={<Error />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

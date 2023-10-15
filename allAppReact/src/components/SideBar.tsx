@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
-import '../styles/SideBar.scss'
-    
+import '../styles/SideBar.scss'    
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
     return (
         <div className='sidenav'>
-            <a href='#'>About</a>
-            <a href='#'>Services</a>
-            <a href='#'>Clients</a>
-            <a href='#'>Contact</a>
+            <h1>AAA</h1>
+            <div>
+                <Link to="/" className='sidenav-item'>Home</Link>
+                <Link to="/todo" className='sidenav-item'>ToDo</Link>
+            </div>
         </div>
     )
 }
