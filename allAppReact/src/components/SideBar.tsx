@@ -1,15 +1,16 @@
-import React, {useState} from 'react'
-import '../styles/SideBar.scss'    
+import React from 'react'
+import '../App.scss'    
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faListUl, faHouse } from '@fortawesome/free-solid-svg-icons'
+
 
 const SideBar = () => {
     return (
         <div className='sidenav'>
-            <h1>AAA</h1>
-            <div>
-                <Link to="/" className='sidenav-item'>Home</Link>
-                <Link to="/todo" className='sidenav-item'>ToDo</Link>
-            </div>
+            <Link to='/' className='sidenav-item'><FontAwesomeIcon icon={faHouse as IconProp} size='sm'/> Home</Link>
+            <Link to='/todo' className='sidenav-item'><FontAwesomeIcon icon={faListUl as IconProp} size='sm'/> ToDo</Link>
         </div>
     )
 }

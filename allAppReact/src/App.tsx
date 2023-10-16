@@ -8,6 +8,7 @@ import {
 import Home from './routes/Home'
 import ToDo from './routes/ToDo'
 import Error from './routes/Error'
+import './App.scss'  
 
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
         <BrowserRouter>
             <SideBar />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="todo" element={<ToDo />} />
-                <Route path="*" element={<Error />} />
+                <Route path='/' element={<Home />} />
+                <Route path='todo' element={<ToDo />} />
+                <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
     )

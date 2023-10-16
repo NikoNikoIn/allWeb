@@ -1,0 +1,63 @@
+html[data-theme='light'] {
+    --mainColor: #ffffff;
+    --secondColor: #151515;
+    --thirdColor: #dfdfdf;
+    --accentColor: #ffd321;
+    --secondAccentColor: #f3f3f3;
+}
+
+html[data-theme='dark'] {
+    --mainColor: #151515; /* Dark background, basically switching the second color */
+    --secondColor: #ffffff; /* White text color for readability on dark background */
+    --thirdColor: #1A1A1A; /* A slightly lighter shade of the main dark color this could be used for card backgrounds or secondary elements */
+    --accentColor: #ffd321; /* Keeping the same yellow accent color. Should work well on both light and dark themes */
+    --secondAccentColor: #0b0b0b; /* A darker gray for secondary accents, less contrast with the main color than the light theme */
+}
+
+
+
+#root {
+    margin: 0;
+    padding: 0;
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+    height: 100vh;
+    width: 100%;
+}
+
+.main {
+    margin-left: 300px;
+    padding: 0px 10px;
+}
+
+
+.sidenav {
+    height: 100%; 
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0; 
+    left: 0;
+    background-color: var(--secondAccentColor); 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.sidenav-item {
+    padding: 10px 8px 10px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--accentColor);
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidenav-item:hover {
+    color: var(--mainColor);
+    background-color: var(--accentColor);
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav-item {font-size: 18px;}
+}

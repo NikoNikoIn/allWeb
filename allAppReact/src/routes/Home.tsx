@@ -1,10 +1,15 @@
 import React from 'react'
+import '../App.scss'
+import ThemeHook from '../hooks/ThemeHook'
 
 function Home() {
+    const {theme, setTheme } = ThemeHook()
     return (
-        <h1>
-            Homeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        </h1>
+        <div className='main'>
+            <h1>
+                Homeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </h1>
+        </div>
     )
 }
 

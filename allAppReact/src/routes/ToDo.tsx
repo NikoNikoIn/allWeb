@@ -1,8 +1,9 @@
 import React from 'react'
+import '../App.scss'
 
 function ToDo() {
     return (
-        <div>
+        <div className='main'>
             ToDo
         </div>
     )
