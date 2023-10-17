@@ -3,8 +3,7 @@ import '../App.scss'
 import ThemeHook from '../hooks/ThemeHook'
 
 function Home() {
-    const {theme, setTheme } = ThemeHook()
-    return (
+        return (
         <div className='main'>
             <h1>
                 Homeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
