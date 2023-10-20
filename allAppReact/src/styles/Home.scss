@@ -1,0 +1,27 @@
+.img {
+    transition: all 0.6s ease-in-out;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid var(--accentColor);
+    margin-top: 25px;
+
+}
+
+.img:hover {
+    box-shadow: 0px 0px 20px var(--accentColor);
+}
+
+.list-group .list-group-item {
+    color: var(--accentColor);
+    background-color: var(--mainColor);
+    border-color: var(--accentColor);
+    transition: all 0.3s ease-in-out;
+    margin-right: 500px;
+}
+
+.list-group-item:hover {
+    scale: 1.005;
+    box-shadow: 0px 0px 20px var(--accentColor);
+
+}

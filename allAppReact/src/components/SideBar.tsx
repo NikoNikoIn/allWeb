@@ -30,6 +30,7 @@ const SideBar = () => {
 
         <>
             <div className='sidenav'>
+                
                 {SideItems}
                 <ThemeButton />
             </div>

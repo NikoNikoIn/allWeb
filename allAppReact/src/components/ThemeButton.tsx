@@ -1,8 +1,8 @@
-import ReactSwitch from "react-switch"
+import ReactSwitch from 'react-switch'
 import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import ThemeHook from '../hooks/ThemeHook'
 import '../App.scss'    
 import '../styles/SideBar.scss'
