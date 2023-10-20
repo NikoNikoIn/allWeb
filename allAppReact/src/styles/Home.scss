@@ -1,15 +1,18 @@
-.img {
+.img, .img-sticky {
     transition: all 0.6s ease-in-out;
     max-width: 100%;
     height: auto;
-    border-radius: 50%;
     border: 1px solid var(--accentColor);
-    margin-top: 25px;
 
 }
 
-.img:hover {
+.img:hover, .img-sticky:hover {
     box-shadow: 0px 0px 20px var(--accentColor);
+}
+
+.img-sticky {
+    position: sticky;
+    top: 100px;
 }
 
 .list-group .list-group-item {
@@ -17,11 +20,61 @@
     background-color: var(--mainColor);
     border-color: var(--accentColor);
     transition: all 0.3s ease-in-out;
-    margin-right: 500px;
+}
+
+.list-group-item {
+    width: 70px;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .list-group-item:hover {
-    scale: 1.005;
+    width:175px;
     box-shadow: 0px 0px 20px var(--accentColor);
+    background-color: var(--accentColor);
+    color: var(--secondColor)
+}
+
+
+.list-item-icon {
+    padding-left: -5px;
+    font-size: 35px;
+    width: 40px;
+    right: 400px;
+}
+
+.list-item-text {
+    position: absolute;
+    font-size: 25px;
+    top: 50%;
+    left: 70px;
+    transform: translateY(-55%);
+}
+
+.web-icon {
+    font-size: 40px;
+    padding: 25px;
+    border-radius: 50%;
+    margin: 20px;
+    color: var(--secondColor);
+    background-color: var(--mainColor);
+    border: 1px solid var(--accentColor);
+    transition: all 0.3s ease-in-out;
+}
+
+.web-icon:hover {
+    box-shadow: 0px 0px 20px var(--accentColor);
+    color: var(--mainColor);
+    background-color: var(--secondColor);
+}
+
+.social-icon {
+    margin: 5px;
+    font-size:30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover{
+    color: var(--secondColor);
 
 }

@@ -4,18 +4,11 @@ import '../styles/SideBar.scss'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faListUl, faHouse, faCloud, faClock } from '@fortawesome/free-solid-svg-icons'
 
 import ThemeButton from './ThemeButton'
+import Items from './Items'
 
-
-
-const items = [
-    {to: '/', text: 'Home', icon: faHouse},
-    {to: '/todo', text: 'ToDo', icon: faListUl},
-    {to: '/weather', text: 'Weather', icon: faCloud},
-    {to: '/clock', text: 'Clock', icon: faClock},
-]
+const {items} = Items
 
 const SideItems = items.map(item => (
     <Link key={item.to} to={item.to} className='sidenav-item'>
@@ -27,14 +20,11 @@ const SideItems = items.map(item => (
 
 const SideBar = () => {
     return (
-
-        <>
-            <div className='sidenav'>
+        <div className='sidenav'>
                 
-                {SideItems}
-                <ThemeButton />
-            </div>
-        </>
+            {SideItems}
+            <ThemeButton />
+        </div>
             
     )
 }
