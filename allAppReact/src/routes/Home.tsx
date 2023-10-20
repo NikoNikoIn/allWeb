@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 import Items from '../components/Items'
-
 const {items, stackItems, socialItems} = Items
+
 
 const StackItems = stackItems.map(item => (
     <ListGroup.Item key={item.text}>
@@ -26,9 +26,11 @@ const StackItems = stackItems.map(item => (
 const WebItems = (
     <div className='d-flex flex-row justify-content-center align-items-center'>
         {items.map(item => (
-            <Link className='d-flex justify-content-center align-items-center web-icon' key={item.to} to={item.to}>
-                <FontAwesomeIcon icon={item.icon as IconProp} /> 
-            </Link>
+            item.text !== 'Home' ? 
+                <Link className='d-flex justify-content-center align-items-center web-icon' key={item.to} to={item.to}>
+                    <FontAwesomeIcon icon={item.icon as IconProp} /> 
+                </Link>
+            : null
         ))}
     </div>
 )
@@ -56,10 +58,10 @@ function Home() {
         <div className='main'>
             <Container>
                 <Row>
-                    <Col style={{marginTop:'25px'}} xs={6} md={4}>
+                    <Col style={{marginTop:'25px'}} xs={4} md={4}>
                         <Image className='img' roundedCircle src={faceImage} />
                     </Col>
-                    <Col style={{marginTop:'25px'}} xs={6} md={8}>
+                    <Col style={{marginTop:'25px'}} xs={8} md={8}>
                         <h1>About me :)</h1>
                         <h3>Some information:</h3>
                         <p>I am a junior student at the BSUIR, my specialty is digital marketing where our
@@ -99,6 +101,11 @@ function Home() {
                             <h4 className='d-flex flex-row justify-content-center align-items-center'>So what are you waiting for? Visit them!</h4>
                             {WebItems}
                         </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    
                     </Col>
                 </Row>
                 <Row>

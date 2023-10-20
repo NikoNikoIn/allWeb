@@ -1,7 +1,6 @@
 import React from 'react'
-import { faListUl, faHouse, faCloud, faClock } from '@fortawesome/free-solid-svg-icons'
-import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram } from '@fortawesome/free-brands-svg-icons'
-import { faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { faListUl, faHouse, faCloud, faClock, faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram, faJava } from '@fortawesome/free-brands-svg-icons'
 
 
 const Items = {
@@ -10,6 +9,7 @@ const Items = {
         {to: '/todo', text: 'ToDo', icon: faListUl},
         {to: '/weather', text: 'Weather', icon: faCloud},
         {to: '/clock', text: 'Clock', icon: faClock},
+        
     ],
 
     stackItems: [
@@ -20,6 +20,8 @@ const Items = {
         {text: 'SASS', icon: faSass},
         {text: 'SQL', icon: faDatabase},
         {text: 'GitHub', icon: faGithub},
+        {text: 'Java', icon: faJava},
+
     ],
 
 
