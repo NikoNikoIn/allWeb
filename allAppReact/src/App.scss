@@ -1,17 +1,17 @@
 html[data-theme='light'] {
     --mainColor: #ffffff;
     --secondColor: #151515;
-    --thirdColor: #ffffff;
+    --thirdColor: #ececec;
     --accentColor: #ffd321;
     --secondAccentColor: #e4e4e4;
 }
 
 html[data-theme='dark'] {
-    --mainColor: #1d1d1d; /* Dark background, basically switching the second color */
-    --secondColor: #ffffff; /* White text color for readability on dark background */
-    --thirdColor: #151515; /* A slightly lighter shade of the main dark color this could be used for card backgrounds or secondary elements */
-    --accentColor: #ffd321; /* Keeping the same yellow accent color. Should work well on both light and dark themes */
-    --secondAccentColor: #151515; /* A darker gray for secondary accents, less contrast with the main color than the light theme */
+    --mainColor: #1d1d1d; 
+    --secondColor: #ffffff; 
+    --thirdColor: #151515; 
+    --accentColor: #ffd321;
+    --secondAccentColor: #151515;
 }
 
 
@@ -27,7 +27,6 @@ html, body, #root {
     padding: 0;
     background-color: var(--thirdColor);
     color: var(--secondColor);
-    width: 100%;
     transition: background-color 400ms linear;
     padding: 0px 10px;
     font-family: 'AndikaNewBasicRegular';
@@ -39,8 +38,30 @@ html, body, #root {
     margin-left: 80px;
 }
 
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav-item {font-size: 18px;}
+.col-wrap {
+    border: 1px solid var(--accentColor);
+    border-radius: 10px;
+    background-color: var(--mainColor);
 }
+
+.col-wrap h1 {
+    color: var(--accentColor);
+}
+
+
+.button-style {
+    position: relative;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: var(--accentColor) !important;
+    color: var(--secondColor) !important;
+    border-color: var(--accentColor) !important;
+    transition: all 0.3s ease-in-out !important;
+
+}
+
+.button-style:hover {
+    background-color: var(--mainColor) !important;
+    color: var(--accentColor) !important;
+}
+

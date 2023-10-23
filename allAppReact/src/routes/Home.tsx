@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.scss'
 import '../styles/Home.scss'
-import { Image, Col, Row, Container, ListGroup} from 'react-bootstrap'
+import { Image, Col, Row, Container, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import faceImage from '../assets/face.jpg'
@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 import Items from '../components/Items'
-const {items, stackItems, socialItems} = Items
+const { items, stackItems, socialItems } = Items
 
 
 const StackItems = stackItems.map(item => (
@@ -52,16 +52,15 @@ const SocialItems = (
 )
 
 
-
 function Home() {
     return (
         <div className='main'>
             <Container>
                 <Row>
-                    <Col style={{marginTop:'25px'}} xs={4} md={4}>
+                    <Col style={{marginTop:'25px'}} xs={12} md={4}>
                         <Image className='img' roundedCircle src={faceImage} />
                     </Col>
-                    <Col style={{marginTop:'25px'}} xs={8} md={8}>
+                    <Col className='col-wrap' style={{marginTop:'25px'}} xs={12} md={8}>
                         <h1>About me :)</h1>
                         <h3>Some information:</h3>
                         <p>I am a junior student at the BSUIR, my specialty is digital marketing where our
@@ -74,15 +73,23 @@ function Home() {
                             video editin in DaVinci Resolve.
                         </p>
                         <h3>My Stack of Technologies:</h3>
-                        <ListGroup horizontal>
+                        <ListGroup horizontal className='list-stack'>
                             {StackItems}
                         </ListGroup>
                         <h3 style={{marginTop:'25px'}}>My Socials:</h3>
                         {SocialItems}
+
+                        <h3 style={{marginTop:'25px'}}>Also see my portfolios on <a 
+                            href='https://rabota.by/resume/d2cf64daff0be8b9890039ed1f6e554c676772?hhtmFrom=resume_list' 
+                            target='_blank' 
+                            rel='noopener noreferrer'
+                            style={{color: 'var(--accentColor)'}}>rabota.by</a>
+                        </h3>
+                        
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{marginTop:'25px'}}>
+                    <Col className='col-wrap' style={{marginTop:'25px'}}>
                         <h1>About this project</h1>
                         <h3><span style={{color: 'var(--accentColor)'}}>What</span> is it?</h3>
                         <p>This is a React web application created with Vite, TS and SASS using Bootstrap. It's basically an all need daily
@@ -109,7 +116,7 @@ function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{marginTop:'25px'}} xs={12} md={6}>
+                    <Col className='col-wrap' style={{marginTop:'25px', marginBottom:'25px'}} xs={12} md={6}>
                         <h1>My Full-Stack project</h1>
                         <p>
                             My website is an online store selling sports nutrition supplements called 
@@ -170,5 +177,6 @@ function Home() {
         </div>
     )
 }
+
 
 export default Home

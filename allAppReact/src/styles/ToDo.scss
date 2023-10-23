@@ -1,4 +1,37 @@
-.input-style {
-    width: 450px;
+.input-style, .input-style:focus, .input-style:active {
+    width: 90vw;
+    max-width: 450px;
+    height: 40px;
+    position: relative;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+    border-color: var(--accentColor);
+}
 
+
+/* For devices with width less than 600px (like a phone) */
+@media only screen and (max-width: 600px) {
+    .input-style, .input-style:focus, .input-style:active {
+        font-size: 14px;
+        height: 35px;
+        width: 305px
+    }
+}
+
+/* For devices with width between 600px and 900px (like a tablet) */
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    .input-style, .input-style:focus, .input-style:active {
+        font-size: 16px;
+        height: 38px;
+    }
+}
+
+/* For devices with width more than 900px (like a desktop) */
+@media only screen and (min-width: 900px) {
+    .input-style, .input-style:focus, .input-style:active {
+        font-size: 18px;
+        height: 40px;
+    }
 }

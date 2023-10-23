@@ -8,6 +8,7 @@ import {
 import Home from './routes/Home'
 import ToDo from './routes/ToDo'
 import Error from './routes/Error'
+import Money from './routes/Money'
 import './App.scss'  
 
 
@@ -18,6 +19,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='todo' element={<ToDo />} />
+                <Route path='money' element={<Money />} />
                 <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
