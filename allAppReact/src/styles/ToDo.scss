@@ -1,37 +1,57 @@
-.input-style, .input-style:focus, .input-style:active {
-    width: 90vw;
-    max-width: 450px;
-    height: 40px;
-    position: relative;
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: var(--mainColor);
-    color: var(--secondColor);
+.add-task-button {
+    background-color: var(--accentColor);
+    color: var(--mainColor);
+    width:45px;
+    height:45px;
+    border-radius: 50%;
+    border-width: 0px;
     border-color: var(--accentColor);
+
+    transition: all 0.3s ease-in-out;
 }
 
+.add-task-button:hover{
+    background-color: var(--mainColor);
+    color: var(--accentColor);
+    border-width: 1px;
+    border-color: var(--accentColor);
+    
+}
+
+.input-todo {
+    border-width: 1px;
+    width: 300px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 25px;
+    border-width: 0px;
+    background-color: var(--thirdColor);
+    margin-bottom: 25px;
+    color: var(--secondColor);
+    transition: all 0.3s ease-in-out;
+    padding-left: 10px;
+}
+
+.input-todo:focus {
+    outline: none;
+    box-shadow: 5px 5px var(--accentColor);
+
+}
 
 /* For devices with width less than 600px (like a phone) */
 @media only screen and (max-width: 600px) {
-    .input-style, .input-style:focus, .input-style:active {
-        font-size: 14px;
-        height: 35px;
-        width: 305px
+    .input-todo {
+        width: 200px;
     }
+
 }
 
 /* For devices with width between 600px and 900px (like a tablet) */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-    .input-style, .input-style:focus, .input-style:active {
-        font-size: 16px;
-        height: 38px;
-    }
+
 }
 
 /* For devices with width more than 900px (like a desktop) */
 @media only screen and (min-width: 900px) {
-    .input-style, .input-style:focus, .input-style:active {
-        font-size: 18px;
-        height: 40px;
-    }
+
 }

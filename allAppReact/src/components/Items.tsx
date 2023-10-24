@@ -22,7 +22,6 @@ const Items = {
         {text: 'SQL', icon: faDatabase},
         {text: 'GitHub', icon: faGithub},
         {text: 'Java', icon: faJava},
-
     ],
 
 

@@ -15,12 +15,15 @@ import Items from '../components/Items'
 const { items, stackItems, socialItems } = Items
 
 
-const StackItems = stackItems.map(item => (
-    <ListGroup.Item key={item.text}>
-        <FontAwesomeIcon icon={item.icon as IconProp} className='list-item-icon'/> 
-        <span className='list-item-text'> {item.text}</span>
-    </ListGroup.Item>
-))
+const StackItems = (
+    stackItems.map(item => (
+        <ListGroup.Item key={item.text}>
+            <FontAwesomeIcon icon={item.icon as IconProp} className='list-item-icon'/> 
+            <span className='list-item-text'> {item.text}</span>
+        </ListGroup.Item>
+    ))
+)
+
 
 
 const WebItems = (
@@ -73,9 +76,11 @@ function Home() {
                             video editin in DaVinci Resolve.
                         </p>
                         <h3>My Stack of Technologies:</h3>
-                        <ListGroup horizontal className='list-stack'>
-                            {StackItems}
-                        </ListGroup>
+                        <div>
+                            <ListGroup className='list-stack' horizontal>
+                                {StackItems}
+                            </ListGroup>
+                        </div>
                         <h3 style={{marginTop:'25px'}}>My Socials:</h3>
                         {SocialItems}
 

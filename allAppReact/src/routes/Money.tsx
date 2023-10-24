@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.scss'
 
-const Money = () => {
+function Money() {
     return (
         <div className='main'>
             Money

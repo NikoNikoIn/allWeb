@@ -2,8 +2,10 @@ html[data-theme='light'] {
     --mainColor: #ffffff;
     --secondColor: #151515;
     --thirdColor: #ececec;
-    --accentColor: #ffd321;
+    --accentColor: #ffd321; 
     --secondAccentColor: #e4e4e4;
+    --backgroundMain: #eeeeee;
+    --backgroundAccent: #f1cc34;
 }
 
 html[data-theme='dark'] {
@@ -12,6 +14,8 @@ html[data-theme='dark'] {
     --thirdColor: #151515; 
     --accentColor: #ffd321;
     --secondAccentColor: #151515;
+    --backgroundMain: #151515;
+    --backgroundAccent: #776311;
 }
 
 
@@ -23,9 +27,10 @@ html, body, #root {
 
 
 #root {
+    background: var(--backgroundAccent);
+    background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 50%);
     margin: 0;
     padding: 0;
-    background-color: var(--thirdColor);
     color: var(--secondColor);
     transition: background-color 400ms linear;
     padding: 0px 10px;
