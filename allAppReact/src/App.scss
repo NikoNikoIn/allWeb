@@ -6,6 +6,9 @@ html[data-theme='light'] {
     --secondAccentColor: #e4e4e4;
     --backgroundMain: #eeeeee;
     --backgroundAccent: #f1cc34;
+
+    --backgroundToDoMain: #b993d6;
+    --backgroundToDoSecond: #8ca6db;
 }
 
 html[data-theme='dark'] {
@@ -16,21 +19,24 @@ html[data-theme='dark'] {
     --secondAccentColor: #151515;
     --backgroundMain: #151515;
     --backgroundAccent: #9e8215;
+
+    --backgroundToDoMain: #556270;
+    --backgroundToDoSecond: #ff6b6b;
 }
 
 
-html, body, #root {
+html, body, #root, .todo-page {
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
 
+
+
 #root {
     background: var(--backgroundAccent);
     background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
-    margin: 0;
-    padding: 0;
     color: var(--secondColor);
     transition: background-color 400ms linear;
     padding: 0px 10px;
@@ -42,6 +48,14 @@ html, body, #root {
 .main {
     margin-left: 80px;
 }
+
+.todo-page {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    background-color: var(--backgroundToDoMain);
+    background: linear-gradient(to left, var(--backgroundToDoMain), var(--backgroundToDoSecond));
+}
+
 
 .col-wrap {
     border: 1px solid var(--accentColor);

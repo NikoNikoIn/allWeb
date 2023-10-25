@@ -54,25 +54,27 @@ function ToDo() {
     
 
     return (
-        <div className='main'>
-            <Container>
-                <Row>
-                    <Col className='col-wrap d-flex flex-column justify-content-center align-items-center' style={{marginTop:'25px'}}>
-                        <h1>The Ultimate To-Do List</h1>
-                        <ToDoForm onSubmit={addTask}/>
+        <div className='todo-page'>
+            <div className='main'>
+                <Container>
+                    <Row>
+                        <Col className='col-wrap-todo d-flex flex-column justify-content-center align-items-center' style={{marginTop:'25px'}}>
+                            <h1>The Ultimate To-Do List</h1>
+                            <ToDoForm onSubmit={addTask}/>
 
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <ToDoComp
-                            tasks={tasks}
-                            completeTask={completeTask}
-                            removeTask={removeTask}
-                        />
-                    </Col>
-                </Row>
-            </Container>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <ToDoComp
+                                tasks={tasks}
+                                completeTask={completeTask}
+                                removeTask={removeTask}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </div>
     )
 }
