@@ -29,9 +29,9 @@ const ToDoForm: React.FC<ToDoFormProps> = (props) => {
 
     return (
         <Form className='form-todo' onSubmit={handleAdd}>
-            <input type='text' placeholder='What task is for today?' value={input} 
+            <input type='text' placeholder='What To-Do?' value={input} 
             className='input-todo' onChange={handleChange}/>
-            <button className='add-task-button'><FontAwesomeIcon size='lg' icon={faPlus as IconProp}/></button>
+            <button style={{paddingTop:'5px'}} className='add-task-button'><FontAwesomeIcon style={{marginBottom:'1px'}} size='lg' icon={faPlus as IconProp}/></button>
         </Form>
     )
 }

@@ -15,7 +15,7 @@ html[data-theme='dark'] {
     --accentColor: #ffd321;
     --secondAccentColor: #151515;
     --backgroundMain: #151515;
-    --backgroundAccent: #776311;
+    --backgroundAccent: #9e8215;
 }
 
 
@@ -28,7 +28,7 @@ html, body, #root {
 
 #root {
     background: var(--backgroundAccent);
-    background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 50%);
+    background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
     margin: 0;
     padding: 0;
     color: var(--secondColor);
@@ -45,7 +45,7 @@ html, body, #root {
 
 .col-wrap {
     border: 1px solid var(--accentColor);
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: var(--mainColor);
 }
 
@@ -70,3 +70,7 @@ html, body, #root {
     color: var(--accentColor) !important;
 }
 
+
+::selection {
+    background-color: var(--backgroundAccent);
+}

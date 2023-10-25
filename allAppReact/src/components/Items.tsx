@@ -1,5 +1,5 @@
 import React from 'react'
-import { faListUl, faHouse, faCloud, faClock, faDatabase, faSackDollar, faSquareEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faListUl, faHouse, faCloud, faClock, faDatabase, faSackDollar, faSquareEnvelope, faRegistered } from '@fortawesome/free-solid-svg-icons'
 import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram, faJava } from '@fortawesome/free-brands-svg-icons'
 
 
@@ -27,9 +27,10 @@ const Items = {
 
     socialItems: [
         {to: 'mailto:kk28022004@mail.ru', icon: faSquareEnvelope, color: 'var(--accentColor)'},
-        {to: 'https://web.telegram.org/k/#@nikonikonow', icon: faTelegram, color: '#428df5'},
+        {to: 'https://web.telegram.org/k/#@nikonikonow', icon: faTelegram, color: '#229ED9'},
         {to: 'https://github.com/NikoNikoIn', icon: faGithub, color: '#ff702e'},
-        {to: 'https://www.linkedin.com/in/kreerenko-maxim-078005251/', icon: faLinkedin, color: '#4df6ff'},
+        {to: 'https://www.linkedin.com/in/kreerenko-maxim-078005251/', icon: faLinkedin, color: '#258dbf'},
+        {to: 'https://rabota.by/resume/d2cf64daff0be8b9890039ed1f6e554c676772?hhtmFrom=resume_list', icon: faRegistered, color: '#db2134'},
     ]
     
 }

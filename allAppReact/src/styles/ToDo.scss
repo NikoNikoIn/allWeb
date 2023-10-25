@@ -1,47 +1,107 @@
-.add-task-button {
-    background-color: var(--accentColor);
-    color: var(--mainColor);
-    width:45px;
-    height:45px;
-    border-radius: 50%;
-    border-width: 0px;
-    border-color: var(--accentColor);
+$colors: (
+    #f44336,
+    #e91e63,
+    #9c27b0,
+    #673ab7,
+    #3f51b5,
+    #2196f3,
+    #03a9f4,
+    #00bcd4,
+    #009688,
+    #4caf50,
+    #8bc34a,
+    #cddc39,
+    #ffeb3b,
+    #ffc107,
+    #ff9800,
+    #ff5722
+);
 
-    transition: all 0.3s ease-in-out;
-}
 
-.add-task-button:hover{
+@mixin buttonHover {
     background-color: var(--mainColor);
     color: var(--accentColor);
     border-width: 1px;
     border-color: var(--accentColor);
-    
 }
 
-.input-todo {
+@mixin buttonDefault {
+    background-color: var(--accentColor);
+    color: var(--mainColor);
+    width:45px;
+    height:45px;
+    margin-left: -50px;
+    border-radius: 50%;
+    border-color: var(--accentColor);
+    transition: all 0.3s ease-in-out;
+    border-width: 0px;
+    
+    &:hover {
+        @include buttonHover;
+    }
+}
+
+@mixin inputTodoDefault {
     border-width: 1px;
     width: 300px;
     height: 45px;
     margin-right: 10px;
     border-radius: 25px;
-    border-width: 0px;
-    background-color: var(--thirdColor);
+    border-color: var(--accentColor);
+    background-color: var(--mainColor);
     margin-bottom: 25px;
     color: var(--secondColor);
     transition: all 0.3s ease-in-out;
     padding-left: 10px;
+    padding-right: 45px;
+    font-size: 20px;
+    
+    &:focus {
+        outline: none;
+        box-shadow: 3px 3px var(--accentColor);
+    }
 }
 
-.input-todo:focus {
-    outline: none;
-    box-shadow: 5px 5px var(--accentColor);
-
+.add-task-button {
+    @include buttonDefault;
 }
+
+.input-todo {
+    @include inputTodoDefault;
+}
+
+.task-row {
+    position: relative;
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+    width: auto;
+    height: auto;
+    margin: 15px 15px 30px 15px; 
+    padding: 15px;
+    padding-left: 35px;
+    border-radius: 25px;
+    border-width: 1px;
+    border-color: var(--accentColor);
+    
+    &::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 80px;
+        top:0%;
+        left: 0%;
+        border-radius: 25px;
+        transition: all 0.3s ease-in-out;
+        background-color: var(--taskBgColor);
+    }
+}
+
 
 /* For devices with width less than 600px (like a phone) */
 @media only screen and (max-width: 600px) {
     .input-todo {
         width: 200px;
+        font-size: 20px;
     }
 
 }

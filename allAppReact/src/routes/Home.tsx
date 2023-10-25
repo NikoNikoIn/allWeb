@@ -83,14 +83,7 @@ function Home() {
                         </div>
                         <h3 style={{marginTop:'25px'}}>My Socials:</h3>
                         {SocialItems}
-
-                        <h3 style={{marginTop:'25px'}}>Also see my portfolios on <a 
-                            href='https://rabota.by/resume/d2cf64daff0be8b9890039ed1f6e554c676772?hhtmFrom=resume_list' 
-                            target='_blank' 
-                            rel='noopener noreferrer'
-                            style={{color: 'var(--accentColor)'}}>rabota.by</a>
-                        </h3>
-                        
+                        <div style={{marginBottom:'25px'}}></div>
                     </Col>
                 </Row>
                 <Row>
