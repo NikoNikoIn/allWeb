@@ -25,18 +25,20 @@ const StackItems = (
 )
 
 
-
 const WebItems = (
-    <div className='d-flex flex-row justify-content-center align-items-center'>
-        {items.map(item => (
+    <Row className="justify-content-md-center" style={{marginBottom:'25px'}}>
+        {items.map((item, index) => (
             item.text !== 'Home' ? 
-                <Link className='d-flex justify-content-center align-items-center web-icon' key={item.to} to={item.to}>
-                    <FontAwesomeIcon icon={item.icon as IconProp} /> 
+            <Col xs={6} md={2} key={item.to} className="d-flex justify-content-center">
+                <Link className='web-icon' to={item.to}>
+                <FontAwesomeIcon icon={item.icon as IconProp} /> 
                 </Link>
+            </Col>
             : null
         ))}
-    </div>
+    </Row>
 )
+  
 
 
 const SocialItems = (

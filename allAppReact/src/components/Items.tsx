@@ -31,6 +31,25 @@ const Items = {
         {to: 'https://github.com/NikoNikoIn', icon: faGithub, color: '#ff702e'},
         {to: 'https://www.linkedin.com/in/kreerenko-maxim-078005251/', icon: faLinkedin, color: '#258dbf'},
         {to: 'https://rabota.by/resume/d2cf64daff0be8b9890039ed1f6e554c676772?hhtmFrom=resume_list', icon: faRegistered, color: '#db2134'},
+    ],
+
+    taskColors: [
+        '#f44336',
+        '#e91e63',
+        '#9c27b0',
+        '#673ab7',
+        '#3f51b5',
+        '#2196f3',
+        '#03a9f4',
+        '#00bcd4',
+        '#009688',
+        '#4caf50',
+        '#8bc34a',
+        '#cddc39',
+        '#ffeb3b',
+        '#ffc107',
+        '#ff9800',
+        '#ff5722'
     ]
     
 }

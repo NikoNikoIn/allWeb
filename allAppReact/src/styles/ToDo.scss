@@ -1,21 +1,12 @@
-$colors: (
-    #f44336,
-    #e91e63,
-    #9c27b0,
-    #673ab7,
-    #3f51b5,
-    #2196f3,
-    #03a9f4,
-    #00bcd4,
-    #009688,
-    #4caf50,
-    #8bc34a,
-    #cddc39,
-    #ffeb3b,
-    #ffc107,
-    #ff9800,
-    #ff5722
-);
+html[data-theme='light'] {
+    --taskComplete: #d5d5d5;
+
+}
+
+html[data-theme='dark'] {
+    --taskComplete: #363636; 
+}
+
 
 @mixin buttonHover {
     background-color: var(--mainColor);
@@ -42,7 +33,7 @@ $colors: (
 
 @mixin inputTodoDefault {
     border-width: 1px;
-    width: 300px;
+    width: auto;
     height: 45px;
     margin-right: 10px;
     border-radius: 25px;
@@ -69,7 +60,11 @@ $colors: (
     @include inputTodoDefault;
 }
 
-.task-row {
+.todo-icon {
+    cursor: pointer;
+}
+
+.task-row, .task-row.complete {
     position: relative;
     background-color: var(--mainColor);
     color: var(--secondColor);
@@ -82,6 +77,11 @@ $colors: (
     border-radius: 25px;
     transition: all 0.3s ease-in-out;
     font-size: 25px;
+    cursor: grab;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &::before {
         content: '';
@@ -106,8 +106,20 @@ $colors: (
     }
 }
 
+.task-row.complete {
+    background-color: var(--taskComplete); 
+}
+
+
+.task-content {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
 .col-wrap-todo {
-    border-radius: 15px;
+    border-radius: 95px;
     background-color: var(--mainColor);
     box-shadow: 2px 2px 10px var(--secondColor);
 
@@ -120,11 +132,11 @@ $colors: (
 
 /* For devices with width less than 600px (like a phone) */
 @media only screen and (max-width: 600px) {
-    .input-todo {
-        width: 200px;
-        font-size: 20px;
-    }
 
+
+    .col-wrap-todo {
+        border-radius: 25px;
+    }
 }
 
 /* For devices with width between 600px and 900px (like a tablet) */
