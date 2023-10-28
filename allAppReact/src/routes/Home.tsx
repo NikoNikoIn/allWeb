@@ -1,4 +1,3 @@
-import React from 'react'
 import '../App.scss'
 import '../styles/Home.scss'
 import { Image, Col, Row, Container, ListGroup } from 'react-bootstrap'
@@ -7,7 +6,6 @@ import { Link } from 'react-router-dom'
 import faceImage from '../assets/face.jpg'
 import webPage from '../assets/nutrination.png'
 
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -18,7 +16,7 @@ const { items, stackItems, socialItems } = Items
 const StackItems = (
     stackItems.map(item => (
         <ListGroup.Item key={item.text}>
-            <FontAwesomeIcon icon={item.icon as IconProp} className='list-item-icon'/> 
+            <FontAwesomeIcon icon={item.icon} className='list-item-icon'/> 
             <span className='list-item-text'> {item.text}</span>
         </ListGroup.Item>
     ))
@@ -27,11 +25,11 @@ const StackItems = (
 
 const WebItems = (
     <Row className="justify-content-md-center" style={{marginBottom:'25px'}}>
-        {items.map((item, index) => (
+        {items.map((item) => (
             item.text !== 'Home' ? 
             <Col xs={6} md={2} key={item.to} className="d-flex justify-content-center">
                 <Link className='web-icon' to={item.to}>
-                <FontAwesomeIcon icon={item.icon as IconProp} /> 
+                <FontAwesomeIcon icon={item.icon} /> 
                 </Link>
             </Col>
             : null
@@ -49,7 +47,7 @@ const SocialItems = (
             target='_blank' 
             rel='noopener noreferrer'
             style={{ color: item.color }}>
-                <FontAwesomeIcon className='social-icon' icon={item.icon as IconProp} /> 
+                <FontAwesomeIcon className='social-icon' icon={item.icon} /> 
             </a>
 
         ))}

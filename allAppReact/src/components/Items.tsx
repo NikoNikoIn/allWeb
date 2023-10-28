@@ -1,4 +1,3 @@
-import React from 'react'
 import { faListUl, faHouse, faCloud, faClock, faDatabase, faSackDollar, faSquareEnvelope, faRegistered } from '@fortawesome/free-solid-svg-icons'
 import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram, faJava } from '@fortawesome/free-brands-svg-icons'
 

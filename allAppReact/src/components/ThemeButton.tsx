@@ -1,8 +1,6 @@
 import ReactSwitch from 'react-switch'
-import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import ThemeHook from '../hooks/ThemeHook'
 import '../App.scss'    
 import '../styles/SideBar.scss'
@@ -17,7 +15,7 @@ const StyledIconSun = () => (
         color: '#ffffff'
     
     }}>
-        <FontAwesomeIcon icon={faSun as IconProp}/>
+        <FontAwesomeIcon icon={faSun}/>
     </div>
 )
 
@@ -31,7 +29,7 @@ const StyledIconMoon = () => (
         color: '#ffd321'
     
     }}>
-        <FontAwesomeIcon icon={faMoon as IconProp}/>
+        <FontAwesomeIcon icon={faMoon}/>
     </div>
 )
 

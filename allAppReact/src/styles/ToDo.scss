@@ -7,6 +7,13 @@ html[data-theme='dark'] {
     --taskComplete: #363636; 
 }
 
+.form-todo {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
 
 @mixin buttonHover {
     background-color: var(--mainColor);
@@ -39,7 +46,6 @@ html[data-theme='dark'] {
     border-radius: 25px;
     border-color: var(--backgroundToDoSecond);
     background-color: var(--mainColor);
-    margin-bottom: 25px;
     color: var(--secondColor);
     transition: all 0.3s ease-in-out;
     padding-left: 10px;
@@ -53,6 +59,7 @@ html[data-theme='dark'] {
 }
 
 .add-task-button {
+
     @include buttonDefault;
 }
 
@@ -108,6 +115,10 @@ html[data-theme='dark'] {
 
 .task-row.complete {
     background-color: var(--taskComplete); 
+
+    &:hover {
+        scale: 1;
+    }
 }
 
 
@@ -133,8 +144,13 @@ html[data-theme='dark'] {
 /* For devices with width less than 600px (like a phone) */
 @media only screen and (max-width: 600px) {
 
+    .task-per-row {
+        display: none;
+    }
+
 
     .col-wrap-todo {
+        width: 600px;
         border-radius: 25px;
     }
 }

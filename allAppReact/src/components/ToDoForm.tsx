@@ -1,6 +1,5 @@
 import React, { FormEvent, useState} from 'react'
-import { Button, Form } from 'react-bootstrap'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,7 +30,7 @@ const ToDoForm: React.FC<ToDoFormProps> = (props) => {
         <Form className='form-todo' onSubmit={handleAdd}>
             <input type='text' placeholder='What To-Do?' value={input} 
             className='input-todo' onChange={handleChange}/>
-            <button style={{paddingTop:'5px'}} className='add-task-button'><FontAwesomeIcon style={{marginBottom:'1px'}} size='lg' icon={faPlus as IconProp}/></button>
+            <button className='add-task-button'><FontAwesomeIcon size='lg' icon={faPlus}/></button>
         </Form>
     )
 }
