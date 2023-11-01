@@ -7,7 +7,7 @@ import { faTrashCan, faCheck, faBan } from '@fortawesome/free-solid-svg-icons'
 function ToDoComp({task, taskColor, completeTask, removeTask}) {
     const rowStyle = { 
         '--taskBgColor': taskColor
-    }
+    } 
 
     return (
         <div className={task.isComplete ? 'task-row complete' : 'task-row'} style={rowStyle} draggable={true}>

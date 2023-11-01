@@ -7,6 +7,13 @@ html[data-theme='dark'] {
     --taskComplete: #363636; 
 }
 
+.todo-page {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    background-color: var(--backgroundToDoMain);
+    background: linear-gradient(to left, var(--backgroundToDoMain), var(--backgroundToDoSecond));
+}
+
 .form-todo {
     display: flex;
     align-items: center; 
@@ -140,9 +147,12 @@ html[data-theme='dark'] {
     color: var(--backgroundToDoSecond);
 }
 
+.task-per-row {
+    margin-top: -15px;
+}
 
-/* For devices with width less than 600px (like a phone) */
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 767px) {
 
     .task-per-row {
         display: none;
@@ -150,8 +160,8 @@ html[data-theme='dark'] {
 
 
     .col-wrap-todo {
-        width: 600px;
-        border-radius: 25px;
+        border-radius: 15px;
+        margin-right: 15px;
     }
 }
 

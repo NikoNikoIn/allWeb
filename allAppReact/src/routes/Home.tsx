@@ -102,15 +102,14 @@ function Home() {
                         <p>AllReact is being developed using TypeScript components and traversing using the react-router BrowserRouter component. Also for the theme changing
                             the app uses a hook and stores it in localstorage. 
                         </p>
-                        <div>
-                            <h4 className='d-flex flex-row justify-content-center align-items-center'>So what are you waiting for? Visit them!</h4>
-                            {WebItems}
-                        </div>
+                        <h3><span style={{color: 'var(--accentColor)'}}>About</span> it</h3>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                    
+                    <Col style={{marginTop:'25px'}}>
+                        <div>
+                            {WebItems}
+                        </div>
                     </Col>
                 </Row>
                 <Row>
@@ -159,6 +158,7 @@ function Home() {
                             and promo codes. They can also change the details of products, users, and promo codes, as well as delete reviews and mark 
                             orders as shipped or paid. My Site is also optimized for <span style={{color: 'var(--accentColor)'}}> mobile devices</span>, ensuring it is usable on any device.   
                         </p>
+                        
 
                     </Col>
                     <Col style={{marginTop:'25px'}} xs={12} md={6}>
@@ -167,7 +167,7 @@ function Home() {
                             href='https://nutrination-ecomm.vercel.app/#/' 
                             target='_blank' 
                             rel='noopener noreferrer'>
-                            <Image className='img-sticky' src={webPage}  />
+                            <Image className='img' src={webPage}  />
                         </a>
                     </Col>
                 </Row>

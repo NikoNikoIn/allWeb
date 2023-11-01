@@ -1,5 +1,5 @@
 import { faListUl, faHouse, faCloud, faClock, faDatabase, faSackDollar, faSquareEnvelope, faRegistered } from '@fortawesome/free-solid-svg-icons'
-import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram, faJava } from '@fortawesome/free-brands-svg-icons'
+import { faReact, faJs, faPython, faHtml5, faSass, faGithub, faLinkedin, faTelegram, faJava, faGit } from '@fortawesome/free-brands-svg-icons'
 
 
 const Items = {
@@ -19,7 +19,7 @@ const Items = {
         {text: 'HTML', icon: faHtml5},
         {text: 'SASS', icon: faSass},
         {text: 'SQL', icon: faDatabase},
-        {text: 'GitHub', icon: faGithub},
+        {text: 'Git', icon: faGit},
         {text: 'Java', icon: faJava},
     ],
 
@@ -49,8 +49,7 @@ const Items = {
         '#ffc107',
         '#ff9800',
         '#ff5722'
-    ]
-    
+    ],
 }
 
 

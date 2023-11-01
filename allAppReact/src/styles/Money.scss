@@ -1,0 +1,53 @@
+html[data-theme='dark'] {
+
+}
+
+.money-page {
+    margin-left: -10px; 
+    background-color: var(--thirdColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div.money-comp-wrap {
+    box-shadow: 2px 2px 10px #929292;
+    border-radius: 25px;
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+    width: 400px;
+    
+  
+}
+
+div.money-comp-wrap > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.money-add-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-color: var(--accentColor);
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+}
+
+
+@media only screen and (max-width: 767px) {
+
+}
+
+/* For devices with width between 600px and 900px (like a tablet) */
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+}
+
+/* For devices with width more than 900px (like a desktop) */
+@media only screen and (min-width: 900px) {
+
+}

@@ -4,10 +4,10 @@ import {
     Routes, 
     Route 
 } from 'react-router-dom'
-import Home from './routes/Home'
-import ToDo from './routes/ToDo'
-import Error from './routes/Error'
-import Money from './routes/Money'
+import Home from './routes/Home.tsx'
+import ToDo from './routes/ToDo.tsx'
+import Error from './routes/Error.tsx'
+import Money from './routes/Money.tsx'
 import './App.scss'  
 
 

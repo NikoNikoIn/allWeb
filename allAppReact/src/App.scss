@@ -2,9 +2,9 @@ html[data-theme='light'] {
     --mainColor: #ffffff;
     --secondColor: #151515;
     --thirdColor: #ececec;
-    --accentColor: #ffd321; 
-    --backgroundMain: #eeeeee;
-    --backgroundAccent: #f1cc34;
+    --accentColor: #216bff; 
+    --backgroundMain: #f8f8f8;
+    --backgroundAccent: #346af1;
 
     --backgroundToDoMain: #b993d6;
     --backgroundToDoSecond: #8ca6db;
@@ -14,23 +14,23 @@ html[data-theme='dark'] {
     --mainColor: #1d1d1d; 
     --secondColor: #ffffff; 
     --thirdColor: #151515; 
-    --accentColor: #ff3f21;
+    --accentColor: #6a5ad5;
     --backgroundMain: #151515;
-    --backgroundAccent: #9e3315;
+    --backgroundAccent: #5c159e;
 
     --backgroundToDoMain: #556270;
     --backgroundToDoSecond: #ff6b6b;
 }
 
 
-html, body, #root, .todo-page {
+html, body, #root, .todo-page, .money-page {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    
 }
-
-
-
 
 #root {
     background: var(--backgroundAccent);
@@ -46,14 +46,6 @@ html, body, #root, .todo-page {
 .main {
     margin-left: 80px;
 }
-
-.todo-page {
-    width: calc(100% + 20px);
-    margin-left: -10px;
-    background-color: var(--backgroundToDoMain);
-    background: linear-gradient(to left, var(--backgroundToDoMain), var(--backgroundToDoSecond));
-}
-
 
 .col-wrap {
     border: 1px solid var(--accentColor);

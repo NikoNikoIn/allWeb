@@ -1,18 +1,13 @@
-.img, .img-sticky {
+.img {
     transition: all 0.6s ease-in-out;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+
     border: 1px solid var(--accentColor);
 
 }
 
 .img:hover, .img-sticky:hover {
     box-shadow: 0px 0px 20px var(--accentColor);
-}
-
-.img-sticky {
-    position: sticky;
-    top: 100px;
 }
 
 .list-group .list-group-item {
@@ -89,6 +84,14 @@
     width:auto;
 }
 
+.accordion-home {
+    background-color: var(--mainColor) !important;
+    color: var(--accentColor) !important;
+    border-color: var(--accentColor) !important;
+}
+
+
+
 @media(max-width: 992px) {
     // Tablet styles here
     .list-group-item {
@@ -117,8 +120,8 @@
 @media(max-width: 768px) {
     // Mobile styles here
     .img-sticky {
-        position: relative;
-        top: 0;
+        position: sticky;
+        top: 100px;
     }
 
     .list-group-item {
