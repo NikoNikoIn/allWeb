@@ -102,7 +102,6 @@ function Home() {
                         <p>AllReact is being developed using TypeScript components and traversing using the react-router BrowserRouter component. Also for the theme changing
                             the app uses a hook and stores it in localstorage. 
                         </p>
-                        <h3><span style={{color: 'var(--accentColor)'}}>About</span> it</h3>
                     </Col>
                 </Row>
                 <Row>

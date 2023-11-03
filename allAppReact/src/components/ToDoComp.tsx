@@ -11,9 +11,9 @@ function ToDoComp({task, taskColor, completeTask, removeTask}) {
 
     return (
         <div className={task.isComplete ? 'task-row complete' : 'task-row'} style={rowStyle} draggable={true}>
-            <div className='task-content' key={task.id} onClick={() => completeTask(task.id)}>
-                {task.text}
-            </div>
+            <span className='task-content' key={task.id} onClick={() => completeTask(task.id)}>
+                {task.text} 
+            </span>
             {task.isComplete ? (
 
                 <div>

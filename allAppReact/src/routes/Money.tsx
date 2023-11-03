@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import '../App.scss'
 import '../styles/Money.scss'
@@ -11,17 +12,38 @@ import '../styles/Money.scss'
 
 */
 
-import MoneyComp from '../components/MoneyComp'
+import MoneyUpdate from '../components/MoneyUpdate'
+import MoneyDisplay from '../components/MoneyDisplay'
+
+
 
 
 function Money() {
+
+    const [money, setMoney] = useState(() => {
+        const savedMoney = localStorage.getItem('money')
+        if (savedMoney) {
+            return JSON.parse(savedMoney)
+        } else {
+            return []
+        }
+    })
+
+    useEffect(() => {
+        localStorage.setItem('money', JSON.stringify(money))
+    }, [money])
+
+    const addMoney = (money:any) => {
+        console.log(money.type)
+    }
+
     return (
         <div className='money-page'>
-            <div className='main'>
+            <div>
                 <Container>
-
-                    <Row >
-                        <MoneyComp />
+                    <Row className='money-comp-wrap parent'>
+                        <MoneyUpdate onSubmit={addMoney}/>
+                        <MoneyDisplay />
                     </Row>
                 </Container>
             </div>

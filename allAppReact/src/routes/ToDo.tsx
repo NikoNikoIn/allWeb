@@ -24,7 +24,7 @@ function ToDo() {
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks))
     }, [tasks])
-
+ 
     const addTask = (task:any) => {
         if(!task.text || /^\s*$/.test(task.text)) {
             return
