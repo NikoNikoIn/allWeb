@@ -1,8 +1,11 @@
 import React from 'react'
+import '../App.scss'
+import '../styles/Money.scss'
 
-function MoneyDisplay() {
+
+function MoneyComponent() {
     return (
-        <div className='graph2-div'>
+        <div>
             <p>I am a junior student at the BSUIR, my specialty is digital marketing where our
             curriculum is marketing developments and programming basics.I am a novice
             full-stack developer with both hard skills (Django, React, REST, Git) and soft
@@ -12,4 +15,4 @@ function MoneyDisplay() {
     )
 }
 
-export default MoneyDisplay
+export default MoneyComponent

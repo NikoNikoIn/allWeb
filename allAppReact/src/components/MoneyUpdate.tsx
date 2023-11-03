@@ -8,23 +8,6 @@ interface MoneyUpdateProps {
 }
 
 const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
-    const [earned, setEarned] = useState<number[]>(() => {
-        const earnedAmount = localStorage.getItem('earned')
-        if (earnedAmount) {
-            return JSON.parse(earnedAmount)
-        } else {
-            return []
-        }
-    })
-
-    const [spent, setSpent] = useState<number[]>(() => {
-        const spentAmount = localStorage.getItem('spent')
-        if (spentAmount) {
-            return JSON.parse(spentAmount)
-        } else {
-            return []
-        }
-    })
 
     const [input, setInput] = useState<string>('')
 
@@ -36,7 +19,6 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
         e.preventDefault()
 
         const amount = parseInt(input)
-        console.log(amount)
         if (isNaN(amount)) {
             return
         }

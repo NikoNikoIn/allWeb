@@ -10,7 +10,9 @@ function ToDoComp({task, taskColor, completeTask, removeTask}) {
     } 
 
     return (
+
         <div className={task.isComplete ? 'task-row complete' : 'task-row'} style={rowStyle} draggable={true}>
+
             <span className='task-content' key={task.id} onClick={() => completeTask(task.id)}>
                 {task.text} 
             </span>

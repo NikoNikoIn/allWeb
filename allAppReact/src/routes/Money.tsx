@@ -13,7 +13,7 @@ import '../styles/Money.scss'
 */
 
 import MoneyUpdate from '../components/MoneyUpdate'
-import MoneyDisplay from '../components/MoneyDisplay'
+import MoneyComponent from '../components/MoneyComponent'
 
 
 
@@ -33,17 +33,29 @@ function Money() {
         localStorage.setItem('money', JSON.stringify(money))
     }, [money])
 
-    const addMoney = (money:any) => {
-        console.log(money.type)
+    const addMoney = (moneySingle:any) => {
+        const newMoney = [moneySingle, ...money]
+        setMoney(newMoney)
+    }
+
+    const removeMoneySingle = (id: number) => {
+        const removeArr = [...money].filter(moneySingle => moneySingle.id !== id)
+        setMoney(removeArr)
     }
 
     return (
         <div className='money-page'>
             <div>
-                <Container>
-                    <Row className='money-comp-wrap parent'>
+                <Container className='money-comp-wrap parent'>
+                    <Row className='add-div'>
                         <MoneyUpdate onSubmit={addMoney}/>
-                        <MoneyDisplay />
+
+                    </Row>
+                    <Row className='display-div'>
+                        
+                            
+                        Mdompsapdaopsd
+                        
                     </Row>
                 </Container>
             </div>
