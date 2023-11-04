@@ -1,15 +1,33 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 
+import Items from './Items'
+const { currencyList } = Items
+
 interface MoneyUpdateProps {
-    onSubmit: (data: { id: number; amount: number; type: string }) => void
+    onSubmit: (data: { id: number; amount: number; type: string; date: string, currency: string }) => void
 }
+
 
 const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     const [input, setInput] = useState<string>('')
+    const [currency, setCurrency] = useState<string>('BYN')
+
+    const currencyItems = (
+        currencyList.map(item => (
+            <Dropdown.Item 
+                key={item.name}
+                onClick={() => setCurrency(item.sign)}
+            >
+                <span>{item.name} - {item.sign}</span> 
+            </Dropdown.Item>
+    
+        ))
+    
+    )
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value)
@@ -17,16 +35,36 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>, type: string) => {
         e.preventDefault()
-
+      
         const amount = parseInt(input)
         if (isNaN(amount)) {
             return
         }
 
+        const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+        const currentDate = new Date()
+        
+        const options = {
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: userTimeZone,
+        }
+        
+        const timeString = currentDate.toLocaleString('en-GB', options)
+        
+        const day = currentDate.getDate().toString().padStart(2, '0')
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0')
+        const year = currentDate.getFullYear()
+        
+        const formattedDate = `${timeString} ${day}.${month}.${year}`
+        
+      
         props.onSubmit({
             id: Math.floor(Math.random() * 10000),
             amount: amount,
             type: type,
+            date: formattedDate,
+            currency: currency,
         })
         setInput('')
     }
@@ -61,6 +99,15 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                 onChange={handleChange}
                 value={input}
             />
+
+            <Dropdown>
+                <Dropdown.Toggle>
+                    {currency}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {currencyItems}
+                </Dropdown.Menu>
+            </Dropdown>
         </div>
     )
 }

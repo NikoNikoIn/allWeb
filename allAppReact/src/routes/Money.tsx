@@ -43,6 +43,8 @@ function Money() {
         setMoney(removeArr)
     }
 
+    const [show, setShow] = useState('add')
+
     return (
         <div className='money-page'>
             <div>
@@ -52,10 +54,45 @@ function Money() {
 
                     </Row>
                     <Row className='display-div'>
-                        
+                        <div>
+                            <button className='btn-menu' onClick={() => setShow('add')}>Earnings</button>
+                            <button className='btn-menu' onClick={() => setShow('subtract')}>Expenses</button>
+                            {show === 'add' ? (
+                                money
+                                .filter((moneySingle: any) => moneySingle.type === 'add') 
+                                .map((moneySingle: any) => (
+                                <Col
+                                    md={3}
+                                    xs={12}
+                                    key={`moneySingle-${moneySingle.id}`}
+                                >
+                                    <MoneyComponent
+                                    moneySingle={moneySingle}
+                                    removeMoneySingle={removeMoneySingle}
+                                    />
+                                </Col>
+                                ))
+                            )
                             
-                        Mdompsapdaopsd
-                        
+                            : (
+                                money
+                                .filter((moneySingle: any) => moneySingle.type === 'subtract') 
+                                .map((moneySingle: any) => (
+                                <Col
+                                    md={3}
+                                    xs={12}
+                                    key={`moneySingle-${moneySingle.id}`}
+                                >
+                                    <MoneyComponent
+                                    moneySingle={moneySingle}
+                                    removeMoneySingle={removeMoneySingle}
+                                    />
+                                </Col>
+                                ))
+                            )}
+                            
+                            
+                        </div>
                     </Row>
                 </Container>
             </div>

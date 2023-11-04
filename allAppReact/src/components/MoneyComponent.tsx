@@ -3,14 +3,13 @@ import '../App.scss'
 import '../styles/Money.scss'
 
 
-function MoneyComponent() {
+function MoneyComponent({moneySingle, removeMoneySingle}) {
     return (
         <div>
-            <p>I am a junior student at the BSUIR, my specialty is digital marketing where our
-            curriculum is marketing developments and programming basics.I am a novice
-            full-stack developer with both hard skills (Django, React, REST, Git) and soft
-            skills, such as team work\flexibility\punctuality. Looking forward to grow and
-            be benefitial to my employer.</p>
+            <p onClick={() => removeMoneySingle(moneySingle.id)}>{moneySingle.amount}</p>
+            <p>{moneySingle.type}</p>
+            <p>{moneySingle.date}</p>
+            <p>{moneySingle.currency}</p>
         </div>
     )
 }
