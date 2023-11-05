@@ -3,31 +3,14 @@ import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 
-import Items from './Items'
-const { currencyList } = Items
-
 interface MoneyUpdateProps {
-    onSubmit: (data: { id: number; amount: number; type: string; date: string, currency: string }) => void
+    onSubmit: (data: { id: number; amount: number; type: string; date: string }) => void
 }
 
 
 const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     const [input, setInput] = useState<string>('')
-    const [currency, setCurrency] = useState<string>('BYN')
-
-    const currencyItems = (
-        currencyList.map(item => (
-            <Dropdown.Item 
-                key={item.name}
-                onClick={() => setCurrency(item.sign)}
-            >
-                <span>{item.name} - {item.sign}</span> 
-            </Dropdown.Item>
-    
-        ))
-    
-    )
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value)
@@ -64,7 +47,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
             amount: amount,
             type: type,
             date: formattedDate,
-            currency: currency,
+
         })
         setInput('')
     }
@@ -87,7 +70,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                     <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
                 </button>
             </div>
-
+            
             <input
                 type='text'
                 className='money-input'
@@ -99,15 +82,6 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                 onChange={handleChange}
                 value={input}
             />
-
-            <Dropdown>
-                <Dropdown.Toggle>
-                    {currency}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    {currencyItems}
-                </Dropdown.Menu>
-            </Dropdown>
         </div>
     )
 }

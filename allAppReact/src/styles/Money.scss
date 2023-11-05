@@ -2,17 +2,40 @@ html[data-theme='dark'] {
 
 }
 
-.parent {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 25px;
-    }
-    
-    .graph1-div { grid-area: 1 / 1 / 2 / 3; }
-    .add-div { grid-area: 1 / 3 / 2 / 4; }
-    .display-div { grid-area: 2 / 1 / 3 / 4; }
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px 5px;
+    grid-auto-flow: row;
+    justify-items: stretch;
+    grid-template-areas:
+      'graph-div graph-div add-div'
+      'display-div display-div display-div'
+      'display-div display-div display-div';
+  }
+  
+  .graph-div {
+    justify-self: center;
+    align-self: start;
+    grid-area: graph-div;
+    width: 100%;
+  }
+  
+  .add-div {
+    justify-self: center;
+    align-self: center;
+    grid-area: add-div;
+    width: 100%;
+  }
+  
+  .display-div {
+    justify-self: start;
+    align-self: center;
+    grid-area: display-div;
+    width: 100%;
+    height: 100%;
+  }
+  
 
 .money-page {
     margin-left: -10px; 
@@ -79,10 +102,76 @@ div.money-comp-wrap {
     }
 }
 
-.btn-menu {
+.btn-menu, .btn-menu.active {
     width: 100px;
     height: 50px;
+    cursor: pointer;
 }
+
+.btn-menu.active {
+    color: var(--accentColor);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.money-scrollable {
+    overflow-y: auto;
+    max-height: 360px;
+    overflow-x: hidden;
+}
+
+.money-component {
+    border: 1px solid;
+    border-color: var(--secondColor);
+    margin: 10px
+}
+
+.currency-button {
+    position: absolute;
+    top: 5vh;
+    left: 85vw;
+    
+}
+
+.currency-dropdown {
+    border-radius: 25%;
+    background-color: var(--mainColor);
+    color: var(--secondColor);
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px #929292;
+    border: 0px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--thirdColor);
+    }
+}
+
+.dropdown-menu {
+    width: 220px;
+    box-shadow: 2px 2px 10px #929292;
+    border-radius: 25px;
+}
+
+.dropdown-item {
+    width: 50px;
+    height: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--accentColor);
+        color: var(--mainColor);
+        text-decoration: underline;
+    }
+}
+
+
 
 @media only screen and (max-width: 767px) {
 

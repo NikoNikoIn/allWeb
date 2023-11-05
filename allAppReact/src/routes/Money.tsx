@@ -3,18 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap'
 import '../App.scss'
 import '../styles/Money.scss'
 
-/*TODO:
-
-1. Set up one of the states (expenses or earnings) in respective components
-2. Store the money in localstorage
-3. Make a graph below that showcases the changes
-4. Style everything
-
-*/
-
 import MoneyUpdate from '../components/MoneyUpdate'
 import MoneyComponent from '../components/MoneyComponent'
-
+import CurrencyButton from '../components/CurrencyButton'
+import CurrencyProvider from '../contexts/CurrencyProvider'
 
 
 
@@ -45,58 +37,72 @@ function Money() {
 
     const [show, setShow] = useState('add')
 
-    return (
-        <div className='money-page'>
-            <div>
-                <Container className='money-comp-wrap parent'>
-                    <Row className='add-div'>
-                        <MoneyUpdate onSubmit={addMoney}/>
+    const [currency, setCurrency] = useState(() => {
+        const savedCurrency = localStorage.getItem('currency')
+        if (savedCurrency) {
+            return JSON.parse(savedCurrency)
+        } else {
+            return 'BYN'
+        }
+    })
 
-                    </Row>
-                    <Row className='display-div'>
-                        <div>
-                            <button className='btn-menu' onClick={() => setShow('add')}>Earnings</button>
-                            <button className='btn-menu' onClick={() => setShow('subtract')}>Expenses</button>
-                            {show === 'add' ? (
-                                money
-                                .filter((moneySingle: any) => moneySingle.type === 'add') 
-                                .map((moneySingle: any) => (
-                                <Col
-                                    md={3}
-                                    xs={12}
-                                    key={`moneySingle-${moneySingle.id}`}
-                                >
-                                    <MoneyComponent
-                                    moneySingle={moneySingle}
-                                    removeMoneySingle={removeMoneySingle}
-                                    />
-                                </Col>
-                                ))
-                            )
-                            
-                            : (
-                                money
-                                .filter((moneySingle: any) => moneySingle.type === 'subtract') 
-                                .map((moneySingle: any) => (
-                                <Col
-                                    md={3}
-                                    xs={12}
-                                    key={`moneySingle-${moneySingle.id}`}
-                                >
-                                    <MoneyComponent
-                                    moneySingle={moneySingle}
-                                    removeMoneySingle={removeMoneySingle}
-                                    />
-                                </Col>
-                                ))
-                            )}
-                            
-                            
+    return (
+        <CurrencyProvider>
+            
+            <div className='money-page'>
+                <CurrencyButton/>
+
+                <div className='money-comp-wrap container'>
+                    <div className='graph-div'>
+                        KDSAJIDOSAJIODIJOASDIOJ
+                    </div>
+                    <div className='add-div'>
+                        <MoneyUpdate onSubmit={addMoney}/>
+                    </div>
+                    <div className='display-div'>
+                        <div style={{marginBottom:'20px'}}>
+                            <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px', marginLeft:'10px'}} onClick={() => setShow('add')}>Earnings</span>
+                            <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('subtract')}>Expenses</span>
                         </div>
-                    </Row>
-                </Container>
+                        <div className='money-scrollable'>
+                        <Row>
+                        {show === 'add' ? (
+                            money
+                            .filter((moneySingle: any) => moneySingle.type === 'add') 
+                            .map((moneySingle: any, index: any) => (
+                            <Col
+                                md={3}
+                                xs={12}
+                                key={`moneySingle-${moneySingle.id}`}
+                            >
+                                <MoneyComponent
+                                moneySingle={moneySingle}
+                                removeMoneySingle={removeMoneySingle}
+                                />
+                            </Col>
+                            ))
+                        ) : (
+                            money
+                            .filter((moneySingle: any) => moneySingle.type === 'subtract') 
+                            .map((moneySingle: any) => (
+                            <Col
+                                md={3}
+                                xs={12}
+                                key={`moneySingle-${moneySingle.id}`}
+                            >
+                                <MoneyComponent
+                                moneySingle={moneySingle}
+                                removeMoneySingle={removeMoneySingle}
+                                />
+                            </Col>
+                            ))
+                        )}
+                        </Row>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </CurrencyProvider>
     )
 }
 
