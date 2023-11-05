@@ -52,12 +52,12 @@ const Items = {
     ],
 
     currencyList: [
-        {name:'Belarusian Ruble', sign:'BYN'},
-        {name:'United States Dollar', sign:'$'},
-        {name:'Euro', sign:'€'},
-        {name:'Russian Ruble', sign:'₽'},
-        {name:'Ukranian Hryvna', sign:'₴'},
-        {name:'Kazakhstani Tenge', sign:'₸'},
+        'BYN',
+        '$',
+        '€',
+        '₽',
+        '₴',
+        '₸',
     ],
 }
 

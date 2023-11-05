@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import { CurrencyContext } from '../contexts/CurrencyContext'
 import Items from './Items'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 const { currencyList } = Items
 
@@ -12,34 +13,34 @@ const CurrencyButton = () => {
         localStorage.setItem('currency', JSON.stringify(currency))
     }, [currency])
 
-    const currencyItems = currencyList.map((item) => (
-        <li
-            key={item.name}
-            className='dropdown-item'
-            onClick={() => {
-                setCurrency(item.sign)
-            }}
-        >
-            <span>{item.name} - {item.sign}</span>
-        </li>
-    ))
+    const handleClick = (type: string) => {
+        const currentIndex = currencyList.findIndex((item) => item === currency)
+
+        if (type === 'right') {
+            const nextIndex = (currentIndex + 1) % currencyList.length
+            setCurrency(currencyList[nextIndex])
+        } else if (type === 'left') {
+            const prevIndex = (currentIndex - 1 + currencyList.length) % currencyList.length
+            setCurrency(currencyList[prevIndex])
+        }
+    }
 
     return (
         <div className='currency-button'>
-            <div>
-                <button
-                    className='currency-dropdown'
-                    type='button'
-                    id='currencyDropdown'
-                    data-bs-toggle='dropdown'
-                    aria-expanded='false'
-                >
-                    {currency}
-                </button>
-                <ul className='dropdown-menu' aria-labelledby='currencyDropdown'>
-                    {currencyItems}
-                </ul>
-            </div>
+            <FontAwesomeIcon
+                size='xl'
+                onClick={() => handleClick('right')}
+                className='currency-left'
+                icon={faChevronLeft}
+            />
+            <div className='currency-item'>{currency}</div>
+            <FontAwesomeIcon
+                size='xl'
+                onClick={() => handleClick('left')}
+                className='currency-right'
+                rotation={180}
+                icon={faChevronLeft}
+            />
         </div>
     )
 }

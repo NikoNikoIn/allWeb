@@ -52,7 +52,7 @@ function Money() {
             <div className='money-page'>
                 <CurrencyButton/>
 
-                <div className='money-comp-wrap container'>
+                <div className='money-comp-wrap money-container'>
                     <div className='graph-div'>
                         KDSAJIDOSAJIODIJOASDIOJ
                     </div>

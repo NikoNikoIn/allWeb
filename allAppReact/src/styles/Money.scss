@@ -2,7 +2,7 @@ html[data-theme='dark'] {
 
 }
 
-.container {  display: grid;
+.money-container {  display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 5px 5px;
@@ -12,7 +12,7 @@ html[data-theme='dark'] {
       'graph-div graph-div add-div'
       'display-div display-div display-div'
       'display-div display-div display-div';
-  }
+}
   
   .graph-div {
     justify-self: center;
@@ -130,11 +130,14 @@ div.money-comp-wrap {
     position: absolute;
     top: 5vh;
     left: 85vw;
-    
-}
-
-.currency-dropdown {
+    display: flex;
+    align-items: center;
+  }
+  
+  .currency-item {
+    position: relative; /* Added */
     border-radius: 25%;
+    user-select: none;
     background-color: var(--mainColor);
     color: var(--secondColor);
     width: 70px;
@@ -146,11 +149,32 @@ div.money-comp-wrap {
     box-shadow: 2px 2px 10px #929292;
     border: 0px;
     transition: all 0.3s ease-in-out;
-
-    &:hover {
-        background-color: var(--thirdColor);
+  }
+  
+  .currency-left,
+  .currency-right {
+    color: var(--accentColor);
+    transition: all 0.3s ease-in-out;
+    position: absolute; 
+    cursor: pointer;
+    display: grid; 
+    align-items: center; 
+    justify-content: center; 
+    width: 20px; 
+    height: 20px; 
+  
+    &.currency-left {
+      left: -30px;
     }
-}
+  
+    &.currency-right {
+      right: -30px;
+    }
+  
+    &:hover {
+      scale: 1.15;
+    }
+  }
 
 .dropdown-menu {
     width: 220px;
