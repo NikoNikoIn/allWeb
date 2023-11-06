@@ -6,6 +6,8 @@ html[data-theme='light'] {
     --backgroundMain: #f8f8f8;
     --backgroundAccent: #7e2424;
 
+    --shadow-color: 0deg 0% 42%;
+
     --backgroundToDoMain: #b993d6;
     --backgroundToDoSecond: #8ca6db;
 }
@@ -14,9 +16,11 @@ html[data-theme='dark'] {
     --mainColor: #1d1d1d; 
     --secondColor: #ffffff; 
     --thirdColor: #151515; 
-    --accentColor: #6a5ad5;
+    --accentColor: #fcda40;
     --backgroundMain: #151515;
-    --backgroundAccent: #5c159e;
+    --backgroundAccent: #d1b42e;
+
+    --shadow-color: 0deg 0% 0%;
 
     --backgroundToDoMain: #556270;
     --backgroundToDoSecond: #ff6b6b;
@@ -29,12 +33,17 @@ html, body, #root, .todo-page, .money-page {
     min-height: 100vh;
     min-width: 100vw;
     overflow-x: hidden;
+
+    --shadow:
+    0.2px 0.1px 0.3px hsl(var(--shadow-color) / 0),
+    0.9px 0.8px 1.8px hsl(var(--shadow-color) / 0.27),
+    1.9px 1.7px 3.8px hsl(var(--shadow-color) / 0.55),
+    3.9px 3.4px 7.8px hsl(var(--shadow-color) / 0.82);
     
 }
 
 #root {
-    background: var(--backgroundAccent);
-    background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
+
     color: var(--secondColor);
     transition: background-color 400ms linear;
     padding: 0px 10px;

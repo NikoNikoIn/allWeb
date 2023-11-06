@@ -57,7 +57,7 @@ const SocialItems = (
 
 function Home() {
     return (
-        <div className='main'>
+        <div className='home-page'>
             <Container>
                 <Row>
                     <Col style={{marginTop:'25px'}} xs={12} md={4}>

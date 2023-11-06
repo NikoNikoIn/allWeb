@@ -1,8 +1,19 @@
+.home-page {
+    background: var(--backgroundAccent);
+    background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.col-wrap {
+    box-shadow: var(--shadow);
+}
+
 .img {
     transition: all 0.6s ease-in-out;
     width: 100%;
-
-    border: 1px solid var(--accentColor);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--accentColor); 
 
 }
 
@@ -19,13 +30,13 @@
 
 .list-group-item {
     width: 70px;
-    overflow: hidden;
+    overflow: hidden; 
     z-index: 1;
 }
 
 .list-group-item:hover {
     width:175px;
-    box-shadow: 0px 0px 20px var(--accentColor);
+    box-shadow: var(--shadow);
     background-color: var(--accentColor);
     color: var(--secondColor)
 }
@@ -64,9 +75,9 @@
 }
 
 .web-icon:hover {
-    box-shadow: 0px 0px 20px var(--accentColor);
-    color: var(--mainColor);
-    background-color: var(--secondColor);
+    box-shadow: var(--shadow);
+    background-color: var(--accentColor);
+    scale: 1.05;
 }
 
 .social-icon {

@@ -50,6 +50,8 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
         })
         setInput('')
+
+
     }
 
     return (

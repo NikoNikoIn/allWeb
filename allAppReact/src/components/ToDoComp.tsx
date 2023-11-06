@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faCheck, faBan } from '@fortawesome/free-solid-svg-icons'
 
 function ToDoComp({task, taskColor, completeTask, removeTask}) {
-    const rowStyle = { 
+    const rowStyle = {  
         '--taskBgColor': taskColor
     } 
 
-    return (
+    return ( 
 
         <div className={task.isComplete ? 'task-row complete' : 'task-row'} style={rowStyle} draggable={true}>
 

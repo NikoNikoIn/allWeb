@@ -20,14 +20,28 @@ function Money() {
             return []
         }
     })
-
+ 
     useEffect(() => {
         localStorage.setItem('money', JSON.stringify(money))
     }, [money])
 
-    const addMoney = (moneySingle:any) => {
+    const [changeBackgroundColor, setChangeBackgroundColor] = useState('none')
+
+    const addMoney = (moneySingle: any) => {
         const newMoney = [moneySingle, ...money]
         setMoney(newMoney)
+
+        if (moneySingle.type === 'add') {
+            setChangeBackgroundColor('add')
+            setTimeout(() => {
+                setChangeBackgroundColor('none')
+            }, 1200)
+        } else if (moneySingle.type === 'subtract') {
+            setChangeBackgroundColor('subtract')
+            setTimeout(() => {
+                setChangeBackgroundColor('none')
+            }, 1200)
+        }
     }
 
     const removeMoneySingle = (id: number) => {
@@ -37,19 +51,10 @@ function Money() {
 
     const [show, setShow] = useState('add')
 
-    const [currency, setCurrency] = useState(() => {
-        const savedCurrency = localStorage.getItem('currency')
-        if (savedCurrency) {
-            return JSON.parse(savedCurrency)
-        } else {
-            return 'BYN'
-        }
-    })
-
     return (
         <CurrencyProvider>
             
-            <div className='money-page'>
+            <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'}>
                 <CurrencyButton/>
 
                 <div className='money-comp-wrap money-container'>
@@ -60,8 +65,8 @@ function Money() {
                         <MoneyUpdate onSubmit={addMoney}/>
                     </div>
                     <div className='display-div'>
-                        <div style={{marginBottom:'20px'}}>
-                            <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px', marginLeft:'10px'}} onClick={() => setShow('add')}>Earnings</span>
+                        <div style={{marginBottom:'20px', marginLeft:'15px'}}>
+                            <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('subtract')}>Expenses</span>
                         </div>
                         <div className='money-scrollable'>
