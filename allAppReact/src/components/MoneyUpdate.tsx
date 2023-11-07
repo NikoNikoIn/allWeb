@@ -1,7 +1,9 @@
-import React, { useState, FormEvent, ChangeEvent } from 'react'
+import React, { useState, FormEvent, ChangeEvent, useContext } from 'react'
 import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
+import { CurrencyContext } from '../contexts/CurrencyContext'
+
 
 interface MoneyUpdateProps {
     onSubmit: (data: { id: number; amount: number; type: string; date: string }) => void
@@ -54,9 +56,11 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     }
 
+    const { currency } = useContext(CurrencyContext)
+
     return (
-        <div className='add-div'>
-            <div className='add-div' style={{ display: 'flex' }}>
+        <div className='add-div money-wrapper'>
+            <div>
                 <button
                     type='submit'
                     className='money-button add'
@@ -72,18 +76,24 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                     <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
                 </button>
             </div>
-            
-            <input
-                type='text'
-                className='money-input'
-                min='0'
-                onInput={(e) => {
-                    let value = e.currentTarget.value.replace(/[^0-9]/g, '')
-                    setInput(value)
-                }}
-                onChange={handleChange}
-                value={input}
-            />
+            <div className='money-input-wrap' style={{marginBottom:'10px'}}>
+                <input
+                    type='text'
+                    className='money-input'
+                    min='0'
+                    onKeyDown={(e) => {
+                        const keyCode = e.key;
+                        const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === "Backspace"; // Numbers 0-9 or Backspace
+                        if (!isValidKey) {
+                            e.preventDefault();
+                        }
+                    }}
+                    onChange={handleChange}
+                    value={input}
+                    maxLength={5}
+                />
+                <span style={{fontSize:'25px'}}>{currency}</span>
+            </div>
         </div>
     )
 }

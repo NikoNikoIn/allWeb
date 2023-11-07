@@ -71,24 +71,24 @@
     color: var(--secondColor);
     background-color: var(--mainColor);
     border: 1px solid var(--accentColor);
-    transition: all 0.3s ease-in-out;
-}
-
-.web-icon:hover {
     box-shadow: var(--shadow);
-    background-color: var(--accentColor);
-    scale: 1.05;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--accentColor);
+        scale: 1.05;
+    }
 }
 
 .social-icon {
     margin: 5px;
     font-size:30px;
     transition: all 0.3s ease-in-out;
-}
 
-.social-icon:hover{
-    color: var(--secondColor);
+    &:hover {
+        color: var(--secondColor);
 
+    }
 }
 
 .list-stack {

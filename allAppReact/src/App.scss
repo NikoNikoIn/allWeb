@@ -10,6 +10,8 @@ html[data-theme='light'] {
 
     --backgroundToDoMain: #b993d6;
     --backgroundToDoSecond: #8ca6db;
+
+    --moneyAccent: #31df21;
 }
 
 html[data-theme='dark'] {
@@ -24,14 +26,16 @@ html[data-theme='dark'] {
 
     --backgroundToDoMain: #556270;
     --backgroundToDoSecond: #ff6b6b;
+
+    --moneyAccent: #ff584f;
 }
 
 
-html, body, #root, .todo-page, .money-page {
+html, body, #root, .money-page {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    min-width: 100vw;
+    min-height: 100%;
+    min-width: 100%;
     overflow-x: hidden;
 
     --shadow:
@@ -40,6 +44,11 @@ html, body, #root, .todo-page, .money-page {
     1.9px 1.7px 3.8px hsl(var(--shadow-color) / 0.55),
     3.9px 3.4px 7.8px hsl(var(--shadow-color) / 0.82);
     
+}
+
+.todo-page {
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 #root {

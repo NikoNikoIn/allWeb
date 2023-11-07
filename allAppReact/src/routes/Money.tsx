@@ -7,6 +7,7 @@ import MoneyUpdate from '../components/MoneyUpdate'
 import MoneyComponent from '../components/MoneyComponent'
 import CurrencyButton from '../components/CurrencyButton'
 import CurrencyProvider from '../contexts/CurrencyProvider'
+import MoneyGraph from '../components/MoneyGraph'
 
 
 
@@ -26,6 +27,26 @@ function Money() {
     }, [money])
 
     const [changeBackgroundColor, setChangeBackgroundColor] = useState('none')
+    const [earnMoney, setEarnMoney] = useState(() => {
+        const savedMoney = localStorage.getItem('earnMoney');
+        return savedMoney ? JSON.parse(savedMoney) : 0;
+    })
+    
+    const [expenseMoney, setExpenseMoney] = useState(() => {
+        const savedMoney = localStorage.getItem('expenseMoney')
+        return savedMoney ? JSON.parse(savedMoney) : 0
+    })
+
+    useEffect(() => {
+        localStorage.setItem('earnMoney', JSON.stringify(earnMoney))
+    }, [earnMoney])
+    
+    useEffect(() => {
+        localStorage.setItem('expenseMoney', JSON.stringify(expenseMoney))
+    }, [expenseMoney])
+    
+    
+
 
     const addMoney = (moneySingle: any) => {
         const newMoney = [moneySingle, ...money]
@@ -33,11 +54,13 @@ function Money() {
 
         if (moneySingle.type === 'add') {
             setChangeBackgroundColor('add')
+            setEarnMoney(prevMoney => prevMoney + moneySingle.amount)
             setTimeout(() => {
                 setChangeBackgroundColor('none')
             }, 1200)
         } else if (moneySingle.type === 'subtract') {
             setChangeBackgroundColor('subtract')
+            setExpenseMoney(prevMoney => prevMoney + moneySingle.amount)
             setTimeout(() => {
                 setChangeBackgroundColor('none')
             }, 1200)
@@ -45,21 +68,29 @@ function Money() {
     }
 
     const removeMoneySingle = (id: number) => {
-        const removeArr = [...money].filter(moneySingle => moneySingle.id !== id)
-        setMoney(removeArr)
+        const moneySingle = money.find((item: any) => item.id === id);
+        if (moneySingle) {
+            if (moneySingle.type === 'add') {
+                setEarnMoney(prevMoney => prevMoney - moneySingle.amount);
+            } else if (moneySingle.type === 'subtract') {
+                setExpenseMoney(prevMoney => prevMoney - moneySingle.amount);
+            }
+        }
+        const removeArr = [...money].filter((item: any) => item.id !== id);
+        setMoney(removeArr);
     }
+    
 
     const [show, setShow] = useState('add')
 
     return (
         <CurrencyProvider>
-            
             <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'}>
                 <CurrencyButton/>
 
                 <div className='money-comp-wrap money-container'>
                     <div className='graph-div'>
-                        KDSAJIDOSAJIODIJOASDIOJ
+                        <MoneyGraph earnMoney={earnMoney} expenseMoney={expenseMoney}/>
                     </div>
                     <div className='add-div'>
                         <MoneyUpdate onSubmit={addMoney}/>
@@ -67,7 +98,8 @@ function Money() {
                     <div className='display-div'>
                         <div style={{marginBottom:'20px', marginLeft:'15px'}}>
                             <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
-                            <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('subtract')}>Expenses</span>
+                            <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>
+                            <span className={show==='stats' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('stats')}>Statistics</span>
                         </div>
                         <div className='money-scrollable'>
                         <Row>
@@ -86,7 +118,7 @@ function Money() {
                                 />
                             </Col>
                             ))
-                        ) : (
+                        ) : show === 'subtract' ? (
                             money
                             .filter((moneySingle: any) => moneySingle.type === 'subtract') 
                             .map((moneySingle: any) => (
@@ -101,6 +133,8 @@ function Money() {
                                 />
                             </Col>
                             ))
+                        ) : (
+                            <span>fjdisijofs</span>
                         )}
                         </Row>
                         </div>

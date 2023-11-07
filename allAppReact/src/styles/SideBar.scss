@@ -30,6 +30,7 @@
 }
 
 .sidenav-item:hover {
+    z-index: 5;
     color: var(--mainColor);
     background-color: var(--accentColor);
     cursor: pointer;
