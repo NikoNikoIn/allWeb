@@ -177,6 +177,18 @@ div.money-comp-wrap {
   cursor: pointer;
 }
 
+.money-comp-purpose {
+  background-color: var(--mainColor);
+  border-radius: 25px;
+  width: auto;
+  padding:5px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  background-color: var(--mainColor);
+  color: var(--secondColor)
+}
+
 .currency-button {
     position: absolute;
     top: 5vh;
@@ -186,7 +198,7 @@ div.money-comp-wrap {
   }
   
   .currency-item {
-    position: relative; /* Added */
+    position: relative; 
     border-radius: 25%;
     user-select: none;
     background-color: var(--mainColor);
@@ -335,6 +347,31 @@ div.money-comp-wrap {
 }
 
 
+.money-modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  z-index: 99;
+
+  &.active {
+    transform: scale(1);
+  }
+}
+
+.money-modal-content {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: white;
+}
 
 
 @media only screen and (max-width: 767px) {

@@ -29,7 +29,7 @@ function ToDo() {
         if(!task.text || /^\s*$/.test(task.text)) {
             return
         }
-        const newTasks = [task, ...tasks]
+        const newTasks = [...tasks, task]
         setTasks(newTasks)
     }
 

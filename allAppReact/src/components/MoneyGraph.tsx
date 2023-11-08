@@ -45,21 +45,29 @@ const MoneyGraph = ({ earnMoney, expenseMoney }) => {
                 )}
 
             </div>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'space-between', padding: '2%', paddingTop: '6%'}}>
-                <>
-                    <h3 style={{color: earnMoney - expenseMoney > 0? `#3dc257` : earnMoney - expenseMoney < 0? `#c40606` : `#949494`}}>{earnMoney - expenseMoney}{currency}</h3>
-                    <span style={{marginTop: '-10px', fontSize:'12px', color:'#949494'}}>Balance</span>
-                </>
-                <>
-                {earnMoney - expenseMoney > 0 && expenseMoney !== 0 ? (
-                    <span><FontAwesomeIcon icon={faArrowUp} style={{color: '#4287f5'}}/> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%</span>
-                ) : earnMoney - expenseMoney < 0 && earnMoney !== 0 ? (
-                    <span><FontAwesomeIcon icon={faArrowUp} rotation={180} style={{color: '#c40606'}}/> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%</span>
-                ) : (
-                    null
-                )}
-
-                </>
+            <div style={{ display: 'flex', flexDirection: 'row', padding: '2%', paddingTop: '6%' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <h3 style={{ color: earnMoney - expenseMoney > 0 ? '#3dc257' : earnMoney - expenseMoney < 0 ? '#c40606' : '#949494' }}>
+                        {earnMoney - expenseMoney}
+                        {currency}
+                    </h3>
+                    <span style={{ marginTop: '-10px', fontSize: '12px', color: '#949494' }}>Balance</span>
+                </div>
+                <div style={{ marginLeft: 'auto' }}>
+                    {earnMoney - expenseMoney > 0 && expenseMoney !== 0 ? (
+                        <span>
+                            <FontAwesomeIcon icon={faArrowUp} style={{ color: '#4287f5' }} />{' '}
+                            {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
+                        </span>
+                    ) : earnMoney - expenseMoney < 0 && earnMoney !== 0 ? (
+                        <span>
+                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '#c40606' }} />{' '}
+                            {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
+                        </span>
+                    ) : (
+                        null
+                    )}
+                </div>
             </div>
 
 

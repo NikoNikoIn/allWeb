@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 import { CurrencyContext } from '../contexts/CurrencyContext'
 
+import MoneyModal from '../components/MoneyModal'
+
 
 interface MoneyUpdateProps {
-    onSubmit: (data: { id: number; amount: number; type: string; date: string }) => void
+    onSubmit: (data: { id: number; amount: number; type: string; date: string, purpose: string }) => void
 }
 
 
@@ -18,9 +20,12 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
         setInput(e.target.value)
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>, type: string) => {
-        e.preventDefault()
+    const handleSubmit = (type: string, purpose: string) => {
       
+        if (!purpose) {
+            return
+        }
+
         const amount = parseInt(input)
         if (isNaN(amount)) {
             return
@@ -30,9 +35,9 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
         const currentDate = new Date()
         
         const options = {
-          hour: '2-digit',
-          minute: '2-digit',
-          timeZone: userTimeZone,
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: userTimeZone,
         }
         
         const timeString = currentDate.toLocaleString('en-GB', options)
@@ -49,6 +54,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
             amount: amount,
             type: type,
             date: formattedDate,
+            purpose: purpose,
 
         })
         setInput('')
@@ -58,43 +64,63 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     const { currency } = useContext(CurrencyContext)
 
+    const [modalActive, setModalActive ] = useState(false)
+    const [typeMoney, setTypeMoney] = useState('')
+    const [purpose, setPurpose] = useState('')
+
+
     return (
-        <div className='add-div money-wrapper'>
-            <div>
-                <button
-                    type='submit'
-                    className='money-button add'
-                    onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleSubmit(e, 'add')}
-                >
-                    <FontAwesomeIcon size='xl' icon={faAnglesUp} />
-                </button>
-                <button
-                    type='submit'
-                    className='money-button subtract'
-                    onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleSubmit(e, 'subtract')}
-                >
-                    <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
-                </button>
+        <>
+            <div className='add-div money-wrapper'>
+                <div>
+                    <button
+                        className='money-button add'
+                        onClick={() => {
+                        setTypeMoney('add');
+                        setModalActive(true);
+                        }}
+                    >
+                        <FontAwesomeIcon size='xl' icon={faAnglesUp} />
+                    </button>
+                    <button
+                        className='money-button subtract'
+                        onClick={() => {
+                        setTypeMoney('subtract');
+                        setModalActive(true);
+                        }}
+                    >
+                        <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
+                    </button>
+                </div>
+                <div className='money-input-wrap' style={{marginBottom:'10px'}}>
+                    <input
+                        type='text'
+                        className='money-input'
+                        min='0'
+                        onKeyDown={(e) => {
+                            const keyCode = e.key;
+                            const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'; // Numbers 0-9 or Backspace
+                            if (!isValidKey) {
+                                e.preventDefault();
+                            }
+                        }}
+                        onChange={handleChange}
+                        value={input}
+                        maxLength={5}
+                    />
+                    <span style={{fontSize:'25px'}}>{currency}</span>
+                </div>
+                
             </div>
-            <div className='money-input-wrap' style={{marginBottom:'10px'}}>
-                <input
-                    type='text'
-                    className='money-input'
-                    min='0'
-                    onKeyDown={(e) => {
-                        const keyCode = e.key;
-                        const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === "Backspace"; // Numbers 0-9 or Backspace
-                        if (!isValidKey) {
-                            e.preventDefault();
-                        }
-                    }}
-                    onChange={handleChange}
-                    value={input}
-                    maxLength={5}
-                />
-                <span style={{fontSize:'25px'}}>{currency}</span>
-            </div>
-        </div>
+            <MoneyModal
+                active={modalActive}
+                setActive={setModalActive}
+                type={typeMoney}
+                setPurpose={setPurpose}
+                onSubmit={(purpose) => handleSubmit(typeMoney, purpose)}
+                input={input}
+            />
+        </>
     )
 }
 

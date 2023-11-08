@@ -59,6 +59,21 @@ const Items = {
         '₴',
         '₸',
     ],
+
+    addList: [
+        'Salary',
+        'Side pay',
+        'Other'
+    ],
+
+    subtractList: [
+        'Bills',
+        'Groceries',
+        'Clothes',
+        'Leisure',
+        'Purchase',
+        'Other'
+    ]
 }
 
 

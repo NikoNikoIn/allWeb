@@ -10,8 +10,7 @@ import CurrencyProvider from '../contexts/CurrencyProvider'
 import MoneyGraph from '../components/MoneyGraph'
 
 
-
-function Money() {
+const Money = () => {
 
     const [money, setMoney] = useState(() => {
         const savedMoney = localStorage.getItem('money')
