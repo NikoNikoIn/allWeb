@@ -170,9 +170,9 @@ div.money-comp-wrap {
 }
 
 .money-cancel {
-  position: absolute; /* Added */
-  top: 10px; /* Adjust the top position as needed */
-  right: 10px; /* Adjust the right position as needed */
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
   color: #c40606;
   cursor: pointer;
 }
@@ -244,11 +244,10 @@ div.money-comp-wrap {
 }
 
 .graph-wrapper {
+  z-index: 6;
   width: 33vw;
   height: 30vh;
   background-color: var(--thirdColor);
-  justify-items: center;
-  align-items: center;
   border-radius: 25px;
   margin: 25px;
   margin-bottom: 15px;
@@ -267,9 +266,75 @@ div.money-comp-wrap {
   }
 
   &.earnings {
-    background-color: #3dc257 !important;
+    background-color: #3dc257;
   }
 }
+
+.graph-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+}
+
+.graph-text {
+  position: absolute;
+  z-index: 1;
+
+  &.expenses {
+    color: #949494;
+    font-size: 12px;
+    transform: translate(0%, -100%);
+  }
+
+  &.earnings {
+    color: #949494;
+    font-size: 12px;
+    transform: translate(0%, 90%);
+  }
+
+  &.subtract {
+    color: var(--secondColor);
+    font-size: 22px;
+    right: 1vw;
+    transform: translate(0%, -100%);
+  }
+
+  &.add {
+    color: var(--secondColor);
+    font-size: 22px;
+    right: 1vw;
+    transform: translate(0%, 40%);
+  }
+
+  &.balance {
+
+  }
+}
+
+
+.graph-icon {
+  width: 1vh;
+  height: 1vh;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.expenses {
+    background-color: #ff9c40;
+  }
+
+  &.earnings {
+    background-color: #3dc257;
+
+  }
+
+
+}
+
+
 
 
 @media only screen and (max-width: 767px) {

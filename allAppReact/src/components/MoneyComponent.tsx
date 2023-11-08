@@ -29,8 +29,11 @@ const MoneyComponent = ({ moneySingle, removeMoneySingle }) => {
                 onClick={() => removeMoneySingle(moneySingle.id)}
             />
             <br/>
-            <span>____</span>
-            <span>{moneySingle.date}</span>
+
+            <span style={{
+                color: moneySingle.type === 'add' ? '#3dc257' : '#c40606',
+                marginLeft: '10px'
+            }} >{moneySingle.date}</span>
         </div>
         
     )
