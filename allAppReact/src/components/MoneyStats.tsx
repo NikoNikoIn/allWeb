@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const MoneyStats = () => {
+
+import MoneyExpenseStats from './MoneyStatsComps/MoneyExpenseStats'
+
+
+const MoneyStats = ({money}) => {
+
+
+
+
     return (
         <div className='add-wrapper'>
             <div className='add-content'>
                 <h2>Your Stats</h2>
-                <div className='progress-bar-container'>
-                    <div className='progress-bar-money first'></div>
-                </div>
+                
+                <MoneyExpenseStats money={money} />
             </div>
 
         </div>

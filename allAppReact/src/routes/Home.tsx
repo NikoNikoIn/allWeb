@@ -24,10 +24,10 @@ const StackItems = (
 
 
 const WebItems = (
-    <Row className="justify-content-md-center" style={{marginBottom:'25px'}}>
+    <Row className='justify-content-md-center' style={{marginBottom:'25px'}}>
         {items.map((item) => (
             item.text !== 'Home' ? 
-            <Col xs={6} md={2} key={item.to} className="d-flex justify-content-center">
+            <Col xs={6} md={2} key={item.to} className='d-flex justify-content-center'>
                 <Link className='web-icon' to={item.to}>
                 <FontAwesomeIcon icon={item.icon} /> 
                 </Link>

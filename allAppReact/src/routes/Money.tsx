@@ -140,7 +140,7 @@ const Money = () => {
                                 </Row>
                             </div>
                         ) : (
-                            <MoneyStats />
+                            <MoneyStats money={money}/>
                         )}
 
                     </div>
