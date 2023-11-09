@@ -69,6 +69,7 @@ const Items = {
     subtractList: [
         'Bills',
         'Groceries',
+        'Food',
         'Clothes',
         'Leisure',
         'Purchase',

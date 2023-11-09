@@ -27,8 +27,8 @@ const Money = () => {
 
     const [changeBackgroundColor, setChangeBackgroundColor] = useState('none')
     const [earnMoney, setEarnMoney] = useState(() => {
-        const savedMoney = localStorage.getItem('earnMoney');
-        return savedMoney ? JSON.parse(savedMoney) : 0;
+        const savedMoney = localStorage.getItem('earnMoney')
+        return savedMoney ? JSON.parse(savedMoney) : 0
     })
     
     const [expenseMoney, setExpenseMoney] = useState(() => {
@@ -67,18 +67,18 @@ const Money = () => {
     }
 
     const removeMoneySingle = (id: number) => {
-        const moneySingle = money.find((item: any) => item.id === id);
+        const moneySingle = money.find((item: any) => item.id === id)
         if (moneySingle) {
             if (moneySingle.type === 'add') {
-                setEarnMoney(prevMoney => prevMoney - moneySingle.amount);
+                setEarnMoney(prevMoney => prevMoney - moneySingle.amount)
             } else if (moneySingle.type === 'subtract') {
-                setExpenseMoney(prevMoney => prevMoney - moneySingle.amount);
+                setExpenseMoney(prevMoney => prevMoney - moneySingle.amount)
             }
         }
-        const removeArr = [...money].filter((item: any) => item.id !== id);
-        setMoney(removeArr);
+        const removeArr = [...money].filter((item: any) => item.id !== id)
+        setMoney(removeArr)
     }
-    
+
 
     const [show, setShow] = useState('add')
 
@@ -106,31 +106,31 @@ const Money = () => {
                             money
                             .filter((moneySingle: any) => moneySingle.type === 'add') 
                             .map((moneySingle: any, index: any) => (
-                            <Col
-                                md={3}
-                                xs={12}
-                                key={`moneySingle-${moneySingle.id}`}
-                            >
-                                <MoneyComponent
-                                moneySingle={moneySingle}
-                                removeMoneySingle={removeMoneySingle}
-                                />
-                            </Col>
+                                <Col
+                                    md={3}
+                                    xs={12}
+                                    key={`moneySingle-${moneySingle.id}`}
+                                >
+                                    <MoneyComponent
+                                        moneySingle={moneySingle}
+                                        removeMoneySingle={removeMoneySingle}
+                                    />
+                                </Col>
                             ))
                         ) : show === 'subtract' ? (
                             money
                             .filter((moneySingle: any) => moneySingle.type === 'subtract') 
                             .map((moneySingle: any) => (
-                            <Col
-                                md={3}
-                                xs={12}
-                                key={`moneySingle-${moneySingle.id}`}
-                            >
-                                <MoneyComponent
-                                moneySingle={moneySingle}
-                                removeMoneySingle={removeMoneySingle}
-                                />
-                            </Col>
+                                <Col
+                                    md={3}
+                                    xs={12}
+                                    key={`moneySingle-${moneySingle.id}`}
+                                >
+                                    <MoneyComponent
+                                        moneySingle={moneySingle}
+                                        removeMoneySingle={removeMoneySingle}
+                                    />
+                                </Col>
                             ))
                         ) : (
                             <span>fjdisijofs</span>

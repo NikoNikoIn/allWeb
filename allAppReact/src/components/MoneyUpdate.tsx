@@ -1,14 +1,14 @@
 import React, { useState, FormEvent, ChangeEvent, useContext } from 'react'
 import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesUp, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { CurrencyContext } from '../contexts/CurrencyContext'
 
 import MoneyModal from '../components/MoneyModal'
 
 
 interface MoneyUpdateProps {
-    onSubmit: (data: { id: number; amount: number; type: string; date: string, purpose: string }) => void
+    onSubmit: (data: { id: number; amount: number; type: string; date: string, purpose: string }) => void,
 }
 
 
@@ -74,41 +74,51 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
             <div className='add-div money-wrapper'>
                 <div>
                     <button
-                        className='money-button add'
+                        className={input ? 'money-button add' : 'money-button add disabled'}
                         onClick={() => {
-                        setTypeMoney('add');
-                        setModalActive(true);
+                            input ? (
+                                setTypeMoney('add'),
+                                setModalActive(true)
+                            ) : (
+                                null
+                            )
                         }}
                     >
                         <FontAwesomeIcon size='xl' icon={faAnglesUp} />
                     </button>
                     <button
-                        className='money-button subtract'
+                        className={input ? 'money-button subtract' : 'money-button subtract disabled'}
                         onClick={() => {
-                        setTypeMoney('subtract');
-                        setModalActive(true);
+                            input ? (
+                                setTypeMoney('subtract'),
+                                setModalActive(true)
+                            ) : (
+                                null
+                            )
                         }}
                     >
                         <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
                     </button>
                 </div>
                 <div className='money-input-wrap' style={{marginBottom:'10px'}}>
-                    <input
-                        type='text'
-                        className='money-input'
-                        min='0'
-                        onKeyDown={(e) => {
-                            const keyCode = e.key;
-                            const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'; // Numbers 0-9 or Backspace
-                            if (!isValidKey) {
-                                e.preventDefault();
-                            }
-                        }}
-                        onChange={handleChange}
-                        value={input}
-                        maxLength={5}
-                    />
-                    <span style={{fontSize:'25px'}}>{currency}</span>
+                    <div style={{display: 'flex', alignItems:'center', justifyContent: 'flex-start'}}>
+                        <input
+                            type='text'
+                            className='money-input'
+                            min='0'
+                            onKeyDown={(e) => {
+                                const keyCode = e.key;
+                                const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'; // Numbers 0-9 or Backspace
+                                if (!isValidKey) {
+                                    e.preventDefault();
+                                }
+                            }}
+                            onChange={handleChange}
+                            value={input}
+                            maxLength={5}
+                        />
+                        <span style={{fontSize:'20px'}}>{currency}</span>
+                    </div>
                 </div>
                 
             </div>
@@ -117,7 +127,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                 setActive={setModalActive}
                 type={typeMoney}
                 setPurpose={setPurpose}
-                onSubmit={(purpose) => handleSubmit(typeMoney, purpose)}
+                onSubmit={(purpose: string) => handleSubmit(typeMoney, purpose)}
                 input={input}
             />
         </>

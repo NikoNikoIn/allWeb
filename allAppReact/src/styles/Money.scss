@@ -74,7 +74,7 @@ div.money-comp-wrap {
     height: 90vh;
     width: 900px;
 
-    margin: 10px 10px 10px 30px;
+    margin: 10px 10px 10px 10px;
   
 }
 
@@ -98,6 +98,12 @@ div.money-comp-wrap {
             background-color: var(--mainColor);
             color: #3dc257;
         }
+
+        &.disabled {
+          background-color: var(--thirdColor);
+          color: #3dc257;
+          border: 0px;
+        }
     }
     &.subtract{
       background-color: #c40606;
@@ -108,6 +114,12 @@ div.money-comp-wrap {
             border: 2px solid #c40606;
             background-color: var(--mainColor);
             color: #c40606;
+        }
+
+        &.disabled {
+          background-color: var(--thirdColor);
+          color: #c40606;
+          border: 0px;
         }
     }
 }
@@ -144,8 +156,9 @@ div.money-comp-wrap {
 
 .money-scrollable {
     overflow-y: auto;
-    max-height: 360px;
+    max-height: 340px;
     padding-right: 20px;
+    border-radius: 45px;
     overflow-x: hidden;
 }
 
@@ -359,7 +372,6 @@ div.money-comp-wrap {
   justify-content: center;
   transform: scale(0);
   z-index: 99;
-
   &.active {
     transform: scale(1);
   }
@@ -370,9 +382,52 @@ div.money-comp-wrap {
   height: auto;
   padding: 20px;
   border-radius: 12px;
-  background-color: white;
+  background-color: var(--mainColor);
+
 }
 
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.modal-button {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease-in-out;
+
+  &.add {
+    border: 2px solid #3dc257;
+    width: 50%;
+    background-color: #3dc257;
+    color: var(--mainColor);
+    &:hover {
+      background-color: var(--mainColor);
+      color: #3dc257;
+    }
+  }
+
+  &.subtract {
+    border: 2px solid #c40606;
+    width: 50%;
+    background-color: #c40606;
+    color: var(--mainColor);
+    &:hover {
+      background-color: var(--mainColor);
+      color: #c40606;
+    }
+  }
+}
+
+.money-input-wrap {
+  display: flex;
+  flex-direction: row;
+}
 
 @media only screen and (max-width: 767px) {
 
@@ -383,9 +438,9 @@ div.money-comp-wrap {
     grid-auto-flow: row;
     justify-items: stretch;
     grid-template-areas:
-      "graph-div"
-      "add-div"
-      "display-div";
+      'graph-div'
+      'add-div'
+      'display-div';
   }
   
   .graph-div { grid-area: graph-div; }
