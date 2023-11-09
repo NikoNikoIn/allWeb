@@ -8,6 +8,7 @@ import MoneyComponent from '../components/MoneyComponent'
 import CurrencyButton from '../components/CurrencyButton'
 import CurrencyProvider from '../contexts/CurrencyProvider'
 import MoneyGraph from '../components/MoneyGraph'
+import MoneyStats from '../components/MoneyStats'
 
 
 const Money = () => {
@@ -100,43 +101,48 @@ const Money = () => {
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>
                             <span className={show==='stats' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('stats')}>Statistics</span>
                         </div>
-                        <div className='money-scrollable'>
-                        <Row>
                         {show === 'add' ? (
-                            money
-                            .filter((moneySingle: any) => moneySingle.type === 'add') 
-                            .map((moneySingle: any, index: any) => (
-                                <Col
-                                    md={3}
-                                    xs={12}
-                                    key={`moneySingle-${moneySingle.id}`}
-                                >
-                                    <MoneyComponent
-                                        moneySingle={moneySingle}
-                                        removeMoneySingle={removeMoneySingle}
-                                    />
-                                </Col>
-                            ))
+                            <div className='money-scrollable'>
+                                <Row>
+                                   {money
+                                    .filter((moneySingle: any) => moneySingle.type === 'add') 
+                                    .map((moneySingle: any) => (
+                                        <Col
+                                            md={3}
+                                            xs={12}
+                                            key={`moneySingle-${moneySingle.id}`}
+                                        >
+                                            <MoneyComponent
+                                                moneySingle={moneySingle}
+                                                removeMoneySingle={removeMoneySingle}
+                                            />
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </div>
                         ) : show === 'subtract' ? (
-                            money
-                            .filter((moneySingle: any) => moneySingle.type === 'subtract') 
-                            .map((moneySingle: any) => (
-                                <Col
-                                    md={3}
-                                    xs={12}
-                                    key={`moneySingle-${moneySingle.id}`}
-                                >
-                                    <MoneyComponent
-                                        moneySingle={moneySingle}
-                                        removeMoneySingle={removeMoneySingle}
-                                    />
-                                </Col>
-                            ))
+                            <div className='money-scrollable'>
+                                <Row>
+                                    {money
+                                    .filter((moneySingle: any) => moneySingle.type === 'subtract') 
+                                    .map((moneySingle: any) => (
+                                        <Col
+                                            md={3}
+                                            xs={12}
+                                            key={`moneySingle-${moneySingle.id}`}
+                                        >
+                                            <MoneyComponent
+                                                moneySingle={moneySingle}
+                                                removeMoneySingle={removeMoneySingle}
+                                            />
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </div>
                         ) : (
-                            <span>fjdisijofs</span>
+                            <MoneyStats />
                         )}
-                        </Row>
-                        </div>
+
                     </div>
                 </div>
             </div>
