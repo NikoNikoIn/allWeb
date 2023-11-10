@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import Items from '../Items'
 const { subtractList } = Items
+import { CurrencyContext } from '../../contexts/CurrencyContext'
+
 
 const MoneyExpenseStats = ({money}) => {
 
@@ -64,17 +66,100 @@ const MoneyExpenseStats = ({money}) => {
         setPercentageOther((expenseOther / totalExpense) * 100)
     }, [money, expenseBills, expenseGroceries, expenseFood, expenseClothes, expenseLeisure, expensePurchase, expenseOther])
 
+    const [hoveredExpense, setHoveredExpense] = useState(null)
+
+    const { currency } = useContext(CurrencyContext)
+
+
+    const handleMouseOver = (name: string, percentage: number, expense: number, e: React.MouseEvent, ref: React.MutableRefObject<any>, color: string) => {
+        e.preventDefault()
+        const boundingRect = ref.current.getBoundingClientRect()
+        const tooltipX = boundingRect.left + boundingRect.width / 2
+        const tooltipY = boundingRect.top + boundingRect.height / 2
+        const content = (
+            <div 
+                className='progress-bar-hover' 
+                style={{
+                    position: 'absolute',
+                    top: tooltipY - 25,
+                    left: tooltipX,
+                    transform: 'translate(-50%, -90%)',
+                    border: `1px solid ${color}`,
+                    borderRadius: '10px',
+                    padding: '5px',
+                    marginBottom: '5px',
+                }}
+            >
+                <h6 style={{color:`${color}`}}>{name}</h6>
+                <span>{percentage.toFixed(0)}% - {expense}{currency}</span>
+            </div>
+        )
+        setHoveredExpense(content)
+    }
+    
+
+    const billsRef = useRef(null)
+    const groceriesRef = useRef(null)
+    const foodRef = useRef(null)
+    const clothesRef = useRef(null)
+    const leisureRef = useRef(null)
+    const purchaseRef = useRef(null)
+    const otherRef = useRef(null)
+
     return (
         <>
             <div className='progress-bar-container' style={{display: 'flex', alignContent: 'center'}}>
-                <div className='progress-bar-money' style={{width:`${percentageBills}%`, backgroundColor:'#B22222'}}/>
-                <div className='progress-bar-money' style={{width:`${percentageGroceries}%`, backgroundColor:'#8B0000'}}/>
-                <div className='progress-bar-money' style={{width:`${percentageFood}%`, backgroundColor:'#DC143C'}}/>
-                <div className='progress-bar-money' style={{width:`${percentageClothes}%`, backgroundColor:'#FF4500'}}/>
-                <div className='progress-bar-money' style={{width:`${percentageLeisure}%`, backgroundColor:'#FF6347'}}/>
-                <div className='progress-bar-money' style={{width:`${percentagePurchase}%`, backgroundColor:'#FF7F50'}}/>
-                <div className='progress-bar-money' style={{width:`${percentageOther}%`, backgroundColor:'#85605a'}}/>
-                
+            <div 
+                ref={billsRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Bills', percentageBills, expenseBills, e, billsRef, '#B22222')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageBills}%`, backgroundColor:'#B22222'}}
+            />
+            <div 
+                ref={groceriesRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Groceries', percentageGroceries, expenseGroceries, e, groceriesRef, '#8B0000')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageGroceries}%`, backgroundColor:'#8B0000'}}
+            />
+            <div 
+                ref={foodRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Food', percentageFood, expenseFood, e, foodRef, '#DC143C')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageFood}%`, backgroundColor:'#DC143C'}}
+            />
+            <div 
+                ref={clothesRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Clothes', percentageClothes, expenseClothes, e, clothesRef, '#FF4500')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageClothes}%`, backgroundColor:'#FF4500'}}
+            />
+            <div 
+                ref={leisureRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Leisure', percentageLeisure, expenseLeisure, e, leisureRef, '#FF6347')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageLeisure}%`, backgroundColor:'#FF6347'}}
+            />
+            <div 
+                ref={purchaseRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Purchase', percentagePurchase, expensePurchase, e, purchaseRef, '#FF7F50')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentagePurchase}%`, backgroundColor:'#FF7F50'}}
+            />
+            <div 
+                ref={otherRef} 
+                className='progress-bar-money' 
+                onMouseOver={(e) => handleMouseOver('Other', percentageOther, expenseOther, e, otherRef, '#85605a')} 
+                onMouseLeave={() => setHoveredExpense(null)} 
+                style={{width:`${percentageOther}%`, backgroundColor:'#85605a'}}
+            />
+
+
 
             </div>
             <div className='progress-bar-list'>
@@ -86,6 +171,8 @@ const MoneyExpenseStats = ({money}) => {
                 {expensePurchase ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#FF7F50', marginRight:'2px'}}/>Purchase</span> : null}
                 {expenseOther ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#85605a', marginRight:'2px'}}/>Other</span> : null}
             </div>
+
+            {hoveredExpense}
         </>
     )
     

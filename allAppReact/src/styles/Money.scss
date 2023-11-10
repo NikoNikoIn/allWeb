@@ -468,6 +468,12 @@ div.money-comp-wrap {
 
 }
 
+.progress-bar-hover {
+  width: auto;
+  height: auto;
+  background-color: var(--mainColor);
+}
+
 @media only screen and (max-width: 767px) {
 
   .money-container {  display: grid;

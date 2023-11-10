@@ -13,7 +13,7 @@ const MoneyStats = ({money}) => {
         <div className='add-wrapper'>
             <div className='add-content'>
                 <h2>Your Stats</h2>
-                
+                <h3>Expenses</h3>
                 <MoneyExpenseStats money={money} />
             </div>
 
