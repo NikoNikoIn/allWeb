@@ -88,6 +88,10 @@ const MoneyExpenseStats = ({money}) => {
                     borderRadius: '10px',
                     padding: '5px',
                     marginBottom: '5px',
+                    zIndex: '4',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
                 }}
             >
                 <h6 style={{color:`${color}`}}>{name}</h6>
