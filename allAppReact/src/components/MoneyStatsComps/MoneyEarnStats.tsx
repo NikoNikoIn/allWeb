@@ -26,7 +26,7 @@ const MoneyEarnStats = ({money}) => {
                 case 'Side pay':
                     setEarnSide(total)
                     break
-                case 'Other':
+                case 'Other way':
                     setEarnOther(total)
                     break
                 default:
@@ -89,9 +89,9 @@ const MoneyEarnStats = ({money}) => {
                 <div 
                     ref={salaryRef} 
                     className='progress-bar-money' 
-                    onMouseOver={(e) => handleMouseOver('Salary', percentageSalary, earnSalary, e, salaryRef, '#37b000')} 
+                    onMouseOver={(e) => handleMouseOver('Salary', percentageSalary, earnSalary, e, salaryRef, '#67b528')} 
                     onMouseLeave={() => setHoveredExpense(null)} 
-                    style={{width:`${percentageSalary}%`, backgroundColor:'#37b000'}}
+                    style={{width:`${percentageSalary}%`, backgroundColor:'#67b528'}}
                 />
                 <div 
                     ref={sideRef} 
@@ -103,15 +103,15 @@ const MoneyEarnStats = ({money}) => {
                 <div 
                     ref={otherRef} 
                     className='progress-bar-money' 
-                    onMouseOver={(e) => handleMouseOver('Other', percentageOther, earnOther, e, otherRef, '#9ab584')} 
+                    onMouseOver={(e) => handleMouseOver('Other way', percentageOther, earnOther, e, otherRef, '#9ab584')} 
                     onMouseLeave={() => setHoveredExpense(null)} 
                     style={{width:`${percentageOther}%`, backgroundColor:'#9ab584'}}
                 />
             </div>
             <div className='progress-bar-list'>
-                {earnSalary ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#37b000', marginRight:'2px'}}/>Salary</span> : null}
+                {earnSalary ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#67b528', marginRight:'2px'}}/>Salary</span> : null}
                 {earnSide ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#92de54', marginRight:'2px'}}/>Side pay</span> : null}
-                {earnOther ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#9ab584', marginRight:'2px'}}/>Other</span> : null}
+                {earnOther ? <span style={{marginRight: '2%', display: 'flex', alignItems:'center'}}><div style={{width: '1vh', height: '1vh', borderRadius:'50%', backgroundColor:'#9ab584', marginRight:'2px'}}/>Other way</span> : null}
             </div>
 
             {hoveredExpense}

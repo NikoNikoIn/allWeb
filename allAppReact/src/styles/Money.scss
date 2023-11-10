@@ -103,6 +103,7 @@ div.money-comp-wrap {
           background-color: var(--thirdColor);
           color: #3dc257;
           border: 0px;
+          cursor: default;
         }
     }
     &.subtract{
@@ -120,6 +121,8 @@ div.money-comp-wrap {
           background-color: var(--thirdColor);
           color: #c40606;
           border: 0px;
+          cursor: default;
+
         }
     }
 }

@@ -63,7 +63,7 @@ const Items = {
     addList: [
         'Salary',
         'Side pay',
-        'Other'
+        'Other way'
     ],
 
     subtractList: [
