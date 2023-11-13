@@ -3,6 +3,9 @@ import Items from '../Items'
 const { addList } = Items
 import { CurrencyContext } from '../../contexts/CurrencyContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+
 
 const MoneyEarnStats = ({money}) => {
 
@@ -110,6 +113,8 @@ const MoneyEarnStats = ({money}) => {
         setHoveredEarn(content)
     }
 
+    const [show, setShow] = useState(false)
+
     return (
         <div>
             <div className='progress-bar-container' style={{display: 'flex', alignContent: 'center'}}>
@@ -139,30 +144,69 @@ const MoneyEarnStats = ({money}) => {
             {leastEarn.total > 0 || maxEarn.total > 0 ? (
                     <div>
                         <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'flex-start'}}>
-                        {maxEarn.total > 0 ? (
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <span>Most earned from: <span style={{color: maxEarn.color}}>{maxEarn.name}</span></span>
-                                <span>You've earned <span style={{color: maxEarn.color}}>{maxEarn.total}{currency}</span> by this method</span>
-                                <span>It takes <span style={{color: maxEarn.color}}>{(maxEarn.percentage).toFixed(0)}%</span> of all the Earnings</span>
-                            </div>
-                        ) : (
-                            null
-                        )}
+                            {maxEarn.total > 0 ? (
+                                <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                    <span>Most earned from: <span style={{color: maxEarn.color}}>{maxEarn.name}</span></span>
+                                    <span>You've earned <span style={{color: maxEarn.color}}>{maxEarn.total}{currency}</span> by this method</span>
+                                    <span>It takes <span style={{color: maxEarn.color}}>{(maxEarn.percentage).toFixed(0)}%</span> of all the Earnings</span>
+                                </div>
+                            ) : (
+                                null
+                            )}
 
-                        {leastEarn.total > 0 ? (
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <span>Least earned from: <span style={{color: leastEarn.color}}>{leastEarn.name}</span></span>
-                                <span>You've earned <span style={{color: leastEarn.color}}>{leastEarn.total}{currency}</span> by this method</span>
-                                <span>It takes <span style={{color: leastEarn.color}}>{(leastEarn.percentage).toFixed(0)}%</span> of all the Earnings</span>
-                            </div>
-                        ) : (
-                            null
-                        )}
+                            {leastEarn.total > 0 ? (
+                                <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                    <span>Least earned from: <span style={{color: leastEarn.color}}>{leastEarn.name}</span></span>
+                                    <span>You've earned <span style={{color: leastEarn.color}}>{leastEarn.total}{currency}</span> by this method</span>
+                                    <span>It takes <span style={{color: leastEarn.color}}>{(leastEarn.percentage).toFixed(0)}%</span> of all the Earnings</span>
+                                </div>
+                            ) : (
+                                null
+                            )}
 
                         </div>
                     </div>
             ) : null}
 
+            <div className='money-table' style={{marginTop:'20px'}}>
+                {show ? (
+                    <>
+                        <div className='money-expand-table earn' onClick={() => setShow(!show)}>
+                            <FontAwesomeIcon
+                                icon={faChevronDown}
+                                rotation={180}
+                            /> Collapse
+                        </div>
+                        <table style={{width:'100%'}}>
+                            <tr>
+                                <th>Earning</th>
+                                <th>Total</th>
+                                <th>Percentage</th>
+                            </tr>   
+                            {Object.entries(earnings).map(([purpose, { total, percentage, color }], index) => (
+                                total ? (
+                                    <tr key={index}>
+                                        <td style={{color:color}}>{purpose}</td>
+                                        <td>{total}{currency}</td>
+                                        <td>
+                                            <div style={{width:'100%', overflow:'hidden', backgroundColor:'#c2c2c2', borderRadius:'15px'}}>
+                                                <span style={{display:'flex', justifyContent:'center', width:`${percentage}%`, backgroundColor:color}}>{percentage.toFixed(0)}%</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ) : null
+                            ))}
+                        </table>
+                    </>
+                ) : (
+                    <div className='money-expand-table earn off' onClick={() => setShow(!show)}>
+                        <FontAwesomeIcon
+                            icon={faChevronDown}
+                        /> Expand
+                    </div>
+                )}
+                
+            </div>
 
         </div>
     )

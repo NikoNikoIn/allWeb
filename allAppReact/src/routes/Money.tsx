@@ -8,6 +8,7 @@ import MoneyComponent from '../components/MoneyComps/MoneyComponent'
 import CurrencyButton from '../components/MoneyComps/CurrencyButton'
 import MoneyGraph from '../components/MoneyComps/MoneyGraph'
 import MoneyStats from '../components/MoneyComps/MoneyStats'
+import MoneyGoals from '../components/MoneyComps/MoneyGoals'
 
 import CurrencyProvider from '../contexts/CurrencyProvider'
 
@@ -100,7 +101,8 @@ const Money = () => {
                         <div style={{marginBottom:'20px', marginLeft:'15px'}}>
                             <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>
-                            <span className={show==='stats' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('stats')}>Statistics</span>
+                            <span className={show==='stats' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('stats')}>Statistics</span>
+                            <span className={show==='goals' ? 'btn-menu active' : 'btn-menu'} onClick={() => setShow('goals')}>Goals</span>
                         </div>
                         {show === 'add' ? (
                             <div className='money-scrollable'>
@@ -140,8 +142,12 @@ const Money = () => {
                                     ))}
                                 </Row>
                             </div>
-                        ) : (
+                        ) : show === 'stats' ? (
                             <MoneyStats money={money}/>
+                        ) : show === 'goals' ? (
+                            <MoneyGoals money={money}/>
+                        ) : (
+                            null
                         )}
 
                     </div>

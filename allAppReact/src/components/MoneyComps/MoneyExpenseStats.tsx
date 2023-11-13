@@ -3,6 +3,9 @@ import Items from '../Items'
 const { subtractList } = Items
 import { CurrencyContext } from '../../contexts/CurrencyContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+
 
 const MoneyExpenseStats = ({money}) => {
 
@@ -112,6 +115,7 @@ const MoneyExpenseStats = ({money}) => {
         setHoveredExpense(content)
     }
 
+    const [show, setShow] = useState(false)
 
     return (
         <div>
@@ -143,29 +147,68 @@ const MoneyExpenseStats = ({money}) => {
             {leastExpense.total > 0 || maxExpense.total > 0 ? (
                 <div>
                         <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'flex-start'}}>
-                        {maxExpense.total > 0 ? (
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <span>Most spent on: <span style={{color: maxExpense.color}}>{maxExpense.name}</span></span>
-                                <span>You've spent <span style={{color: maxExpense.color}}>{maxExpense.total}{currency}</span> on it</span>
-                                <span>It takes <span style={{color: maxExpense.color}}>{(maxExpense.percentage).toFixed(0)}%</span> of all the Expenses</span>
-                            </div>
-                        ) : (
-                            null
-                        )}
+                            {maxExpense.total > 0 ? (
+                                <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                    <span>Most spent on: <span style={{color: maxExpense.color}}>{maxExpense.name}</span></span>
+                                    <span>You've spent <span style={{color: maxExpense.color}}>{maxExpense.total}{currency}</span> on it</span>
+                                    <span>It takes <span style={{color: maxExpense.color}}>{(maxExpense.percentage).toFixed(0)}%</span> of all the Expenses</span>
+                                </div>
+                            ) : (
+                                null
+                            )}
 
-                        {leastExpense.total > 0 ? (
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <span>Least spent on: <span style={{color: leastExpense.color}}>{leastExpense.name}</span></span>
-                                <span>You've spent <span style={{color: leastExpense.color}}>{leastExpense.total}{currency}</span> on it</span>
-                                <span>It takes <span style={{color: leastExpense.color}}>{(leastExpense.percentage).toFixed(0)}%</span> of all the Expenses</span>
-                            </div>
-                        ) : (
-                            null
-                        )}
+                            {leastExpense.total > 0 ? (
+                                <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                    <span>Least spent on: <span style={{color: leastExpense.color}}>{leastExpense.name}</span></span>
+                                    <span>You've spent <span style={{color: leastExpense.color}}>{leastExpense.total}{currency}</span> on it</span>
+                                    <span>It takes <span style={{color: leastExpense.color}}>{(leastExpense.percentage).toFixed(0)}%</span> of all the Expenses</span>
+                                </div>
+                            ) : (
+                                null
+                            )}
 
-                    </div>
+                        </div>
                 </div>
             ) : null}
+
+            <div className='money-table' style={{marginTop:'20px'}}>
+                {show ? (
+                    <>
+                        <div className='money-expand-table subtract' onClick={() => setShow(!show)}>
+                            <FontAwesomeIcon
+                                icon={faChevronDown}
+                                rotation={180}
+                            /> Collapse
+                        </div>
+                        <table style={{width:'100%'}}>
+                            <tr>
+                                <th>Earning</th>
+                                <th>Total</th>
+                                <th>Percentage</th>
+                            </tr>   
+                            {Object.entries(expenses).map(([purpose, { total, percentage, color }], index) => (
+                                total ? (
+                                    <tr key={index}>
+                                        <td style={{color:color}}>{purpose}</td>
+                                        <td>{total}{currency}</td>
+                                        <td>
+                                            <div style={{width:'100%', overflow:'hidden', backgroundColor:'#c2c2c2', borderRadius:'15px'}}>
+                                                <span style={{display:'flex', justifyContent:'center', width:`${percentage}%`, backgroundColor:color}}>{percentage.toFixed(0)}%</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ) : null
+                            ))}
+                        </table>
+                    </>
+                ) : (
+                    <div className='money-expand-table subtract off' onClick={() => setShow(!show)}>
+                        <FontAwesomeIcon
+                            icon={faChevronDown}
+                        /> Expand
+                    </div>
+                )}
+            </div>
             
         </div>
     )

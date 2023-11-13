@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
 import Items from '../Items'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

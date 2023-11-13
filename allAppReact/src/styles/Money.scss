@@ -437,6 +437,7 @@ div.money-comp-wrap {
   display: flex;
   flex-direction: row;
   padding: 20px;
+  width: 100%;
 }
 
 .add-content {
@@ -473,13 +474,67 @@ div.money-comp-wrap {
   background-color: var(--mainColor);
 }
 
-.stats-wrapper {
+.general-money-wrapper {
   background-color: var(--mainColor);
   padding: 10px;
   border-radius: 25px;
   margin-top: 10px;
   box-shadow: var(--shadow)
 }
+
+.money-table th, .money-table td {
+  margin: 15px 0px 10px 0px;
+  padding: 10px;
+}
+
+
+.money-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: var(--shadow);
+  background-color: var(--thirdColor);
+  border-radius: 15px;
+}
+
+.money-expand-table {
+  padding: 10px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+
+  &.earn {
+    background-color: #3dc257;
+    cursor: pointer;
+    &:hover {
+      background-color: #4be76a;
+    }
+
+    &.off {
+      border-radius: 15px;
+    }
+  }
+
+  &.subtract {
+    background-color: #c40606;
+    cursor: pointer;
+    &:hover {
+      background-color: #e00808;
+    }
+
+    &.off {
+      border-radius: 15px;
+    }
+  }
+}
+
+.graph-axis {
+  height: 30vh;
+  background-color: #3dc257;
+  margin: 15px 0px 10px 0px;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  
+}
+
 
 @media only screen and (max-width: 767px) {
 
