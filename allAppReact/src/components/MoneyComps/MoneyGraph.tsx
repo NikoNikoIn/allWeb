@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { CurrencyContext } from '../contexts/CurrencyContext'
+import { CurrencyContext } from '../../contexts/CurrencyContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 

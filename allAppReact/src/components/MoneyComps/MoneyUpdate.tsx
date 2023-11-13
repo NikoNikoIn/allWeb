@@ -2,9 +2,9 @@ import React, { useState, FormEvent, ChangeEvent, useContext } from 'react'
 import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesUp, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { CurrencyContext } from '../contexts/CurrencyContext'
+import { CurrencyContext } from '../../contexts/CurrencyContext'
 
-import MoneyModal from '../components/MoneyModal'
+import MoneyModal from './MoneyModal'
 
 
 interface MoneyUpdateProps {
@@ -108,7 +108,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                             min='0'
                             onKeyDown={(e) => {
                                 const keyCode = e.key;
-                                const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'; // Numbers 0-9 or Backspace
+                                const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'
                                 if (!isValidKey) {
                                     e.preventDefault();
                                 }

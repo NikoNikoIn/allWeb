@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import '../App.scss'
-import '../styles/Money.scss'
-import { CurrencyContext } from '../contexts/CurrencyContext'
+import '../../App.scss'
+import '../../styles/Money.scss'
+import { CurrencyContext } from '../../contexts/CurrencyContext'
 
 
-import Items from './Items'
+import Items from '../Items'
 const { addList, subtractList } = Items
 
 

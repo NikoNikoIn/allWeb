@@ -1,5 +1,5 @@
-import '../App.scss'
-import '../styles/ToDo.scss'
+import '../../App.scss'
+import '../../styles/ToDo.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faCheck, faBan } from '@fortawesome/free-solid-svg-icons'

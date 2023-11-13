@@ -3,8 +3,8 @@ import '../App.scss'
 import '../styles/ToDo.scss'
 import { Row, Col, Container, Form } from 'react-bootstrap'
 
-import ToDoForm from '../components/ToDoForm'
-import ToDoComp from '../components/ToDoComp'
+import ToDoForm from '../components/ToDoComps/ToDoForm'
+import ToDoComp from '../components/ToDoComps/ToDoComp'
 
 import Items from '../components/Items'
 const { taskColors } = Items

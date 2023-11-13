@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
-import '../App.scss'
-import '../styles/Money.scss'
-import { CurrencyContext } from '../contexts/CurrencyContext'
+import '../../App.scss'
+import '../../styles/Money.scss'
+import { CurrencyContext } from '../../contexts/CurrencyContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowTrendUp, faArrowTrendDown } from '@fortawesome/free-solid-svg-icons'
 

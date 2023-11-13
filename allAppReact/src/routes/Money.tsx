@@ -3,12 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 import '../App.scss'
 import '../styles/Money.scss'
 
-import MoneyUpdate from '../components/MoneyUpdate'
-import MoneyComponent from '../components/MoneyComponent'
-import CurrencyButton from '../components/CurrencyButton'
+import MoneyUpdate from '../components/MoneyComps/MoneyUpdate'
+import MoneyComponent from '../components/MoneyComps/MoneyComponent'
+import CurrencyButton from '../components/MoneyComps/CurrencyButton'
+import MoneyGraph from '../components/MoneyComps/MoneyGraph'
+import MoneyStats from '../components/MoneyComps/MoneyStats'
+
 import CurrencyProvider from '../contexts/CurrencyProvider'
-import MoneyGraph from '../components/MoneyGraph'
-import MoneyStats from '../components/MoneyStats'
 
 
 const Money = () => {
