@@ -194,7 +194,7 @@ const MoneyEarnStats = ({money}) => {
                                             <td>{total}{currency}</td>
                                             <td>
                                                 <div style={{ width: '100%', overflow: 'hidden', backgroundColor: '#c2c2c2', borderRadius: '15px' }}>
-                                                    <span style={{ display: 'flex', justifyContent: 'center', width: `${percentage}%`, backgroundColor: color }}>{percentage.toFixed(0)}%</span>
+                                                    <span style={{ display: 'flex', justifyContent: 'center', width: `${percentage}%`, backgroundColor: color }}><span style={{color:'var(--mainColor)'}}>{percentage.toFixed(0)}%</span></span>
                                                 </div>
                                             </td>
                                         </tr>

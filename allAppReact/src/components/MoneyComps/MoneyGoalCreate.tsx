@@ -8,7 +8,7 @@ import { CurrencyContext } from '../../contexts/CurrencyContext'
 
 
 interface GoalFormProps {
-    onSubmit: (data: {id: number, text: string, amount: number}) => void
+    onSubmit: (data: {id: number, text: string, amount: number, completion: number}) => void
 }
 
 
@@ -20,12 +20,19 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
     const handleAdd = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
+        const number = parseInt(amount)
+        if (isNaN(number)) {
+            return
+        }
+
         props.onSubmit({
             id: Math.floor(Math.random() * 10000),
             text: goal,
             amount: parseInt(amount),
+            completion: 0,
         })
         setGoal('')
+        setAmount('')
     }
 
     const handleGoalChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,12 +60,16 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
 
         {show ? (
             <div className='general-money-wrapper goal' style={{marginTop: '15px'}}>
+                <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingTop:'5px', paddingLeft:'10px', paddingRight:'10px'}}>
+                    <h3>Add new <span style={{color:'$moneyGoals'}}>Goal</span></h3>
+                    <FontAwesomeIcon icon={faXmark} style={{color: '#c40606', cursor: 'pointer'}} onClick={() => setShow(!show)}/>
+                </div>
                 <Form onSubmit={handleAdd} style={{display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent:'space-around'}}>
-                    <input className='money-input' type='text' placeholder='What is your goal?' value={goal} onChange={handleGoalChange}/>
+                    <input className='money-input goals' type='text' placeholder='What is your goal?' value={goal} onChange={handleGoalChange}/>
                     <div style={{display:'flex', alignItems:'center'}}>
                         <input
                             type='text'
-                            className='money-input'
+                            className='money-input goals'
                             min='0'
                             placeholder='How much?'
                             style={{width:'80%'}}
@@ -75,7 +86,6 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
                         <span style={{fontSize:'20px'}}>{currency}</span>
                     </div>     
                     <button className={goal && amount ? 'money-button goal' : 'money-button goal disabled'}><FontAwesomeIcon size='lg' icon={faPlus}/></button>
-                    <FontAwesomeIcon icon={faXmark} style={{color: '#c40606', cursor: 'pointer'}} onClick={() => setShow(!show)}/>
 
                 </Form>
             </div>
