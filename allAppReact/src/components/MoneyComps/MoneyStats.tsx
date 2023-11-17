@@ -4,7 +4,7 @@ import MoneyEarnStats from './MoneyEarnStats'
 import MoneyGraphTrend from './MoneyGraphTrend'
 
 
-const MoneyStats = ({money}) => {
+const MoneyStats = ({money}: {money:any}) => {
     return (
         <div className='add-wrapper'>
             <div className='add-content'>
@@ -20,7 +20,9 @@ const MoneyStats = ({money}) => {
                 </div>
                 <br/>
                 <div className='general-money-wrapper'>
-                    <MoneyGraphTrend/>
+                    <h1>In Progress</h1>
+                    <h2>Here will be a money graph trend</h2>
+                    {/*<MoneyGraphTrend money={money}/>*/}
                 </div>
                 <br/>
             </div>

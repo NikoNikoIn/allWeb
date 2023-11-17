@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 
-const MoneyExpenseStats = ({money}) => {
+const MoneyExpenseStats = ({money}: {money:any}) => {
 
     const initialExpenses = {
         'Bills': { total: 0, percentage: 0, color: '#B22222' },
@@ -82,8 +82,12 @@ const MoneyExpenseStats = ({money}) => {
 
     const [hoveredExpense, setHoveredExpense] = useState(null)
 
-    const { currency } = useContext(CurrencyContext)
+    const currencyContext = useContext(CurrencyContext)
 
+    if (!currencyContext) {
+        throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
+    }
+    const { currency } = currencyContext
 
     const handleMouseOver = (name: string, percentage: number, earn: number, e: React.MouseEvent, color: string, ref: React.MutableRefObject<any>) => {
         e.preventDefault()
@@ -171,7 +175,7 @@ const MoneyExpenseStats = ({money}) => {
                 </div>
             ) : null}
 
-            <div className='money-table' style={{marginTop:'20px'}}>
+            <div className='money-table subtract' style={{marginTop:'20px'}}>
                 {show ? (
                     <>
                         <div className='money-expand-table subtract' onClick={() => setShow(!show)}>
@@ -182,7 +186,7 @@ const MoneyExpenseStats = ({money}) => {
                         </div>
                         <table style={{width:'100%'}}>
                             <tr>
-                                <th>Earning</th>
+                                <th>Expense</th>
                                 <th>Total</th>
                                 <th>Percentage</th>
                             </tr>   

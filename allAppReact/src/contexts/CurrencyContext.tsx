@@ -1,7 +1,11 @@
-import React from 'react';
-import { currencyList } from '../components/Items';
+import React  from 'react'
 
-export const CurrencyContext = React.createContext({
+type CurrencyContextType = {
+    currency: string
+    setCurrency: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const CurrencyContext = React.createContext<CurrencyContextType | undefined>({
     currency: 'BYN',
-    setCurrency: (currency: string) => {} // Placeholder function
+    setCurrency: () => {},
 })

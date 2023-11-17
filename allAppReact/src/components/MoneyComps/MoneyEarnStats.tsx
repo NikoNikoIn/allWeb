@@ -104,6 +104,7 @@ const MoneyEarnStats = ({money}) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center'
+                    
                 }}
             >
                 <h6 style={{color:`${color}`}}>{name}</h6>
@@ -168,7 +169,7 @@ const MoneyEarnStats = ({money}) => {
                     </div>
             ) : null}
 
-            <div className='money-table' style={{marginTop:'20px'}}>
+            <div className='money-table earn' style={{marginTop:'20px'}}>
                 {show ? (
                     <>
                         <div className='money-expand-table earn' onClick={() => setShow(!show)}>
@@ -177,25 +178,29 @@ const MoneyEarnStats = ({money}) => {
                                 rotation={180}
                             /> Collapse
                         </div>
-                        <table style={{width:'100%'}}>
-                            <tr>
-                                <th>Earning</th>
-                                <th>Total</th>
-                                <th>Percentage</th>
-                            </tr>   
-                            {Object.entries(earnings).map(([purpose, { total, percentage, color }], index) => (
-                                total ? (
-                                    <tr key={index}>
-                                        <td style={{color:color}}>{purpose}</td>
-                                        <td>{total}{currency}</td>
-                                        <td>
-                                            <div style={{width:'100%', overflow:'hidden', backgroundColor:'#c2c2c2', borderRadius:'15px'}}>
-                                                <span style={{display:'flex', justifyContent:'center', width:`${percentage}%`, backgroundColor:color}}>{percentage.toFixed(0)}%</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ) : null
-                            ))}
+                        <table style={{ width: '100%' }}>
+                            <thead>
+                                <tr>
+                                    <th>Earning</th>
+                                    <th>Total</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.entries(earnings).map(([purpose, { total, percentage, color }], index) => (
+                                    total ? (
+                                        <tr key={index}>
+                                            <td style={{ color: color }}>{purpose}</td>
+                                            <td>{total}{currency}</td>
+                                            <td>
+                                                <div style={{ width: '100%', overflow: 'hidden', backgroundColor: '#c2c2c2', borderRadius: '15px' }}>
+                                                    <span style={{ display: 'flex', justifyContent: 'center', width: `${percentage}%`, backgroundColor: color }}>{percentage.toFixed(0)}%</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ) : null
+                                ))}
+                            </tbody>
                         </table>
                     </>
                 ) : (

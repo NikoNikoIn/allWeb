@@ -1,10 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
-const MoneyGraph = ({ earnMoney, expenseMoney }) => {
+const MoneyGraph = ({ earnMoney, expenseMoney }: { earnMoney: number, expenseMoney: number }) => {
     const [earnPercent, setEarnPercent] = useState(0)
     const [expensePercent, setExpensePercent] = useState(0)
 
@@ -20,12 +20,17 @@ const MoneyGraph = ({ earnMoney, expenseMoney }) => {
         }
     }, [earnMoney, expenseMoney])
 
-    const { currency } = useContext(CurrencyContext)
+    const currencyContext = useContext(CurrencyContext)
 
+    if (!currencyContext) {
+        throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
+    }
+    const { currency } = currencyContext
+    
     return (
         
         <div className='graph-wrapper'>
-            <h2 style={{padding:'2%', marginBottom:'4vh'}}>Graph Visualised</h2>
+            <h2 style={{padding:'2%', marginBottom:'4vh'}}>Cash Counter</h2>
             <div className='graph-flex'>
                 {earnMoney === 0 && expenseMoney === 0 ? (
                     null
@@ -56,12 +61,12 @@ const MoneyGraph = ({ earnMoney, expenseMoney }) => {
                 <div style={{ marginLeft: 'auto' }}>
                     {earnMoney - expenseMoney > 0 && expenseMoney !== 0 ? (
                         <span>
-                            <FontAwesomeIcon icon={faArrowUp} style={{ color: '#4287f5' }} />{' '}
+                            <FontAwesomeIcon icon={faArrowUp} style={{ color: '#4287f5' }} />
                             {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
                         </span>
                     ) : earnMoney - expenseMoney < 0 && earnMoney !== 0 ? (
                         <span>
-                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '#c40606' }} />{' '}
+                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '#c40606' }} />
                             {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
                         </span>
                     ) : (

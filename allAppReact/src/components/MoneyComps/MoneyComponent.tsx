@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import '../../App.scss'
 import '../../styles/Money.scss'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
@@ -6,7 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faArrowTrendUp, faArrowTrendDown } from '@fortawesome/free-solid-svg-icons'
 
 
-const MoneyComponent = ({ moneySingle, removeMoneySingle }) => {
+type MoneySingleType = {
+    amount: number;
+    type: string;
+    id: number;
+    purpose: string;
+    date: string;
+}
+
+
+const MoneyComponent = ({ moneySingle, removeMoneySingle }: { moneySingle: MoneySingleType, removeMoneySingle: (id: number) => void }) => {
 
     const { currency } = useContext(CurrencyContext)
 

@@ -1,7 +1,6 @@
-import React, { useState, FormEvent, ChangeEvent, useContext } from 'react'
-import { Container, Row, Col, Form, Dropdown } from 'react-bootstrap'
+import React, { useState, ChangeEvent, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesUp, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
 
 import MoneyModal from './MoneyModal'
@@ -34,11 +33,11 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
         const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         const currentDate = new Date()
         
-        const options = {
+        const options: Intl.DateTimeFormatOptions = {
             hour: '2-digit',
             minute: '2-digit',
             timeZone: userTimeZone,
-        }
+        }        
         
         const timeString = currentDate.toLocaleString('en-GB', options)
         
@@ -62,7 +61,12 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
     }
 
-    const { currency } = useContext(CurrencyContext)
+    const currencyContext = useContext(CurrencyContext)
+
+    if (!currencyContext) {
+        throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
+    }
+    const { currency } = currencyContext
 
     const [modalActive, setModalActive ] = useState(false)
     const [typeMoney, setTypeMoney] = useState('')

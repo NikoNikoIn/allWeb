@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import {useContext, FC} from 'react'
 import '../../App.scss'
 import '../../styles/Money.scss'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
@@ -7,18 +7,31 @@ import { CurrencyContext } from '../../contexts/CurrencyContext'
 import Items from '../Items'
 const { addList, subtractList } = Items
 
+interface MoneyModalProps {
+    active: boolean;
+    setActive: (active: boolean) => void;
+    type: string;
+    setPurpose: (purpose: string) => void;
+    onSubmit: (item: string) => void;
+    input: string;
+}
 
-const MoneyModal = ({ active, setActive, type, setPurpose, onSubmit, input }) => {
 
+const MoneyModal: FC<MoneyModalProps> = ({ active, setActive, type, setPurpose, onSubmit, input }) => {
 
-    const handleClick = (e, item) => {
+    const handleClick = (e: any, item: any) => {
         e.preventDefault()
         setPurpose(item)
         setActive(false)
         onSubmit(item)
     }
 
-    const { currency } = useContext(CurrencyContext)
+    const currencyContext = useContext(CurrencyContext)
+
+    if (!currencyContext) {
+        throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
+    }
+    const { currency } = currencyContext
 
     return (
         <div className={active ? 'money-modal active' : 'money-modal'}>

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 
-const MoneyGoals = ({money}) => {
+import MoneyGoalCreate from './MoneyGoalCreate'
+
+
+const MoneyGoals = ({money}: {money: any}) => {
     return (
         <div className='add-wrapper'>
             <div className='general-money-wrapper'>
-                Bitch
+                <h3>Your Goals</h3>
+                <MoneyGoalCreate />
             </div>
         </div>
     )

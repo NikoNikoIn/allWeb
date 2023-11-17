@@ -125,6 +125,25 @@ div.money-comp-wrap {
 
         }
     }
+
+    &.goal{
+      background-color: #3dc257;
+      color: var(--mainColor);
+      border: 2px solid #3dc257;
+
+        &:hover {
+            border: 2px solid #3dc257;
+            background-color: var(--mainColor);
+            color: #3dc257;
+        }
+
+        &.disabled {
+          background-color: var(--thirdColor);
+          color: #3dc257;
+          border: 0px;
+          cursor: default;
+        }
+    }
 }
 
 
@@ -472,14 +491,24 @@ div.money-comp-wrap {
   width: auto;
   height: auto;
   background-color: var(--mainColor);
+  
+
 }
 
 .general-money-wrapper {
   background-color: var(--mainColor);
   padding: 10px;
   border-radius: 25px;
-  margin-top: 10px;
-  box-shadow: var(--shadow)
+  box-shadow: var(--shadow);
+  width: 100%;
+
+  &.goal {
+    border-radius: 15px;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    background-color: var(--thirdColor);
+  }
 }
 
 .money-table th, .money-table td {
@@ -494,18 +523,30 @@ div.money-comp-wrap {
   box-shadow: var(--shadow);
   background-color: var(--thirdColor);
   border-radius: 15px;
+
+  &.earn {
+    border: 1px solid #4be76a;
+
+  }
+
+  &.subtract {
+    border: 1px solid #c40606;
+  }
 }
 
 .money-expand-table {
   padding: 10px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
+  transition: background-color 0.3s ease-in-out;
 
   &.earn {
-    background-color: #3dc257;
+    background-color: #4be76a;
+    color: var(--mainColor);
     cursor: pointer;
     &:hover {
-      background-color: #4be76a;
+      background-color: var(--mainColor);
+      color: #4be76a;
     }
 
     &.off {
@@ -514,10 +555,12 @@ div.money-comp-wrap {
   }
 
   &.subtract {
-    background-color: #c40606;
+    background-color: #e00808;
+    color: var(--mainColor);
     cursor: pointer;
     &:hover {
-      background-color: #e00808;
+      color: #e00808;
+      background-color: var(--mainColor);
     }
 
     &.off {
@@ -527,12 +570,29 @@ div.money-comp-wrap {
 }
 
 .graph-axis {
-  height: 30vh;
-  background-color: #3dc257;
+  background-color: var(--thirdColor);
   margin: 15px 0px 10px 0px;
   box-shadow: var(--shadow);
   border-radius: 5px;
   
+}
+
+.money-goal-button {
+  border: 1px solid #4be76a;
+  outline: none;
+  background-color: #4be76a;
+  color: var(--mainColor);
+  box-shadow: var(--shadow);
+  padding: 10px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--mainColor);
+    color: #4be76a;
+  }
+
+
 }
 
 

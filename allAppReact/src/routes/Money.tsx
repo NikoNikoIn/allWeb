@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import '../App.scss'
 import '../styles/Money.scss'
 
@@ -56,13 +56,13 @@ const Money = () => {
 
         if (moneySingle.type === 'add') {
             setChangeBackgroundColor('add')
-            setEarnMoney(prevMoney => prevMoney + moneySingle.amount)
+            setEarnMoney((prevMoney: number) => prevMoney + moneySingle.amount)
             setTimeout(() => {
                 setChangeBackgroundColor('none')
             }, 1200)
         } else if (moneySingle.type === 'subtract') {
             setChangeBackgroundColor('subtract')
-            setExpenseMoney(prevMoney => prevMoney + moneySingle.amount)
+            setExpenseMoney((prevMoney: number) => prevMoney + moneySingle.amount)
             setTimeout(() => {
                 setChangeBackgroundColor('none')
             }, 1200)
@@ -73,9 +73,9 @@ const Money = () => {
         const moneySingle = money.find((item: any) => item.id === id)
         if (moneySingle) {
             if (moneySingle.type === 'add') {
-                setEarnMoney(prevMoney => prevMoney - moneySingle.amount)
+                setEarnMoney((prevMoney: number) => prevMoney - moneySingle.amount)
             } else if (moneySingle.type === 'subtract') {
-                setExpenseMoney(prevMoney => prevMoney - moneySingle.amount)
+                setExpenseMoney((prevMoney: number) => prevMoney - moneySingle.amount)
             }
         }
         const removeArr = [...money].filter((item: any) => item.id !== id)

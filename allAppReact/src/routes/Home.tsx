@@ -3,6 +3,8 @@ import '../styles/Home.scss'
 import { Image, Col, Row, Container, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import { memo } from 'react'
+
 import faceImage from '../assets/face.jpg'
 import webPage from '../assets/nutrination.png'
 
@@ -13,15 +15,12 @@ import Items from '../components/Items'
 const { items, stackItems, socialItems } = Items
 
 
-const StackItems = (
-    stackItems.map(item => (
-        <ListGroup.Item key={item.text}>
-            <FontAwesomeIcon icon={item.icon} className='list-item-icon'/> 
-            <span className='list-item-text'> {item.text}</span>
-        </ListGroup.Item>
-    ))
-)
-
+const StackItems = stackItems.map(item => (
+    <ListGroup.Item key={item.text}>
+        <FontAwesomeIcon icon={item.icon} className='list-item-icon'/> 
+        <span className='list-item-text'> {item.text}</span>
+    </ListGroup.Item>
+))
 
 const WebItems = (
     <Row className='justify-content-md-center' style={{marginBottom:'25px'}}>
@@ -36,8 +35,6 @@ const WebItems = (
         ))}
     </Row>
 )
-  
-
 
 const SocialItems = (
     <div className='d-flex flex-row'>
@@ -49,13 +46,12 @@ const SocialItems = (
             style={{ color: item.color }}>
                 <FontAwesomeIcon className='social-icon' icon={item.icon} /> 
             </a>
-
         ))}
     </div>
 )
 
 
-function Home() {
+const Home = () => {
     return (
         <div className='home-page'>
             <Container>
@@ -176,4 +172,4 @@ function Home() {
 }
 
 
-export default Home
+export default memo(Home)
