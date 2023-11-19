@@ -175,7 +175,7 @@ const MoneyExpenseStats = ({money}: {money:any}) => {
                 </div>
             ) : null}
 
-            <div className='money-table subtract' style={{marginTop:'20px'}}>
+            <div className='money-table' style={{marginTop:'20px'}}>
                 {show ? (
                     <>
                         <div className='money-expand-table subtract' onClick={() => setShow(!show)}>

@@ -87,17 +87,15 @@ const Money = () => {
 
     return (
         <CurrencyProvider>
-            <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'}>
+            <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'} style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
                 <CurrencyButton/>
 
-                <div className='money-comp-wrap money-container'>
-                    <div className='graph-div'>
+                <div className='general-money-wrapper' style={{display:'flex', flexDirection:'column', width:'80%'}}>
+                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', width:'100%'}}> 
                         <MoneyGraph earnMoney={earnMoney} expenseMoney={expenseMoney}/>
-                    </div>
-                    <div className='add-div'>
                         <MoneyUpdate onSubmit={addMoney}/>
                     </div>
-                    <div className='display-div'>
+                    <div> 
                         <div style={{marginBottom:'20px', marginLeft:'15px'}}>
                             <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>
@@ -107,7 +105,7 @@ const Money = () => {
                         {show === 'add' ? (
                             <div className='money-scrollable'>
                                 <Row>
-                                   {money
+                                {money
                                     .filter((moneySingle: any) => moneySingle.type === 'add') 
                                     .map((moneySingle: any) => (
                                         <Col
@@ -152,6 +150,7 @@ const Money = () => {
 
                     </div>
                 </div>
+
             </div>
         </CurrencyProvider>
     )

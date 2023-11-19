@@ -9,7 +9,6 @@ html[data-theme='dark'] {
 
 .todo-page {
     width: calc(100% + 20px);
-    margin-left: -10px;
     background-color: var(--backgroundToDoMain);
     background: linear-gradient(to left, var(--backgroundToDoMain), var(--backgroundToDoSecond));
 }

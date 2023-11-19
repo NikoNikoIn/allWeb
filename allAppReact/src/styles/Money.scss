@@ -1,82 +1,26 @@
-$moneyGoals: #6ca3ba;
-
-.money-container {  
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 5px 5px;
-    grid-auto-flow: row;
-    justify-items: stretch;
-    grid-template-areas:
-      'graph-div graph-div add-div'
-      'display-div display-div display-div'
-      'display-div display-div display-div';
-}
-  
-  .graph-div {
-    justify-self: center;
-    align-self: start;
-    grid-area: graph-div;
-    width: 100%;
-  }
-  
-  .add-div {
-    justify-self: center;
-    align-self: center;
-    grid-area: add-div;
-    width: 100%;
-    height: 120%;
-    display: grid;
-
-  }
-  
-  .display-div {
-    justify-self: start;
-    align-self: center;
-    grid-area: display-div;
-    width: 100%;
-    height: 100%;
-  }
-
-  
-  
+$moneyEarn: #3dc257;
+$moneySpend: #c40606;
 
 .money-page {
-    margin-left: -10px;  
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: var(--thirdColor);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.9s ease-in-out;
+  height: 100%;
+  width: 100vw;
+  background-color: var(--thirdColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.9s ease-in-out;
 
-    &.add {
-      background-color: #3dc257;
-    }
+  &.add {
+    background-color: $moneyEarn;
+  }
 
-    &.subtract {
-      background-color: #c40606;
-    }
+  &.subtract {
+    background-color: $moneySpend;
+  }
 }
 
-div.money-comp-wrap {
-    box-shadow: var(--shadow);
-    border-radius: 25px;
-    background-color: var(--mainColor);
-    color: var(--secondColor);
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    height: 90vh;
-    width: 900px;
-
-    margin: 10px 10px 10px 10px;
-  
-}
 
 
 .money-button {
@@ -89,37 +33,37 @@ div.money-comp-wrap {
     box-shadow: var(--shadow);
 
     &.add{
-      background-color: #3dc257;
+      background-color: $moneyEarn;
       color: var(--mainColor);
-      border: 2px solid #3dc257;
+      border: 2px solid $moneyEarn;
 
         &:hover {
-            border: 2px solid #3dc257;
+            border: 2px solid $moneyEarn;
             background-color: var(--mainColor);
-            color: #3dc257;
+            color: $moneyEarn;
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: #3dc257;
+          color: $moneyEarn;
           border: 0px;
           cursor: default;
         }
     }
     &.subtract{
-      background-color: #c40606;
+      background-color: $moneySpend;
       color: var(--mainColor);
-      border: 2px solid #c40606;
+      border: 2px solid $moneySpend;
 
         &:hover {
-            border: 2px solid #c40606;
+            border: 2px solid $moneySpend;
             background-color: var(--mainColor);
-            color: #c40606;
+            color: $moneySpend;
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: #c40606;
+          color: $moneySpend;
           border: 0px;
           cursor: default;
 
@@ -127,19 +71,19 @@ div.money-comp-wrap {
     }
 
     &.goal{
-      background-color: $moneyGoals;
+      background-color: $moneyEarn;
       color: var(--mainColor);
-      border: 2px solid $moneyGoals;
+      border: 2px solid $moneyEarn;
 
         &:hover {
-            border: 2px solid $moneyGoals;
+            border: 2px solid $moneyEarn;
             background-color: var(--mainColor);
-            color: $moneyGoals;
+            color: $moneyEarn;
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: $moneyGoals;
+          color: $moneyEarn;
           border: 0px;
           cursor: default;
         }
@@ -164,7 +108,7 @@ div.money-comp-wrap {
     }
 
     &.goals {
-      border-bottom: 2px solid $moneyGoals;
+      border-bottom: 2px solid $moneyEarn;
 
     }
 }
@@ -213,7 +157,7 @@ div.money-comp-wrap {
   position: absolute; 
   top: 10px; 
   right: 10px; 
-  color: #c40606;
+  color: $moneySpend;
   cursor: pointer;
 }
 
@@ -280,19 +224,12 @@ div.money-comp-wrap {
   }
 
 .money-wrapper {
-  width: 20vw;
-  height: 20vh;
   background-color: var(--thirdColor);
-  justify-items: center;
-  align-items: center;
-  margin-right: 25px;
-  margin-bottom: 45px;
+
+
   border-radius: 25px;
   box-shadow: var(--shadow);
 
-  display: flex;
-  align-items: center;
-  justify-items: center;
 }
 
 .graph-wrapper {
@@ -318,48 +255,33 @@ div.money-comp-wrap {
   }
 
   &.earnings {
-    background-color: #3dc257;
+    background-color: $moneyEarn;
   }
 }
 
-.graph-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: relative;
-}
+
 
 .graph-text {
-  position: absolute;
   z-index: 1;
 
   &.expenses {
     color: #949494;
     font-size: 12px;
-    transform: translate(0%, -100%);
   }
 
   &.earnings {
     color: #949494;
     font-size: 12px;
-    transform: translate(0%, 90%);
   }
 
   &.subtract {
     color: var(--secondColor);
     font-size: 22px;
-    right: 1vw;
-    transform: translate(0%, -100%);
   }
 
   &.add {
     color: var(--secondColor);
     font-size: 22px;
-    right: 1vw;
-    transform: translate(0%, 40%);
   }
 
 }
@@ -376,7 +298,7 @@ div.money-comp-wrap {
   }
 
   &.earnings {
-    background-color: #3dc257;
+    background-color: $moneyEarn;
 
   }
 
@@ -426,24 +348,24 @@ div.money-comp-wrap {
   transition: 0.3s ease-in-out;
 
   &.add {
-    border: 2px solid #3dc257;
+    border: 2px solid $moneyEarn;
     width: 50%;
-    background-color: #3dc257;
+    background-color: $moneyEarn;
     color: var(--mainColor);
     &:hover {
       background-color: var(--mainColor);
-      color: #3dc257;
+      color: $moneyEarn;
     }
   }
 
   &.subtract {
-    border: 2px solid #c40606;
+    border: 2px solid $moneySpend;
     width: 50%;
-    background-color: #c40606;
+    background-color: $moneySpend;
     color: var(--mainColor);
     &:hover {
       background-color: var(--mainColor);
-      color: #c40606;
+      color: $moneySpend;
     }
   }
 }
@@ -508,6 +430,16 @@ div.money-comp-wrap {
   width: 100%;
   height: auto;
 
+  &.graph {
+    z-index: 6;
+    width: auto;
+    height: auto;
+    background-color: var(--thirdColor);
+    border-radius: 25px;
+
+    box-shadow: var(--shadow);
+  }
+
   &.goal {
     border-radius: 15px;
     padding: 0px;
@@ -527,15 +459,6 @@ div.money-comp-wrap {
   box-shadow: var(--shadow);
   background-color: var(--thirdColor);
   border-radius: 15px;
-
-  &.earn {
-    border: 1px solid #4be76a;
-
-  }
-
-  &.subtract {
-    border: 1px solid #c40606;
-  }
 }
 
 .money-expand-table {
@@ -545,12 +468,12 @@ div.money-comp-wrap {
   transition: background-color 0.3s ease-in-out;
 
   &.earn {
-    background-color: #4be76a;
+    background-color: $moneyEarn;
     color: var(--mainColor);
     cursor: pointer;
     &:hover {
       background-color: var(--mainColor);
-      color: #4be76a;
+      color: $moneyEarn;
     }
 
     &.off {
@@ -559,11 +482,11 @@ div.money-comp-wrap {
   }
 
   &.subtract {
-    background-color: #e00808;
+    background-color: $moneySpend;
     color: var(--mainColor);
     cursor: pointer;
     &:hover {
-      color: #e00808;
+      color: $moneySpend;
       background-color: var(--mainColor);
     }
 
@@ -582,9 +505,9 @@ div.money-comp-wrap {
 }
 
 .money-goal-button {
-  border: 1px solid $moneyGoals;
+  border: 1px solid $moneyEarn;
   outline: none;
-  background-color: $moneyGoals;
+  background-color: $moneyEarn;
   color: var(--mainColor);
   box-shadow: var(--shadow);
   padding: 10px;
@@ -593,7 +516,7 @@ div.money-comp-wrap {
 
   &:hover {
     background-color: var(--mainColor);
-    color: $moneyGoals;
+    color: $moneyEarn;
   }
 
 

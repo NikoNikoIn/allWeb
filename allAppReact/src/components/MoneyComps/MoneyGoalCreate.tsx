@@ -33,6 +33,7 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
         })
         setGoal('')
         setAmount('')
+        setShow(false)
     }
 
     const handleGoalChange = (e: ChangeEvent<HTMLInputElement>) => {

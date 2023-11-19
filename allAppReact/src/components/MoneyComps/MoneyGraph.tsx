@@ -29,45 +29,47 @@ const MoneyGraph = ({ earnMoney, expenseMoney }: { earnMoney: number, expenseMon
     
     return (
         
-        <div className='graph-wrapper'>
-            <h2 style={{padding:'2%', marginBottom:'4vh'}}>Cash Counter</h2>
-            <div className='graph-flex'>
+        <div className='general-money-wrapper graph'>
+            <h2>Cash Counter</h2>
+            <div style={{display:'flex', flexDirection:'column'}}>
                 {earnMoney === 0 && expenseMoney === 0 ? (
                     null
                 ) : (
-                    <>
-                        <div className='graph-text expenses'><div className='graph-icon expenses'/> Expenses</div> 
-                        <div className='graph-text subtract'>{expenseMoney}{currency}</div> 
-                        <div className='graph-show expenses' style={{width: `${expensePercent}%`, marginBottom:`2px`}}>
+
+                    <div style={{display:'flex', flexDirection:'column'}}>
+                        
+                        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'flex-end'}}>
+                            <div className='graph-text expenses'><div className='graph-icon expenses'/> Expenses</div> 
+                            <div className='graph-text subtract'>{expenseMoney}{currency}</div> 
                         </div>
-        
-                        <div className='graph-text earnings'><div className='graph-icon earnings'/> Earnings</div> 
-                        <div className='graph-text add'>{earnMoney}{currency}</div> 
-        
-                        <div className='graph-show earnings' style={{width: `${earnPercent}%`}}>
+                        <div className='graph-show expenses' style={{width: `${expensePercent}%`, marginBottom:`2px`}}></div>
+    
+                        <div className='graph-show earnings' style={{width: `${earnPercent}%`}}></div>
+                        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'flex-start'}}>
+                            <div className='graph-text earnings'><div className='graph-icon earnings'/> Earnings</div> 
+                            <div className='graph-text add'>{earnMoney}{currency}</div> 
                         </div>
-                    </>
+                    </div>
+
                 )}
 
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', padding: '2%', paddingTop: '6%' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ color: earnMoney - expenseMoney > 0 ? '#3dc257' : earnMoney - expenseMoney < 0 ? '#c40606' : '#949494' }}>
+            <div style={{ display: 'flex', flexDirection: 'row'}}>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                    <h3 style={{ color: earnMoney - expenseMoney > 0 ? '$moneyEarn' : earnMoney - expenseMoney < 0 ? '$moneySpend' : '#949494' }}>
                         {earnMoney - expenseMoney}
                         {currency}
                     </h3>
-                    <span style={{ marginTop: '-10px', fontSize: '12px', color: '#949494' }}>Balance</span>
+                    <span style={{fontSize: '12px', color: '#949494' }}>Balance</span>
                 </div>
                 <div style={{ marginLeft: 'auto' }}>
                     {earnMoney - expenseMoney > 0 && expenseMoney !== 0 ? (
                         <span>
-                            <FontAwesomeIcon icon={faArrowUp} style={{ color: '#4287f5' }} />
-                            {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
+                            <FontAwesomeIcon icon={faArrowUp} style={{ color: '#4287f5' }} /> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
                         </span>
                     ) : earnMoney - expenseMoney < 0 && earnMoney !== 0 ? (
                         <span>
-                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '#c40606' }} />
-                            {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
+                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '$moneySpend' }} /> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
                         </span>
                     ) : (
                         null

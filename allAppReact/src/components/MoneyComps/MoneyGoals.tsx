@@ -33,9 +33,10 @@ const MoneyGoals = ({money}: {money: any}) => {
     return (
         <div className='add-wrapper'>
             <div className='add-content'>
-                <h2>Your Goals</h2>
-                <MoneyGoalCreate onSubmit={addGoal}/>
-
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start'}}>
+                    <h2>Your Goals</h2>
+                    <MoneyGoalCreate onSubmit={addGoal}/>
+                </div>
                 {goals.map((goal: any) => (
                     <MoneyGoalsComponent goal={goal} removeGoal={removeGoal}/>
                 ))}

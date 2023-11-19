@@ -75,7 +75,7 @@ function ToDo() {
 
     return (
         <div className='todo-page'>
-            <div className='main'>
+            <div>
                 <Container>
                     <Row>
                         <Col className='col-wrap-todo d-flex flex-column justify-content-center align-items-center' style={{marginTop:'25px'}}>
