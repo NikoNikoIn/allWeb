@@ -1,7 +1,8 @@
 .home-page {
     background: var(--backgroundAccent);
     background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
-    height: 100%;
+    height: auto;
+    min-height: 100vh + 30;
     width: 100%;
     padding-right: 10px;
     padding-left: 80px;
