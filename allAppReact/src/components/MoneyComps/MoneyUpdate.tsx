@@ -74,8 +74,9 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
 
 
     return (
-        <>
-            <div className='add-div money-wrapper'>
+        <div className='general-money-wrapper update' style={{display:'flex', flexDirection:'column'}}>
+            <h2>Update Your Money</h2>
+            <div style={{display:'flex'}}>
                 <div>
                     <button
                         className={input ? 'money-button add' : 'money-button add disabled'}
@@ -88,8 +89,30 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                             )
                         }}
                     >
+                        
                         <FontAwesomeIcon size='xl' icon={faAnglesUp} />
                     </button>
+                </div>
+                <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
+                    <input
+                        type='text'
+                        className='money-input'
+                        min='0'
+                        onKeyDown={(e) => {
+                            const keyCode = e.key;
+                            const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'
+                            if (!isValidKey) {
+                                e.preventDefault();
+                            }
+                        }}
+                        onChange={handleChange}
+                        value={input}
+                        
+                    />
+                    <span style={{fontSize:'20px'}}>{currency}</span>
+                </div>
+                <div>
+
                     <button
                         className={input ? 'money-button subtract' : 'money-button subtract disabled'}
                         onClick={() => {
@@ -104,26 +127,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                         <FontAwesomeIcon size='xl' rotation={180} icon={faAnglesUp} />
                     </button>
                 </div>
-                <div className='money-input-wrap' style={{marginBottom:'10px'}}>
-                    <div style={{display: 'flex', alignItems:'center', justifyContent: 'flex-start'}}>
-                        <input
-                            type='text'
-                            className='money-input'
-                            min='0'
-                            onKeyDown={(e) => {
-                                const keyCode = e.key;
-                                const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'
-                                if (!isValidKey) {
-                                    e.preventDefault();
-                                }
-                            }}
-                            onChange={handleChange}
-                            value={input}
-                            maxLength={5}
-                        />
-                        <span style={{fontSize:'20px'}}>{currency}</span>
-                    </div>
-                </div>
+                
                 
             </div>
             <MoneyModal
@@ -134,7 +138,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                 onSubmit={(purpose: string) => handleSubmit(typeMoney, purpose)}
                 input={input}
             />
-        </>
+        </div>
     )
 }
 

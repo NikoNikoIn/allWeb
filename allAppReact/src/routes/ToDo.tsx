@@ -78,10 +78,10 @@ function ToDo() {
             <div>
                 <Container>
                     <Row>
-                        <Col className='col-wrap-todo d-flex flex-column justify-content-center align-items-center' style={{marginTop:'25px'}}>
+                        <Col className='col-wrap-todo'style={{marginTop:'25px', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                             <h1>The Ultimate To-Do List</h1>
                             <ToDoForm onSubmit={addTask}/>
-                            <div className='task-per-row'>
+                            <div>
                                 <h4>Tasks per row: {colValue}</h4>
                                 <Form.Range min={1} max={4} step={1} value={colValue} onChange={changeEvent => setColValue(Number(changeEvent.target.value))}/>
                             </div>

@@ -87,15 +87,17 @@ const Money = () => {
 
     return (
         <CurrencyProvider>
+
             <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'} style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
                 <CurrencyButton/>
 
-                <div className='general-money-wrapper' style={{display:'flex', flexDirection:'column', width:'80%'}}>
-                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', width:'100%'}}> 
+                <div className='general-money-wrapper' style={{display:'flex', flexDirection:'column', width:'80%', justifyContent:'flex-start', height:'auto'}}>
+                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', width:'100%', height:'auto'}}> 
                         <MoneyGraph earnMoney={earnMoney} expenseMoney={expenseMoney}/>
                         <MoneyUpdate onSubmit={addMoney}/>
                     </div>
-                    <div> 
+                    <br/>
+                    <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}> 
                         <div style={{marginBottom:'20px', marginLeft:'15px'}}>
                             <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>

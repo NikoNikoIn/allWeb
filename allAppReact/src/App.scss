@@ -34,8 +34,8 @@ html[data-theme='dark'] {
 html, body, #root {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
     overflow-x: hidden;
 
     --shadow:
@@ -46,24 +46,14 @@ html, body, #root {
     
 }
 
-.todo-page {
-    min-height: 100vh;
-    min-width: 100vw;
-}
-
 #root {
 
     color: var(--secondColor);
-    transition: background-color 400ms linear;
-    padding: 0px 10px;
     font-family: 'AndikaNewBasicRegular';
     font-weight: normal;
     font-style: normal;
 }
 
-.main {
-    margin-left: 80px;
-}
 
 .col-wrap {
     border: 1px solid var(--accentColor);

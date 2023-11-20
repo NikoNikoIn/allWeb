@@ -11,7 +11,9 @@ const MoneyEarnStats = ({money}) => {
 
     const initialEarnings = {
         'Salary': { total: 0, percentage: 0, color: '#67b528' },
+        'Passive income': { total: 0, percentage: 0, color: '#50ba70' },
         'Side pay': { total: 0, percentage: 0, color: '#92de54' },
+        'Selling': { total: 0, percentage: 0, color: '#9ffa43' },
         'Other way': { total: 0, percentage: 0, color: '#9ab584' },
     }
 

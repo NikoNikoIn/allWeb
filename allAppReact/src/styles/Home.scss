@@ -1,8 +1,10 @@
 .home-page {
     background: var(--backgroundAccent);
     background: linear-gradient(360deg, var(--backgroundAccent) 0%, var(--backgroundMain) 35%);
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100%;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 80px;
 }
 
 .col-wrap {
@@ -15,11 +17,13 @@
     box-shadow: var(--shadow);
     border: 1px solid var(--accentColor); 
 
+    &:hover {
+        box-shadow: 0px 0px 20px var(--accentColor);
+
+    }
+
 }
 
-.img:hover, .img-sticky:hover {
-    box-shadow: 0px 0px 20px var(--accentColor);
-}
 
 .list-group .list-group-item {
     color: var(--accentColor);

@@ -62,7 +62,9 @@ const Items = {
 
     addList: [
         'Salary',
+        'Passive income',
         'Side pay',
+        'Selling',
         'Other way'
     ],
 

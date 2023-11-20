@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 
 
-const MoneyGraphTrend = () => {
+const MoneyGraphTrend = ({money}: {money:any}) => {
 
     const svgHeight = '300px'
 
@@ -20,7 +20,6 @@ const MoneyGraphTrend = () => {
             <div className='graph-axis' ref={graphAxisRef} style={{height:svgHeight}}>
                 <div style={{ overflowX:'auto', overflowY:'hidden'}}>
                     <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                        <line x1='0' y1='0' x2={svgWidth} y2='25vh' strokeWidth='2' stroke='blue'></line>
                     </svg>
                 </div>
             </div>

@@ -22,8 +22,8 @@ const MoneyComponent = ({ moneySingle, removeMoneySingle }: { moneySingle: Money
 
     return (
         <div className='money-component'>
-            <span className='money-amount'>
-                {moneySingle.amount}{currency} 
+            <span className='money-amount' title={moneySingle.amount.toString() + '' + currency}>
+                {moneySingle.amount.toString().length > 5 ? `${moneySingle.amount.toString().slice(0, 5)}...` : moneySingle.amount + '' + currency}
                 <FontAwesomeIcon 
                     className='money-trend' 
                     style={{

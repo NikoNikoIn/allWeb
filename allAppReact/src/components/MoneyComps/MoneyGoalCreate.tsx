@@ -65,15 +65,15 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
                     <h3>Add new <span style={{color:'$moneyGoals'}}>Goal</span></h3>
                     <FontAwesomeIcon icon={faXmark} style={{color: '#c40606', cursor: 'pointer'}} onClick={() => setShow(!show)}/>
                 </div>
-                <Form onSubmit={handleAdd} style={{display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent:'space-around'}}>
-                    <input className='money-input goals' type='text' placeholder='What is your goal?' value={goal} onChange={handleGoalChange}/>
+                <Form onSubmit={handleAdd} style={{display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'}}>
+                    <input className='money-input goals' type='text' placeholder='What is your goal?' value={goal} onChange={handleGoalChange} style={{width:'40%'}}/>
                     <div style={{display:'flex', alignItems:'center'}}>
                         <input
                             type='text'
                             className='money-input goals'
                             min='0'
                             placeholder='How much?'
-                            style={{width:'80%'}}
+                            style={{width:'50%'}}
                             onKeyDown={(e) => {
                                 const keyCode = e.key;
                                 const isValidKey = /^[0-9]$/.test(keyCode) || keyCode === 'Backspace'
@@ -86,8 +86,9 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
                         />    
                         <span style={{fontSize:'20px'}}>{currency}</span>
                     </div>     
-                    <button className={goal && amount ? 'money-button goal' : 'money-button goal disabled'}><FontAwesomeIcon size='lg' icon={faPlus}/></button>
-
+                    <div>
+                        <button className={goal && amount ? 'money-button goal' : 'money-button goal disabled'}><FontAwesomeIcon size='lg' icon={faPlus}/></button>
+                    </div>
                 </Form>
             </div>
             ) : (

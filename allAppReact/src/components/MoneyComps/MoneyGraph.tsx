@@ -56,7 +56,7 @@ const MoneyGraph = ({ earnMoney, expenseMoney }: { earnMoney: number, expenseMon
             </div>
             <div style={{ display: 'flex', flexDirection: 'row'}}>
                 <div style={{display:'flex', flexDirection:'column'}}>
-                    <h3 style={{ color: earnMoney - expenseMoney > 0 ? '$moneyEarn' : earnMoney - expenseMoney < 0 ? '$moneySpend' : '#949494' }}>
+                    <h3 style={{ color: earnMoney - expenseMoney > 0 ? '#3dc257' : earnMoney - expenseMoney < 0 ? '#c40606' : '#949494' }}>
                         {earnMoney - expenseMoney}
                         {currency}
                     </h3>
@@ -69,7 +69,7 @@ const MoneyGraph = ({ earnMoney, expenseMoney }: { earnMoney: number, expenseMon
                         </span>
                     ) : earnMoney - expenseMoney < 0 && earnMoney !== 0 ? (
                         <span>
-                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '$moneySpend' }} /> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
+                            <FontAwesomeIcon icon={faArrowUp} rotation={180} style={{ color: '#c40606' }} /> {((earnMoney - expenseMoney) / expenseMoney * 100).toFixed(1)}%
                         </span>
                     ) : (
                         null
