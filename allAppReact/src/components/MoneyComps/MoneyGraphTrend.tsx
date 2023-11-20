@@ -10,6 +10,8 @@ ChartJS.register(CategoryScale, LinearScale, BarController, BarElement, ArcEleme
 const MoneyGraphTrend = ({money}) => {
     const [yearlyEarn, setYearlyEarn] = useState({})
     const [yearlyExpense, setYearlyExpense] = useState({})
+    const [monthlyEarn, setMonthlyEarn] = useState({})
+    const [monthlyExpense, setMonthlyExpense] = useState({})
     const [show, setShow] = useState('yearly')
 
     const monthMap = new Map<number, string>([
@@ -28,11 +30,12 @@ const MoneyGraphTrend = ({money}) => {
     ])
 
     useEffect(() => {
-        const moneyByEarn = money.reduce((acc, curr) => {
+
+        const moneyYearlyEarn = money.reduce((acc, curr) => {
             const [time, date] = curr.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
-            const monthNum = new Date(formattedDate).getMonth() + 1 // get month from date string
+            const monthNum = new Date(formattedDate).getMonth() + 1
             if (!acc[monthNum]) {
                 acc[monthNum] = 0
             }
@@ -42,7 +45,7 @@ const MoneyGraphTrend = ({money}) => {
             return acc
         }, {})
 
-        const moneyByExpense = money.reduce((acc, curr) => {
+        const moneyYearlyExpense = money.reduce((acc, curr) => {
             const [time, date] = curr.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
@@ -58,36 +61,84 @@ const MoneyGraphTrend = ({money}) => {
 
 
 
-        setYearlyEarn(moneyByEarn)
-        setYearlyExpense(moneyByExpense)
+        const moneyMonthlyEarn = money.reduce((acc, curr) => {
+            const [time, date] = curr.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            const dayNum = new Date(formattedDate).getDate()
+            if (!acc[dayNum]) {
+                acc[dayNum] = 0
+            }
+            if (curr.type === 'add') {
+                acc[dayNum] += curr.amount
+            }
+            return acc
+        }, {})
+
+        const moneyMonthlyExpense = money.reduce((acc, curr) => {
+            const [time, date] = curr.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            const dayNum = new Date(formattedDate).getDate()
+            if (!acc[dayNum]) {
+                acc[dayNum] = 0
+            }
+            if (curr.type === 'subtract') {
+                acc[dayNum] += curr.amount
+            }
+            return acc
+        }, {})
+
+
+
+        setYearlyEarn(moneyYearlyEarn)
+        setYearlyExpense(moneyYearlyExpense)
+
+        setMonthlyEarn(moneyMonthlyEarn)
+        setMonthlyExpense(moneyMonthlyExpense)
     }, [money])
 
 
     const barChart = (
         <Bar
             data={{
-                labels: Object.keys(yearlyEarn).length > Object.keys(yearlyExpense).length ? Object.entries(yearlyEarn).map(([month]) => (
+                labels: show === 'yearly' ? (Object.keys(yearlyEarn).length > Object.keys(yearlyExpense).length ? Object.entries(yearlyEarn).map(([month]) => (
                     monthMap.get(Number(month))
                 )) : Object.entries(yearlyExpense).map(([month]) => (
                     monthMap.get(Number(month))
-                )),
+                ))) : show === 'monthly' ? (
+                    Object.keys(monthlyEarn).length > Object.keys(monthlyExpense).length ? 
+                    Object.entries(monthlyEarn).map(([day]) => {
+                        const date = new Date();
+                        const monthName = monthMap.get(date.getMonth() + 1);
+                        return `${monthName} ${day}`;
+                    }) : 
+                    Object.entries(monthlyExpense).map(([day]) => {
+                        const date = new Date();
+                        const monthName = monthMap.get(date.getMonth() + 1);
+                        return `${monthName} ${day}`;
+                    })
+                ) : (
+                    []
+                ),
                 datasets: [
                     {
                         label: 'Earnings',
-                        data: Object.entries(yearlyEarn).map(([, total]) => total),
+                        data: show === 'yearly' ? Object.entries(yearlyEarn).map(([, total]) => total) : Object.entries(monthlyEarn).map(([, total]) => total),
                         backgroundColor: '#3dc257',
                     },
                     {
                         label: 'Expenses',
-                        data: Object.entries(yearlyExpense).map(([, total]) => total),
+                        data: show === 'yearly' ? Object.entries(yearlyExpense).map(([, total]) => total) : Object.entries(monthlyExpense).map(([, total]) => total),
                         backgroundColor: '#c40606'
                     }
                 ]
             }}
-
+    
             style={{ height: 'auto', width: 'auto', boxShadow: 'var(--shadow)' }}
         />
     )
+    
 
     return (
         <div>
