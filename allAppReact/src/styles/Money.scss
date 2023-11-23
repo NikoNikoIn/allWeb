@@ -1,7 +1,8 @@
-$moneyEarn: #3dc257;
-$moneySpend: #c40606;
+
 
 .money-page {
+  --moneyEarn: #3dc257;
+  --moneySpend: #c40606;
   height: auto;
   min-height: 100vh;
   width: 100vw;
@@ -10,11 +11,11 @@ $moneySpend: #c40606;
   transition: all 0.9s ease-in-out;
 
   &.add {
-    background-color: $moneyEarn;
+    background-color: var(--moneyEarn);
   }
 
   &.subtract {
-    background-color: $moneySpend;
+    background-color: var(--moneySpend);
   }
 }
 
@@ -31,37 +32,37 @@ $moneySpend: #c40606;
     box-shadow: var(--shadow);
 
     &.add{
-      background-color: $moneyEarn;
+      background-color: var(--moneyEarn);
       color: var(--mainColor);
-      border: 2px solid $moneyEarn;
+      border: 2px solid var(--moneyEarn);
 
         &:hover {
-            border: 2px solid $moneyEarn;
+            border: 2px solid var(--moneyEarn);
             background-color: var(--mainColor);
-            color: $moneyEarn;
+            color: var(--moneyEarn);
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: $moneyEarn;
+          color: var(--moneyEarn);
           border: 0px;
           cursor: default;
         }
     }
     &.subtract{
-      background-color: $moneySpend;
+      background-color: var(--moneySpend);
       color: var(--mainColor);
-      border: 2px solid $moneySpend;
+      border: 2px solid var(--moneySpend);
 
         &:hover {
-            border: 2px solid $moneySpend;
+            border: 2px solid var(--moneySpend);
             background-color: var(--mainColor);
-            color: $moneySpend;
+            color: var(--moneySpend);
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: $moneySpend;
+          color: var(--moneySpend);
           border: 0px;
           cursor: default;
 
@@ -69,19 +70,19 @@ $moneySpend: #c40606;
     }
 
     &.goal{
-      background-color: $moneyEarn;
+      background-color: var(--moneyEarn);
       color: var(--mainColor);
-      border: 2px solid $moneyEarn;
+      border: 2px solid var(--moneyEarn);
 
         &:hover {
-            border: 2px solid $moneyEarn;
+            border: 2px solid var(--moneyEarn);
             background-color: var(--mainColor);
-            color: $moneyEarn;
+            color: var(--moneyEarn);
         }
 
         &.disabled {
           background-color: var(--thirdColor);
-          color: $moneyEarn;
+          color: var(--moneyEarn);
           border: 0px;
           cursor: default;
         }
@@ -106,7 +107,7 @@ $moneySpend: #c40606;
     }
 
     &.goals {
-      border-bottom: 2px solid $moneyEarn;
+      border-bottom: 2px solid var(--moneyEarn);
       margin: 5px;
       &:focus{
         outline: none;
@@ -114,12 +115,15 @@ $moneySpend: #c40606;
       }
 
     }
+
+    &.year {
+      height: auto;
+      width: 70px;
+    }
 }
 
 .btn-menu, .btn-menu.active {
-    width: 100px;
-    height: 50px;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .btn-menu.active {
@@ -130,9 +134,17 @@ $moneySpend: #c40606;
 
 .money-scrollable {
     overflow-y: auto;
-    height: 340px;
+    height: 400px;
     padding-right: 20px;
     overflow-x: hidden;
+
+    &.stats {
+      height: 550px;
+    }
+
+    &.goals {
+      height: 350px;
+    }
 }
 
 .money-component {
@@ -161,7 +173,7 @@ $moneySpend: #c40606;
   position: absolute; 
   top: 10px; 
   right: 10px; 
-  color: $moneySpend;
+  color: var(--moneySpend);
   cursor: pointer;
 }
 
@@ -259,7 +271,7 @@ $moneySpend: #c40606;
   }
 
   &.earnings {
-    background-color: $moneyEarn;
+    background-color: var(--moneyEarn);
   }
 }
 
@@ -302,7 +314,7 @@ $moneySpend: #c40606;
   }
 
   &.earnings {
-    background-color: $moneyEarn;
+    background-color: var(--moneyEarn);
 
   }
 
@@ -320,7 +332,6 @@ $moneySpend: #c40606;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
   transform: scale(0);
   z-index: 99;
   &.active {
@@ -353,24 +364,24 @@ $moneySpend: #c40606;
   transition: 0.3s ease-in-out;
 
   &.add {
-    border: 2px solid $moneyEarn;
+    border: 2px solid var(--moneyEarn);
     width: 50%;
-    background-color: $moneyEarn;
+    background-color: var(--moneyEarn);
     color: var(--mainColor);
     &:hover {
       background-color: var(--mainColor);
-      color: $moneyEarn;
+      color: var(--moneyEarn);
     }
   }
 
   &.subtract {
-    border: 2px solid $moneySpend;
+    border: 2px solid var(--moneySpend);
     width: 50%;
-    background-color: $moneySpend;
+    background-color: var(--moneySpend);
     color: var(--mainColor);
     &:hover {
       background-color: var(--mainColor);
-      color: $moneySpend;
+      color: var(--moneySpend);
     }
   }
 }
@@ -466,12 +477,12 @@ $moneySpend: #c40606;
   transition: background-color 0.3s ease-in-out;
 
   &.earn {
-    background-color: $moneyEarn;
+    background-color: var(--moneyEarn);
     color: var(--mainColor);
     cursor: pointer;
     &:hover {
       background-color: var(--mainColor);
-      color: $moneyEarn;
+      color: var(--moneyEarn);
     }
 
     &.off {
@@ -480,11 +491,11 @@ $moneySpend: #c40606;
   }
 
   &.subtract {
-    background-color: $moneySpend;
+    background-color: var(--moneySpend);
     color: var(--mainColor);
     cursor: pointer;
     &:hover {
-      color: $moneySpend;
+      color: var(--moneySpend);
       background-color: var(--mainColor);
     }
 
@@ -497,9 +508,9 @@ $moneySpend: #c40606;
 
 
 .money-goal-button {
-  border: 1px solid $moneyEarn;
+  border: 1px solid var(--moneyEarn);
   outline: none;
-  background-color: $moneyEarn;
+  background-color: var(--moneyEarn);
   color: var(--mainColor);
   box-shadow: var(--shadow);
   padding: 10px;
@@ -508,10 +519,22 @@ $moneySpend: #c40606;
 
   &:hover {
     background-color: var(--mainColor);
-    color: $moneyEarn;
+    color: var(--moneyEarn);
   }
 
 
+}
+
+.money-select {
+  border: 0px;
+  background-color: var(--thirdColor);
+  color: var(--secondColor);
+  text-decoration: underline var(--moneyAccent);
+  text-underline-offset: 5px;
+
+  &:focus {
+    border: 0px;
+  }
 }
 
 

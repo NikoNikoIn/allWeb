@@ -17,7 +17,12 @@ type MoneySingleType = {
 
 const MoneyComponent = ({ moneySingle, removeMoneySingle }: { moneySingle: MoneySingleType, removeMoneySingle: (id: number) => void }) => {
 
-    const { currency } = useContext(CurrencyContext)
+    const currencyContext = useContext(CurrencyContext)
+
+    if (!currencyContext) {
+        throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
+    }
+    const { currency } = currencyContext
 
 
     return (

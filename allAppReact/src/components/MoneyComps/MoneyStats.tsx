@@ -4,10 +4,10 @@ import MoneyEarnStats from './MoneyEarnStats'
 import MoneyGraphTrend from './MoneyGraphTrend'
 
 
-const MoneyStats = ({money, earnMoney, expenseMoney}: {money:any, earnMoney: number, expenseMoney: number}) => {
+const MoneyStats = ({money}: {money:any}) => {
     return (
         <div>
-            <div className='money-scrollable'>
+            <div className='money-scrollable stats'>
                 <h2>Your Stats</h2>
                 <div className='general-money-wrapper stats'>
                     <h3>Earnings</h3>
@@ -24,7 +24,6 @@ const MoneyStats = ({money, earnMoney, expenseMoney}: {money:any, earnMoney: num
                 </div>
                 <br/>
             </div>
-
         </div>
     )
 }

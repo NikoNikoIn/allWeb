@@ -105,6 +105,7 @@ const MoneyUpdate: React.FC<MoneyUpdateProps> = (props) => {
                                 e.preventDefault();
                             }
                         }}
+                        style={{textAlign: 'center'}}
                         onChange={handleChange}
                         value={input}
                         

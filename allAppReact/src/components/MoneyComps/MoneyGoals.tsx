@@ -32,7 +32,7 @@ const MoneyGoals = ({money}: {money: any}) => {
 
     return (
         <div>
-            <div className='money-scrollable'>
+            <div className='money-scrollable goals'>
                 <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start'}}>
                     <h2>Your Goals</h2>
                     <MoneyGoalCreate onSubmit={addGoal}/>

@@ -46,9 +46,6 @@ const Money = () => {
     useEffect(() => {
         localStorage.setItem('expenseMoney', JSON.stringify(expenseMoney))
     }, [expenseMoney])
-    
-    
-
 
     const addMoney = (moneySingle: any) => {
         const newMoney = [moneySingle, ...money]
@@ -87,17 +84,15 @@ const Money = () => {
 
     return (
         <CurrencyProvider>
-
-            <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'} style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+            <div className={changeBackgroundColor === 'add' ? 'money-page add' : changeBackgroundColor === 'subtract' ? 'money-page subtract' : 'money-page'} style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'flex-start', padding:'10px'}}>
                 <CurrencyButton/>
-
                 <div className='general-money-wrapper' style={{display:'flex', flexDirection:'column', width:'80%', justifyContent:'flex-start', height:'auto'}}>
                     <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', width:'100%', height:'auto'}}> 
                         <MoneyGraph earnMoney={earnMoney} expenseMoney={expenseMoney}/>
                         <MoneyUpdate onSubmit={addMoney}/>
                     </div>
                     <br/>
-                    <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}> 
+                    <div style={{display:'flex', flexDirection:'column'}}> 
                         <div style={{marginBottom:'20px', marginLeft:'15px'}}>
                             <span className={show==='add' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('add')}>Earnings</span>
                             <span className={show==='subtract' ? 'btn-menu active' : 'btn-menu'} style={{marginRight:'25px'}} onClick={() => setShow('subtract')}>Expenses</span>
@@ -107,19 +102,19 @@ const Money = () => {
                         {show === 'add' ? (
                             <div className='money-scrollable'>
                                 <Row>
-                                {money
-                                    .filter((moneySingle: any) => moneySingle.type === 'add') 
-                                    .map((moneySingle: any) => (
-                                        <Col
-                                            md={3}
-                                            xs={12}
-                                            key={`moneySingle-${moneySingle.id}`}
-                                        >
-                                            <MoneyComponent
-                                                moneySingle={moneySingle}
-                                                removeMoneySingle={removeMoneySingle}
-                                            />
-                                        </Col>
+                                    {money
+                                        .filter((moneySingle: any) => moneySingle.type === 'add') 
+                                        .map((moneySingle: any) => (
+                                            <Col
+                                                md={3}
+                                                xs={12}
+                                                key={`moneySingle-${moneySingle.id}`}
+                                            >
+                                                <MoneyComponent
+                                                    moneySingle={moneySingle}
+                                                    removeMoneySingle={removeMoneySingle}
+                                                />
+                                            </Col>
                                     ))}
                                 </Row>
                             </div>
@@ -149,10 +144,8 @@ const Money = () => {
                         ) : (
                             null
                         )}
-
                     </div>
                 </div>
-
             </div>
         </CurrencyProvider>
     )

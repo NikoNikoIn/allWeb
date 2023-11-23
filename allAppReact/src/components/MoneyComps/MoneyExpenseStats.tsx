@@ -83,7 +83,6 @@ const MoneyExpenseStats = ({money}: {money:any}) => {
     const [hoveredExpense, setHoveredExpense] = useState(null)
 
     const currencyContext = useContext(CurrencyContext)
-
     if (!currencyContext) {
         throw new Error('CurrencyContext not found. Make sure you have wrapped your component with CurrencyProvider')
     }

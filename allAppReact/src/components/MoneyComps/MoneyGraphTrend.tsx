@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Chart as ChartJS, CategoryScale, LinearScale, BarController, BarElement, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarController, BarElement, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Bar } from 'react-chartjs-2'
 
-ChartJS.register(CategoryScale, LinearScale, BarController, BarElement, ArcElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarController, BarElement, ArcElement, Tooltip, Legend)
 
-
-
-
-const MoneyGraphTrend = ({money}) => {
+const MoneyGraphTrend = ({money}: {money:any}) => {
     const [yearlyEarn, setYearlyEarn] = useState({})
     const [yearlyExpense, setYearlyExpense] = useState({})
     const [monthlyEarn, setMonthlyEarn] = useState({})
     const [monthlyExpense, setMonthlyExpense] = useState({})
     const [show, setShow] = useState('yearly')
+    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1)
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
 
     const monthMap = new Map<number, string>([
         [1, 'January'],
@@ -30,8 +29,55 @@ const MoneyGraphTrend = ({money}) => {
     ])
 
     useEffect(() => {
+        const filteredMoney = money.filter((m) => {
+            const [time, date] = m.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            const dateObj = new Date(formattedDate)
+            return dateObj.getMonth() + 1 === selectedMonth && dateObj.getFullYear() === selectedYear
+        })
 
-        const moneyYearlyEarn = money.reduce((acc, curr) => {
+        const moneyMonthlyEarn = filteredMoney.reduce((acc, curr) => {
+            const [time, date] = curr.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            const dayNum = new Date(formattedDate).getDate()
+            if (!acc[dayNum]) {
+                acc[dayNum] = 0
+            }
+            if (curr.type === 'add') {
+                acc[dayNum] += curr.amount
+            }
+            return acc
+        }, {})
+
+        const moneyMonthlyExpense = filteredMoney.reduce((acc, curr) => {
+            const [time, date] = curr.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            const dayNum = new Date(formattedDate).getDate()
+            if (!acc[dayNum]) {
+                acc[dayNum] = 0
+            }
+            if (curr.type === 'subtract') {
+                acc[dayNum] += curr.amount
+            }
+            return acc
+        }, {})
+
+        setMonthlyEarn(moneyMonthlyEarn)
+        setMonthlyExpense(moneyMonthlyExpense)
+    }, [money, selectedMonth, selectedYear])
+
+    useEffect(() => {
+        const filteredMoney = money.filter((m) => {
+            const [time, date] = m.date.split(' ')
+            const [day, month, year] = date.split('.')
+            const formattedDate = `${year}-${month}-${day} ${time}`
+            return new Date(formattedDate).getFullYear() === selectedYear
+        })
+    
+        const moneyYearlyEarn = filteredMoney.reduce((acc, curr) => {
             const [time, date] = curr.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
@@ -44,8 +90,8 @@ const MoneyGraphTrend = ({money}) => {
             }
             return acc
         }, {})
-
-        const moneyYearlyExpense = money.reduce((acc, curr) => {
+    
+        const moneyYearlyExpense = filteredMoney.reduce((acc, curr) => {
             const [time, date] = curr.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
@@ -58,46 +104,11 @@ const MoneyGraphTrend = ({money}) => {
             }
             return acc
         }, {})
-
-
-
-        const moneyMonthlyEarn = money.reduce((acc, curr) => {
-            const [time, date] = curr.date.split(' ')
-            const [day, month, year] = date.split('.')
-            const formattedDate = `${year}-${month}-${day} ${time}`
-            const dayNum = new Date(formattedDate).getDate()
-            if (!acc[dayNum]) {
-                acc[dayNum] = 0
-            }
-            if (curr.type === 'add') {
-                acc[dayNum] += curr.amount
-            }
-            return acc
-        }, {})
-
-        const moneyMonthlyExpense = money.reduce((acc, curr) => {
-            const [time, date] = curr.date.split(' ')
-            const [day, month, year] = date.split('.')
-            const formattedDate = `${year}-${month}-${day} ${time}`
-            const dayNum = new Date(formattedDate).getDate()
-            if (!acc[dayNum]) {
-                acc[dayNum] = 0
-            }
-            if (curr.type === 'subtract') {
-                acc[dayNum] += curr.amount
-            }
-            return acc
-        }, {})
-
-
-
+    
         setYearlyEarn(moneyYearlyEarn)
         setYearlyExpense(moneyYearlyExpense)
-
-        setMonthlyEarn(moneyMonthlyEarn)
-        setMonthlyExpense(moneyMonthlyExpense)
-    }, [money])
-
+    }, [money, selectedYear])
+    
 
     const barChart = (
         <Bar
@@ -108,16 +119,8 @@ const MoneyGraphTrend = ({money}) => {
                     monthMap.get(Number(month))
                 ))) : show === 'monthly' ? (
                     Object.keys(monthlyEarn).length > Object.keys(monthlyExpense).length ? 
-                    Object.entries(monthlyEarn).map(([day]) => {
-                        const date = new Date();
-                        const monthName = monthMap.get(date.getMonth() + 1);
-                        return `${monthName} ${day}`;
-                    }) : 
-                    Object.entries(monthlyExpense).map(([day]) => {
-                        const date = new Date();
-                        const monthName = monthMap.get(date.getMonth() + 1);
-                        return `${monthName} ${day}`;
-                    })
+                    Object.entries(monthlyEarn).map(([day]) => `${monthMap.get(selectedMonth)} ${day}`) : 
+                    Object.entries(monthlyExpense).map(([day]) => `${monthMap.get(selectedMonth)} ${day}`)
                 ) : (
                     []
                 ),
@@ -134,18 +137,33 @@ const MoneyGraphTrend = ({money}) => {
                     }
                 ]
             }}
-    
-            style={{ height: 'auto', width: 'auto', boxShadow: 'var(--shadow)' }}
+            style={{width: '100%', boxShadow: 'var(--shadow)'}}
         />
     )
-    
 
     return (
         <div>
             <h2>Graph of Spending</h2>
-            <span className={show === 'yearly' ? 'btn-menu active' : 'btn-menu'} style={{ marginRight: '10px' }} onClick={() => setShow('yearly')}>Yearly</span>
-            <span className={show === 'monthly' ? 'btn-menu active' : 'btn-menu'} style={{ marginRight: '10px' }} onClick={() => setShow('monthly')}>Monthly</span>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:'10px'}}>
+            <div style={{display:'flex', justifyContent:'flex-start', alignItems:'center'}}>
+                <span className={show === 'yearly' ? 'btn-menu active' : 'btn-menu'} style={{marginRight: '10px'}} onClick={() => setShow('yearly')}>Yearly</span>
+                <span className={show === 'monthly' ? 'btn-menu active' : 'btn-menu'} style={{marginRight: '10px'}} onClick={() => setShow('monthly')}>Monthly</span>
+                {show === 'monthly' ? ( 
+                    <div style={{display:'flex'}}>
+                        <select style={{marginRight: '10px'}} className='money-select' value={selectedMonth} onChange={(e) => setSelectedMonth(Number(e.target.value))}>
+                            {Array.from(monthMap.entries()).map(([key, value]) => (
+                                <option key={key} value={key}>{value}</option>
+                            ))}
+                        </select>
+                        <input type='number' className='money-input year' value={selectedYear} onChange={(e) => setSelectedYear(Number(e.target.value))} />
+                    </div>
+                ) : show == 'yearly' && (
+                    <div>
+                        <input type='number' className='money-input year' value={selectedYear} onChange={(e) => setSelectedYear(Number(e.target.value))} />
+                    </div>
+                )}
+
+            </div>
+            <div style={{display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', marginTop:'10px'}}>
                 {barChart}
             </div>
         </div>

@@ -2,6 +2,8 @@ import {useContext, FC} from 'react'
 import '../../App.scss'
 import '../../styles/Money.scss'
 import { CurrencyContext } from '../../contexts/CurrencyContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 
 import Items from '../Items'
@@ -44,6 +46,9 @@ const MoneyModal: FC<MoneyModalProps> = ({ active, setActive, type, setPurpose, 
                                 <button className='modal-button add' onClick={(e) => handleClick(e, item)} key={item}>{item}</button>
                             ))}
                         </div>
+                        <div>
+
+                        </div>
                     </div>
                 ) : (
                     <div>
@@ -56,7 +61,12 @@ const MoneyModal: FC<MoneyModalProps> = ({ active, setActive, type, setPurpose, 
                     </div>
                 )}
 
+                <FontAwesomeIcon icon={faXmark} style={{color:'var(--moneySpend)', cursor: 'pointer'}}
+                    onClick={() => setActive(false)}
+                />
+
             </div>
+
         </div>
     )
 }
