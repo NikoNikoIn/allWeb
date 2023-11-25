@@ -92,7 +92,6 @@ const MoneyEarnStats = ({money}) => {
         const tooltipY = boundingRect.top + boundingRect.height / 2
         const content = (
             <div 
-                className='progress-bar-hover' 
                 style={{
                     position: 'absolute',
                     top: tooltipY - 25,
@@ -105,8 +104,9 @@ const MoneyEarnStats = ({money}) => {
                     zIndex: '4',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center'
-                    
+                    alignItems: 'center',
+                    backgroundColor: 'var(--mainColor)',
+                    width: 'auto',
                 }}
             >
                 <h6 style={{color:`${color}`}}>{name}</h6>
@@ -195,8 +195,10 @@ const MoneyEarnStats = ({money}) => {
                                             <td style={{ color: color }}>{purpose}</td>
                                             <td>{total}{currency}</td>
                                             <td>
-                                                <div style={{ width: '100%', overflow: 'hidden', backgroundColor: '#c2c2c2', borderRadius: '15px' }}>
-                                                    <span style={{ display: 'flex', justifyContent: 'center', width: `${percentage}%`, backgroundColor: color }}><span style={{color:'var(--mainColor)'}}>{percentage.toFixed(0)}%</span></span>
+                                                <div className='progress-bar-container'>
+                                                    <div className='progress-bar-money' style={{ display: 'flex', justifyContent: 'center', alignItems:'center', width: `${percentage}%`, backgroundColor: color }}>
+                                                        <span style={{color:'var(--secondColor)'}}>{percentage.toFixed(0)}%</span>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>

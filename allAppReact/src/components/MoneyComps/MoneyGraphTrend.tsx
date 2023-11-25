@@ -29,8 +29,8 @@ const MoneyGraphTrend = ({money}: {money:any}) => {
     ])
 
     useEffect(() => {
-        const filteredMoney = money.filter((m) => {
-            const [time, date] = m.date.split(' ')
+        const filteredMoney = money.filter((money) => {
+            const [time, date] = money.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
             const dateObj = new Date(formattedDate)
@@ -70,8 +70,8 @@ const MoneyGraphTrend = ({money}: {money:any}) => {
     }, [money, selectedMonth, selectedYear])
 
     useEffect(() => {
-        const filteredMoney = money.filter((m) => {
-            const [time, date] = m.date.split(' ')
+        const filteredMoney = money.filter((money) => {
+            const [time, date] = money.date.split(' ')
             const [day, month, year] = date.split('.')
             const formattedDate = `${year}-${month}-${day} ${time}`
             return new Date(formattedDate).getFullYear() === selectedYear

@@ -87,6 +87,25 @@
           cursor: default;
         }
     }
+
+    &.goal-alt {
+      background-color: var(--moneySpend);
+      color: var(--mainColor);
+      border: 2px solid var(--moneySpend);
+
+        &:hover {
+            border: 2px solid var(--moneySpend);
+            background-color: var(--mainColor);
+            color: var(--moneySpend);
+        }
+
+        &.disabled {
+          background-color: var(--thirdColor);
+          color: var(--moneySpend);
+          border: 0px;
+          cursor: default;
+        }
+    }
 }
 
 
@@ -97,7 +116,6 @@
     background-color: var(--thirdColor);
     color: var(--secondColor);
     transition: all 0.3s ease-in-out;
-    font-size: 20px;
     border: none;
     border-bottom: 2px solid var(--moneyAccent);
 
@@ -107,6 +125,7 @@
     }
 
     &.goals {
+      font-size: 20px;
       border-bottom: 2px solid var(--moneyEarn);
       margin: 5px;
       &:focus{
@@ -118,7 +137,7 @@
 
     &.year {
       height: auto;
-      width: 70px;
+      width: 60px;
     }
 }
 
@@ -411,13 +430,7 @@
 
 }
 
-.progress-bar-hover {
-  width: auto;
-  height: auto;
-  background-color: var(--mainColor);
-  
 
-}
 
 .general-money-wrapper {
   background-color: var(--mainColor);
@@ -520,6 +533,10 @@
   &:hover {
     background-color: var(--mainColor);
     color: var(--moneyEarn);
+  }
+
+  &.add {
+    border-radius: 50%;
   }
 
 

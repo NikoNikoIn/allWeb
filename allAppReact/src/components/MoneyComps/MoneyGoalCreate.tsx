@@ -91,11 +91,11 @@ const MoneyGoalCreate: React.FC<GoalFormProps> = (props) => {
                     </div>
                 </Form>
             </div>
-            ) : (
-                <button onClick={() => setShow(!show)} className='money-goal-button'>
-                    <FontAwesomeIcon icon={faPlus}/> Add goal
-                </button>
-            )}
+        ) : (
+            <button onClick={() => setShow(!show)} className='money-goal-button'>
+                <FontAwesomeIcon icon={faPlus}/> Add goal
+            </button>
+        )}
         </div>
 
     )

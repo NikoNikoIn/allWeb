@@ -16,6 +16,7 @@ const MoneyExpenseStats = ({money}: {money:any}) => {
         'Clothes': { total: 0, percentage: 0, color: '#FF4500' },
         'Leisure': { total: 0, percentage: 0, color: '#FF6347' },
         'Purchase': { total: 0, percentage: 0, color: '#FF7F50' },
+        'Goals': { total: 0, percentage: 0, color: '#ff4e33' },
         'Other': { total: 0, percentage: 0, color: '#85605a' },
     }
 
@@ -108,7 +109,9 @@ const MoneyExpenseStats = ({money}: {money:any}) => {
                     zIndex: '4',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    backgroundColor: 'var(--mainColor)',
+                    width: 'auto',
                 }}
             >
                 <h6 style={{color:`${color}`}}>{name}</h6>
@@ -195,8 +198,10 @@ const MoneyExpenseStats = ({money}: {money:any}) => {
                                         <td style={{color:color}}>{purpose}</td>
                                         <td>{total}{currency}</td>
                                         <td>
-                                            <div style={{width:'100%', overflow:'hidden', backgroundColor:'#c2c2c2', borderRadius:'15px'}}>
-                                                <span style={{display:'flex', justifyContent:'center', width:`${percentage}%`, backgroundColor:color}}><span style={{color:'var(--mainColor)'}}>{percentage.toFixed(0)}%</span></span>
+                                            <div className='progress-bar-container'>
+                                                <div className='progress-bar-money' style={{ display: 'flex', justifyContent: 'center', alignItems:'center', width: `${percentage}%`, backgroundColor: color }}>
+                                                    <span style={{color:'var(--secondColor)'}}>{percentage.toFixed(0)}%</span>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

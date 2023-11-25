@@ -5,7 +5,7 @@ import MoneyGoalCreate from './MoneyGoalCreate'
 import MoneyGoalsComponent from './MoneyGoalsComponent'
 
 
-const MoneyGoals = ({money}: {money: any}) => {
+const MoneyGoals = ({money, earnMoney, expenseMoney, setEarnMoney, addMoney}: {money: any, earnMoney: any, expenseMoney: any, setEarnMoney: any, addMoney: any}) => {
 
     const [goals, setGoals] = useState(() => {
         const savedGoals = localStorage.getItem('goals')
@@ -25,7 +25,7 @@ const MoneyGoals = ({money}: {money: any}) => {
         setGoals(newGoals)
     }
 
-    const removeGoal = (id: number) => {
+    const removeGoal = (id: number) => { 
         const removeArr = [...goals].filter((item: any) => item.id !== id)
         setGoals(removeArr)
     }
@@ -38,8 +38,9 @@ const MoneyGoals = ({money}: {money: any}) => {
                     <MoneyGoalCreate onSubmit={addGoal}/>
                 </div>
                 {goals.map((goal: any) => (
-                    <MoneyGoalsComponent goal={goal} removeGoal={removeGoal}/>
+                    <MoneyGoalsComponent goal={goal} removeGoal={removeGoal} availableMoney={earnMoney > expenseMoney ? earnMoney - expenseMoney : 0} setEarnMoney={setEarnMoney} onSubmit={addMoney}/>
                 ))}
+
                 <br/>
             </div>
         </div>

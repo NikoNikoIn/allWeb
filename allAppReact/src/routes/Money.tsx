@@ -140,7 +140,7 @@ const Money = () => {
                         ) : show === 'stats' ? (
                             <MoneyStats money={money}/>
                         ) : show === 'goals' ? (
-                            <MoneyGoals money={money}/>
+                            <MoneyGoals money={money} earnMoney={earnMoney} expenseMoney={expenseMoney} setEarnMoney={setEarnMoney} onSubmit={addMoney}/>
                         ) : (
                             null
                         )}
